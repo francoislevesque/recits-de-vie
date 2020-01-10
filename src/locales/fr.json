@@ -1,3 +1,14 @@
 {
-  "message": "hello i18n !!"
+  "revenu": "Revenu",
+  "prestations": "Prestations",
+  "benefices": "Bénéfices",
+  "prelevements": "Prélèvements",
+  "salary": "Salaire",
+  "health": "Soins de santé",
+  "education": "Éducation",
+  "other": "Autre",
+  "return": "Crédits d'impôt",
+  "solidarite": "Crédits de solidarité",
+  "impots": "Impôts",
+  "taxes": "Taxes"
 }

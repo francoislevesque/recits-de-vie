@@ -45,6 +45,7 @@ export default {
 	},
 	data () {
 		return {
+			fullWidth: 0,
 			fullHeight: 0
 		};
 	},
@@ -66,6 +67,7 @@ export default {
 	methods: {
 		onResize () {
 			this.fullHeight = this.$refs.graphs.clientHeight;
+			this.fullWidth = this.$refs.graphs.clientWidth;
 		}
 	}
 };

@@ -4,7 +4,7 @@
       class="text-md font-bold text-lg"
       :class="`text-${color}-500`"
     >
-      {{ category.name }}
+      {{ $t(category.name) }}
     </h3>
     <div
       ref="graph"
@@ -24,6 +24,14 @@
               <band :amount="d"></band>
             </g>
           </g>
+          <line
+            :x1="0"
+            :x2="0"
+            :y1="0"
+            :y2="height"
+            stroke="#333"
+            stroke-width="1"
+          ></line>
         </g>
       </svg>
     </div>
@@ -63,13 +71,16 @@ export default {
 			},
 			margin: {
 				top: 0,
-				right: 25,
+				right: 100,
 				bottom: 0,
-				left: 60
+				left: 150
 			}
 		};
 	},
 	computed: {
+		filters () {
+			return this.$parent.filters;
+		},
 		color () {
 			return colors[this.category.name];
 		},
@@ -80,28 +91,20 @@ export default {
 			return this.$parent.barHeight * this.numberOfBars;
 		},
 		width () {
-			return this.containerWidth - this.margin.left - this.margin.right;
+			return this.$parent.fullWidth - this.margin.left - this.margin.right;
 		},
 	},
-	destroyed () {
-		window.removeEventListener("resize", this.onResize);
+	watch: {
+		"height" () {
+			this.$set(this.scales, "y", this.scales.y.range([0,this.height]).copy());
+		}
 	},
-	mounted () {
-		window.addEventListener("resize", this.onResize);
-      
+	mounted () {    
 		this.scales.y = d3.scaleBand()
 			.range([0,this.height])
 			.domain(this.category.amounts.map(d => d.name));
-      
-		this.onResize();
-      
+            
 		this.loaded = true;
-	},
-	methods: {
-		onResize () {
-			this.containerWidth = this.$refs.graph.clientWidth;
-			this.$set(this.scales, "y", this.scales.y.range([0,this.height]).copy());
-		}
 	}
 };
 </script>

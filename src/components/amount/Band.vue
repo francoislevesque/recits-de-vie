@@ -2,6 +2,15 @@
   <g
     :transform="`translate(0, ${middle})`"
   >
+    <text
+      text-anchor="end"
+      alignment-baseline="middle"
+      class="fill-current text-sm"
+      :class="`text-${color}-800`"
+      :x="-7"
+    >
+      {{ $t(amount.name) }}
+    </text>
     <rect 
       class="band fill-current" 
       :class="`text-${color}-300`"
@@ -17,6 +26,15 @@
       :r="7"
       :class="`text-${color}-700`"
     />
+    <text
+      text-anchor="start"
+      alignment-baseline="middle"
+      class="fill-current text-sm"
+      :class="`text-${color}-800 font-semibold`"
+      :x="width + 14"
+    >
+      {{ amount.value.priceFormat() }}
+    </text>
   </g>
 </template>
 

@@ -16,7 +16,7 @@
         </div>
 
         <band-graph
-          class="lg:flex-grow"
+          class="lg:flex-grow overflow-hidden"
           :mobile="mobile"
           :filters="filters"
           :domain-y="domainGraph"
@@ -81,16 +81,26 @@ export default {
 			let domains = this.calculateDomains();
       
 			let oldDomainGraph = this.domainGraph;
-			let oldDomainAmount = this.domainAmount;
-      
 			let newDomainGraph = domains["graph"];
-			let newDomainAmount = domains["amount"];
-      
 			this.domainGraph = newDomainGraph;
+      
+			let oldDomainAmount = this.domainAmount;
+			let newDomainAmount = domains["amount"];
 			this.domainAmount = newDomainAmount;
       
-		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainGraphTranslation", newDomainGraph, oldDomainGraph));
-		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainGraphTranslation", newDomainAmount, oldDomainAmount));
+			window.requestAnimationFrame(this.domainTransitionStep(null, "domainGraphTranslation", newDomainGraph, oldDomainGraph));
+		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainAmountTranslation", newDomainAmount, oldDomainAmount));
+		},
+		"filters.selected" () {
+			this.updateAmountsData();
+      
+			let domains = this.calculateDomains();
+
+			let oldDomainAmount = this.domainAmount;
+			let newDomainAmount = domains["amount"];
+			this.domainAmount = newDomainAmount;
+      
+		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainAmountTranslation", newDomainAmount, oldDomainAmount));
 		}
 	},
 	mounted () {
@@ -112,7 +122,7 @@ export default {
 		this.domainGraphTranslation = this.domainGraph;
 		this.domainAmountTranslation = this.domainAmount;
     
-		this.domainTransitionStep = (start, key, newDomaingraph, oldDomainGraph) => {
+		this.domainTransitionStep = (start, key, newDomain, oldDomain) => {
 			return (timestamp) => {
 
 				if (start == null) start = timestamp;
@@ -122,14 +132,14 @@ export default {
 				let ratio = progress / duration;
         
 				this[key] = [
-					(newDomainGraph[0] - oldDomainGraph[0]) * ratio + oldDomainGraph[0],
-					(newDomainGraph[1] - oldDomainGraph[1]) * ratio + oldDomainGraph[1],
+					(newDomain[0] - oldDomain[0]) * ratio + oldDomain[0],
+					(newDomain[1] - oldDomain[1]) * ratio + oldDomain[1],
 				];
         
 				if (ratio < 1) {
-					window.requestAnimationFrame(this.domainYTransitionStep(start, key, newDomainGraph, oldDomainGraph));
+					window.requestAnimationFrame(this.domainTransitionStep(start, key, newDomain, oldDomain));
 				} else {
-					this[key] = newDomainGraph;
+					this[key] = newDomain;
 				}
 			};
 		};
@@ -169,6 +179,9 @@ export default {
 		onResize () {
 			this.window.width = window.innerWidth;
 			this.window.height = window.innerHeight;
+		},
+		updateAmountsData () {
+			this.scenarioAmounts = amounts(this.scenarios, this.filters);
 		},
 		scenarioName (i) {
 			let names = [
