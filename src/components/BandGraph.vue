@@ -179,9 +179,11 @@ export default {
 		},
 		width() {
 			this.$set(this.scales, "x", this.scales.x.rangeRound([PADDING_LEFT, this.width]).copy());
+			this.xAxisUpdate();
 		},
 		height () {
 			this.$set(this.scales, "y", this.scales.y.range([this.height, 0]).copy());
+			this.yAxisUpdate();
 		}
 	},
 	destroyed () {
@@ -209,12 +211,14 @@ export default {
 			.tickSize(-this.width)
 			.ticks(5)
 			.tickFormat((d) => (+d).priceFormat())
-			.tickPadding(TICK_PADDING); 
+			.tickPadding(TICK_PADDING);
     
 		this.loaded = true;
     
-		d3.select(this.$refs.axisX).call(this.axis.x);
-		d3.select(this.$refs.axisY).call(this.axis.y);  
+		this.$nextTick(() => {
+			d3.select(this.$refs.axisX).call(this.axis.x);
+			d3.select(this.$refs.axisY).call(this.axis.y);  
+		});
 	},
 	methods: {
 		onResize () {
@@ -224,6 +228,14 @@ export default {
 			this.$set(this.scales, "y", this.scales.y.domain(this.domainY).copy());
 			this.axis.y = this.axis.y.scale(this.scales.y);
 			d3.select(this.$refs.axisY).transition().call(this.axis.y);
+		},
+		yAxisUpdate () {
+			this.axis.y = this.axis.y.scale(this.scales.y);
+			d3.select(this.$refs.axisY).call(this.axis.y);
+		},
+		xAxisUpdate () {
+			this.axis.x = this.axis.x.scale(this.scales.x);
+			d3.select(this.$refs.axisX).call(this.axis.x);
 		}
 	}
 };

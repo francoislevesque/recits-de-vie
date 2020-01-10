@@ -138,7 +138,4 @@ export default {
 </script>
 
 <style scoped>
-  .band {
-    transition: opacity 0.2s;
-  }
 </style>

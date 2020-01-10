@@ -45,7 +45,7 @@ export default {
 			},
 			scenarios: mockData(),
 			filters: {
-				visible: [18,18],
+				visible: [18,75],
 				selected: [18,75],
 				category: null,
 				amounts: []
@@ -69,10 +69,6 @@ export default {
 	mounted () {
 		this.onResize();
 		window.addEventListener("resize", this.onResize);
-    
-		setInterval(() => {
-			this.$set(this.filters.visible, 1, this.filters.visible[1]+1);
-		}, 500);
 	},
 	destroyed () {
 		window.removeEventListener("resize", this.onResize);
