@@ -1,7 +1,6 @@
 <template>
   <div
     ref="graph"
-    class="w-full"
   >
     <svg
       v-if="loaded"
@@ -38,14 +37,14 @@
             category="benefices"
             color="green"
             :year="year"
-            :offset-by="[year.revenu.total]"
+            :offset-by="[year.categories.revenu.total]"
           ></band>
 
           <band
             category="prestations"
             color="teal"
             :year="year"
-            :offset-by="[year.revenu.total, year.benefices.total]"
+            :offset-by="[year.categories.revenu.total, year.categories.benefices.total]"
           ></band>
 
           <band
@@ -141,6 +140,7 @@ export default {
 	data () {
 		return {
 			containerWidth: 0,
+			containerHeight: 0,
 			bezierCurve: 10,
 			loaded: false,
 			scales: {
@@ -170,7 +170,10 @@ export default {
 			return this.containerWidth - this.margin.left - this.margin.right;
 		},
 		height () {
-			return (this.mobile) ? this.$parent.window.height/3 - 60 : this.width / 1.4;
+			if (!this.loaded) {
+				return 0;
+			}
+			return this.containerHeight - this.margin.top - this.margin.bottom;
 		}
 	},
 	watch: {
@@ -208,7 +211,7 @@ export default {
 			.tickPadding(TICK_PADDING);
       
 		this.axis.y = d3.axisLeft(this.scales.y)
-			.tickSize(-this.width)
+			.tickSize(this.width)
 			.ticks(5)
 			.tickFormat((d) => (+d).priceFormat())
 			.tickPadding(TICK_PADDING);
@@ -222,6 +225,7 @@ export default {
 	},
 	methods: {
 		onResize () {
+			this.containerHeight = this.$refs.graph.clientHeight;
 			this.containerWidth = this.$refs.graph.clientWidth;
 		},
 		yAxisTransition () {

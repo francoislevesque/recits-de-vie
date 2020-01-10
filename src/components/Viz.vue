@@ -1,26 +1,39 @@
 <template>
-  <div class="w-full lg:flex">
+  <div class="w-full h-screen lg:flex">
     <div
       v-for="(scenario, i) in scenarios"
       :key="i"
-      class="p-3 lg:p-5 lg:w-1/3"
+      class="p-3 lg:p-5 lg:w-1/3 lg:flex lg:flex-col"
     >
-      <div class="flex justify-between leading-none">
-        <div class="text-sm text-gray-500">
-          Scénario {{ i + 1 }}
+      <div class="lg:h-4/10 lg:flex lg:flex-col lg:py-5">
+        <div class="flex justify-between leading-none">
+          <div class="text-sm text-gray-500">
+            Scénario {{ i + 1 }}
+          </div>
+          <div class="text-sm text-gray-900">
+            {{ scenarioName(i) }}
+          </div>
         </div>
-        <div class="text-sm text-gray-900">
-          {{ scenarioName(i) }}
-        </div>
+
+        <band-graph
+          class="lg:flex-grow"
+          :mobile="mobile"
+          :filters="filters"
+          :domain-y="domainGraph"
+          :domain-y-translation="domainGraphTranslation"
+          :scenario="scenario"
+        />
       </div>
 
-      <band-graph
-        :mobile="mobile"
-        :filters="filters"
-        :domain-y="domainY"
-        :domain-y-translation="domainYTranslation"
-        :scenario="scenario"
-      />
+      <div class="lg:h-6/10">
+        <amount-graphs
+          v-if="!mobile"
+          :filters="filters"
+          :domain-x="domainAmount"
+          :domain-x-translation="domainAmountTranslation"
+          :data="scenarioAmounts[i]"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -28,22 +41,28 @@
 <script>
 
 import * as d3 from "d3";
-import BandGraph from "./BandGraph";
+import BandGraph from "./band/Graph";
+import AmountGraphs from "./amount/Graphs";
 import { mockData } from "../services/mock";
+import { amounts } from "../services/format";
 
 export default {
 	components: {
-		BandGraph
+		BandGraph,
+		AmountGraphs
 	},
 	data () {
 		return {
-			domainY: [0,0],
-			domainYTranslation: [0,0],
+			domainGraph: [0,0],
+			domainGraphTranslation: [0,0],
+			domainAmount: [0,0],
+			domainAmountTranslation: [0,0],
 			window: {
 				width: window.innerWidth,
 				height: window.innerHeight
 			},
-			scenarios: mockData(),
+			scenarios: [],
+			scenarioAmounts: [],
 			filters: {
 				visible: [18,75],
 				selected: [18,75],
@@ -59,11 +78,19 @@ export default {
 	},
 	watch: {
 		"filters.visible" () {
-			let oldDomainY = this.domainY;
-			let newDomainY = this.calculateDomainY();
+			let domains = this.calculateDomains();
       
-			this.domainY = newDomainY;
-		  window.requestAnimationFrame(this.domainYTransitionStep(null, newDomainY, oldDomainY));
+			let oldDomainGraph = this.domainGraph;
+			let oldDomainAmount = this.domainAmount;
+      
+			let newDomainGraph = domains["graph"];
+			let newDomainAmount = domains["amount"];
+      
+			this.domainGraph = newDomainGraph;
+			this.domainAmount = newDomainAmount;
+      
+		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainGraphTranslation", newDomainGraph, oldDomainGraph));
+		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainGraphTranslation", newDomainAmount, oldDomainAmount));
 		}
 	},
 	mounted () {
@@ -75,10 +102,17 @@ export default {
 	},
 	created () {
 		this.scenarios = mockData();
-		this.domainY = this.calculateDomainY();
-		this.domainYTranslation = this.domainY;
+		this.scenarioAmounts = amounts(this.scenarios, this.filters);
     
-		this.domainYTransitionStep = (start, newDomainY, oldDomainY) => {
+		let domains = this.calculateDomains();      
+      
+		this.domainGraph = domains["graph"];
+		this.domainAmount = domains["amount"];
+      
+		this.domainGraphTranslation = this.domainGraph;
+		this.domainAmountTranslation = this.domainAmount;
+    
+		this.domainTransitionStep = (start, key, newDomaingraph, oldDomainGraph) => {
 			return (timestamp) => {
 
 				if (start == null) start = timestamp;
@@ -87,37 +121,50 @@ export default {
 				let progress = timestamp - start;
 				let ratio = progress / duration;
         
-				this.domainYTranslation = [
-					(newDomainY[0] - oldDomainY[0]) * ratio + oldDomainY[0],
-					(newDomainY[1] - oldDomainY[1]) * ratio + oldDomainY[1],
+				this[key] = [
+					(newDomainGraph[0] - oldDomainGraph[0]) * ratio + oldDomainGraph[0],
+					(newDomainGraph[1] - oldDomainGraph[1]) * ratio + oldDomainGraph[1],
 				];
         
 				if (ratio < 1) {
-					window.requestAnimationFrame(this.domainYTransitionStep(start, newDomainY, oldDomainY));
+					window.requestAnimationFrame(this.domainYTransitionStep(start, key, newDomainGraph, oldDomainGraph));
 				} else {
-					this.domainYTranslation = newDomainY;
+					this[key] = newDomainGraph;
 				}
 			};
 		};
 	},
 	methods: {
-		calculateDomainY () {
+		calculateDomains () {
 			let min = Number.MAX_SAFE_INTEGER;
-			let max = Number.MIN_SAFE_INTEGER;
+			let maxSum = Number.MIN_SAFE_INTEGER;
     
 			this.scenarios.forEach(scenario => {
 				let years = scenario.filter(d => d.year >= this.filters.visible[0] && d.year <= this.filters.visible[1]);
-				let min_ = Math.min(...years.map(d => Math.min(d.prelevements.total)));
-				let max_ = Math.max(...years.map(d => Math.min(d.revenu.total + d.prestations.total + d.benefices.total)));
+				let min_ = Math.min(...years.map(d => d.categories.prelevements.total));
+				let maxSum_ = Math.max(...years.map(d => d.categories.revenu.total + d.categories.prestations.total + d.categories.benefices.total));
+        
 				if (min_ < min) {
 					min = min_;
 				}
-				if (max_ > max) {
-					max = max_;
+				if (maxSum_ > maxSum) {
+					maxSum = maxSum_;
+				}
+			});
+
+			let maxAbsolute = Number.MIN_SAFE_INTEGER;
+
+			this.scenarioAmounts.forEach(scenario => {
+				let maxAbsolute_ = Math.max(...scenario.map(category => Math.max(...category.amounts.map(a => a.value))));
+				if (maxAbsolute_ > maxAbsolute) {
+					maxAbsolute = maxAbsolute_;
 				}
 			});
     
-			return [min, max];
+			return {
+				graph: [min, maxSum],
+				amount: [0, maxAbsolute]
+			};
 		},
 		onResize () {
 			this.window.width = window.innerWidth;

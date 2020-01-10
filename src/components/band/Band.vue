@@ -26,6 +26,7 @@
 <script>
 
 import SubBand from "./SubBand";
+import colors from "../../services/colors";
 
 export default {
 	components: {
@@ -37,10 +38,6 @@ export default {
 			type: Object
 		},
 		category: {
-			required: true,
-			type: String
-		},
-		color: {
 			required: true,
 			type: String
 		},
@@ -60,6 +57,9 @@ export default {
 		},
 		domainY () {
 			return this.$parent.domainYTranslation;
+		},
+		color () {
+			return colors[this.category];
 		},
 		distanceY () {
 			return this.domainY[1] - this.domainY[0];
@@ -96,7 +96,7 @@ export default {
 			return 1;
 		},
 		categoryCount () {
-			return this.year[this.category];
+			return this.year.categories[this.category];
 		},
 		total () {
 			return this.categoryCount.total;
