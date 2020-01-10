@@ -3,3 +3,16 @@
 @tailwind components;
 
 @tailwind utilities;
+
+
+p {
+    @apply text-xl leading-snug;
+}
+
+.income {
+    @apply font-bold text-blue-600;
+}
+
+.notice {
+    @apply shadow-lg p-10 z-10 bg-white;
+}
