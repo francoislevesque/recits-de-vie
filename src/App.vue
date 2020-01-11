@@ -1,10 +1,5 @@
 <template>
   <div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <viz />
     <div class="p-10">
       <div class="container max-w-xl">
         <img
@@ -74,28 +69,37 @@
         slot="graphic"
         class="h-screen"
       >
-        <img
-          src="@/assets/logo.png"
-          alt=""
-        >
+        <viz :filters="filters" />
       </div> 
       <notice
-        data-step="a"
+        data-age="87"
         push-bottom
       >
-        À <b>18 ans</b>, elles sont aux études et ont toutes le même <span class="income">revenu</span>, soit près de <b>7 000 $</b>.
+        À <b>18 ans</b>, elles sont aux études et ont toutes le même <span class="revenu">revenu</span>, soit près de <b>7 000 $</b>.
       </notice>
       <notice
-        data-step="a"
+        data-age="20"
+        data-category="revenu"
         push-bottom
       >
-        À <b>18 ans</b>, elles sont aux études et ont toutes le même <span class="income">revenu</span>, soit près de <b>7 000 $</b>.
+        À <b>18 ans</b>, elles sont aux études et ont toutes le même <span class="revenu">revenu</span>, soit près de <b>7 000 $</b>.
+      </notice>
+      <notice
+        data-age="25"
+        data-category="prelevements"
+        push-bottom
+      >
+        Pendant ces premières années, les <span class="prelevement">prélèvements</span> s'élèvent à environ <b>1 500 $</b>.
       </notice>
       <div data-step="end">
         <span class="text-transparent">.</span>
       </div>
     </Scrollama>
-    <div class="step1 notice">
+    <div 
+      data-age="25"
+      data-category="prelevements"
+      class="step1 notice"
+    >
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit repudiandae fuga natus, vitae iure autem? Ab libero nobis eum consequatur porro, sed, quos fugit magni repudiandae aliquid enim, unde ipsam.
     </div>
   </div>
@@ -113,10 +117,24 @@ export default {
 		Notice,
 		Viz
 	},
+	data () {
+		return {
+			filters: {
+				visible: [18,20],
+				selected: [18,20],
+				category: "revenu",
+				amounts: []
+			}
+		};
+	},
 	methods: {
 		stepEnterHandler ({element, index, direction}) {
-			// handle the step-event as required here
-			//console.log(element, index, direction);
+			let age = parseInt(element.getAttribute("data-age"));
+			let category = element.getAttribute("data-category");
+
+			this.$set(this.filters.visible, 1, age);
+			this.$set(this.filters.selected, 1, age);
+			this.$set(this.filters, "category", category);
 		}
 	}
 };

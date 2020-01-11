@@ -1,6 +1,7 @@
 <template>
   <div
     ref="graph"
+    class="h-full"
   >
     <svg
       v-if="loaded"
@@ -164,15 +165,9 @@ export default {
 			return margin;
 		},
 		width () {
-			if (!this.loaded) {
-				return 0;
-			}
 			return this.containerWidth - this.margin.left - this.margin.right;
 		},
 		height () {
-			if (!this.loaded) {
-				return 0;
-			}
 			return this.containerHeight - this.margin.top - this.margin.bottom;
 		}
 	},
@@ -211,14 +206,14 @@ export default {
 			.tickPadding(TICK_PADDING);
       
 		this.axis.y = d3.axisLeft(this.scales.y)
-			.tickSize(this.width)
+			.tickSize(-this.width)
 			.ticks(5)
 			.tickFormat((d) => (+d).priceFormat())
 			.tickPadding(TICK_PADDING);
     
 		this.loaded = true;
     
-		this.$nextTick(() => {
+		this.$nextTick(() => {      
 			d3.select(this.$refs.axisX).call(this.axis.x);
 			d3.select(this.$refs.axisY).call(this.axis.y);  
 		});

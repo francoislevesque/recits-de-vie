@@ -1,8 +1,8 @@
 <template>
   <div class="h-full">
     <h3
-      class="text-md font-bold text-lg"
-      :class="`text-${color}-500`"
+      class="text-md font-semibold text-base"
+      :class="`text-${color}-600`"
     >
       {{ $t(category.name) }}
     </h3>

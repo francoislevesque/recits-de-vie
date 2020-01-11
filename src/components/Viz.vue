@@ -1,22 +1,22 @@
 <template>
-  <div class="w-full h-screen lg:flex">
+  <div class="w-full h-screen overflow-hidden lg:flex">
     <div
       v-for="(scenario, i) in scenarios"
       :key="i"
-      class="p-3 lg:p-5 lg:w-1/3 lg:flex lg:flex-col"
+      class="p-4 h-1/3 lg:h-auto lg:p-5 lg:w-1/3 lg:flex lg:flex-col overflow-hidden"
     >
-      <div class="lg:h-4/10 lg:flex lg:flex-col lg:py-5">
-        <div class="flex justify-between leading-none">
+      <div class="flex flex-col h-full lg:h-4/10">
+        <div class="flex justify-between leading-none mb-6 lg:block lg:mb-4 lg:leading-tight">
           <div class="text-sm text-gray-500">
             Scénario {{ i + 1 }}
           </div>
-          <div class="text-sm text-gray-900">
+          <div class="text-sm text-gray-900 lg:text-base lg:font-semibold">
             {{ scenarioName(i) }}
           </div>
         </div>
 
         <band-graph
-          class="lg:flex-grow overflow-hidden"
+          class="flex-grow overflow-hidden"
           :mobile="mobile"
           :filters="filters"
           :domain-y="domainGraph"
@@ -26,13 +26,17 @@
       </div>
 
       <div class="lg:h-6/10">
-        <amount-graphs
+        <div
           v-if="!mobile"
-          :filters="filters"
-          :domain-x="domainAmount"
-          :domain-x-translation="domainAmountTranslation"
-          :data="scenarioAmounts[i]"
-        />
+          class="h-full pt-10"
+        >
+          <amount-graphs
+            :filters="filters"
+            :domain-x="domainAmount"
+            :domain-x-translation="domainAmountTranslation"
+            :data="scenarioAmounts[i]"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -44,12 +48,18 @@ import * as d3 from "d3";
 import BandGraph from "./band/Graph";
 import AmountGraphs from "./amount/Graphs";
 import { mockData } from "../services/mock";
-import { amounts } from "../services/format";
+import { amounts, scenarios } from "../services/format";
 
 export default {
 	components: {
 		BandGraph,
 		AmountGraphs
+	},
+	props: {
+		filters: {
+			required: true,
+			type: Object
+		}
 	},
 	data () {
 		return {
@@ -63,12 +73,6 @@ export default {
 			},
 			scenarios: [],
 			scenarioAmounts: [],
-			filters: {
-				visible: [18,75],
-				selected: [18,75],
-				category: null,
-				amounts: []
-			},
 		};
 	},
 	computed: {
@@ -111,7 +115,7 @@ export default {
 		window.removeEventListener("resize", this.onResize);
 	},
 	created () {
-		this.scenarios = mockData();
+		this.scenarios = scenarios();
 		this.scenarioAmounts = amounts(this.scenarios, this.filters);
     
 		let domains = this.calculateDomains();      

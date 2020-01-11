@@ -9,8 +9,20 @@ p {
     @apply text-xl leading-snug;
 }
 
-.income {
+.revenu {
     @apply font-bold text-blue-600;
+}
+
+.benefice {
+    @apply font-bold text-teal-600;
+}
+
+.prestation {
+    @apply font-bold text-green-600;
+}
+
+.prelevement {
+    @apply font-bold text-red-600;
 }
 
 .notice {

@@ -21,6 +21,8 @@
 import * as d3 from "d3";
 import Graph from "./Graph";
 
+const BAR_HEIGHT_PADDING = 12;
+
 export default {
 	components: {
 		Graph
@@ -54,7 +56,7 @@ export default {
 			return this.data.reduce((acc, category) => acc += category.amounts.length, 0);
 		},
 		barHeight () {
-			return Math.round(this.fullHeight / this.numberOfBars) - 10;
+			return Math.round(this.fullHeight / this.numberOfBars) - BAR_HEIGHT_PADDING;
 		}
 	},
 	destroyed () {

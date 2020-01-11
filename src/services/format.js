@@ -1,3 +1,60 @@
+import rawData from "./dataRaw";
+
+let categories = {
+	revenu: ["revenu"],
+	prestations: ["credit-tps", "credit-solidarite", "afe", "pension", "allocation-cad-enfants", "paiement-soutien-enfants", "allocation-fournitures-scolaires", "cisd"],
+	benefices: ["sante", "service-es", "service-de-garde", "service-de-garde-scolaire", "primaire-secondaire", "regime-assurance-parentale", "assurance-medicament", "rentes"],
+	prelevements: ["impot", "frais-de-garde", "rrq", "rqap", "ae", "taxes", "fond-service-sante", "regime-assurance-medicament"],
+};
+
+function scenarios() {
+	return Object.values(rawData).map(d => scenario(d));
+}
+
+function scenario(rawData) {
+	let data = [];
+	for (let i = 18; i <= 87; i++) {
+		data.push({
+			year: i,
+			categories: year(rawData, i)
+		});
+	}
+	return data;
+}
+
+function year(rawData, year) {
+	let data = {};
+
+	Object.keys(categories).forEach(c => {
+		data[c] = {
+			total: 0
+		};
+		categories[c].forEach(a => {
+			data[c][a] = 0;
+		});
+	});
+
+	rawData.forEach(years => {
+		let category = years.category;
+		let amount = years[year];
+		if (amount !== undefined) {
+			amount = parseInt(amount);
+			Object.keys(categories).forEach(key => {
+				if (categories[key].includes(category)) {
+					if (key == "prelevements") {
+						amount = -amount;
+					}
+					data[key][category] = amount;
+					data[key].total += amount;
+				}
+			});
+		}
+	});
+  
+
+	return data;
+}
+
 function amounts(scenarios, filters) {
 	return scenarios.map(s => {
 		return _amounts(s, filters);
@@ -61,4 +118,4 @@ function _amounts (scenario, filters) {
 	return filteredData;
 }
 
-export { amounts };
+export { scenarios, amounts };

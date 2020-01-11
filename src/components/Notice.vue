@@ -1,10 +1,11 @@
 <template>
   <div 
-    ref="notice" 
-    class="notice"
+    class="shadow-lg p-10 z-10 bg-white"
     :class="{'push-top': pushTop, 'push-bottom': pushBottom}"
   >
-    <slot />
+    <div class="mx-auto max-w-2xl">
+      <slot />
+    </div>
   </div>
 </template>
 
