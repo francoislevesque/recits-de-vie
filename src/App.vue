@@ -72,13 +72,13 @@
         <viz :filters="filters" />
       </div> 
       <notice
-        data-age="87"
+        data-age="20"
         push-bottom
       >
         À <b>18 ans</b>, elles sont aux études et ont toutes le même <span class="revenu">revenu</span>, soit près de <b>7 000 $</b>.
       </notice>
       <notice
-        data-age="20"
+        data-age="50"
         data-category="revenu"
         push-bottom
       >

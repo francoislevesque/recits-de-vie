@@ -20,7 +20,6 @@
           :mobile="mobile"
           :filters="filters"
           :domain-y="domainGraph"
-          :domain-y-translation="domainGraphTranslation"
           :scenario="scenario"
         />
       </div>
@@ -45,7 +44,7 @@
 <script>
 
 import * as d3 from "d3";
-import BandGraph from "./band/Graph";
+import BandGraph from "./band/Graph2";
 import AmountGraphs from "./amount/Graphs";
 import { mockData } from "../services/mock";
 import { amounts, scenarios } from "../services/format";
@@ -64,7 +63,6 @@ export default {
 	data () {
 		return {
 			domainGraph: [0,0],
-			domainGraphTranslation: [0,0],
 			domainAmount: [0,0],
 			domainAmountTranslation: [0,0],
 			window: {
@@ -83,17 +81,13 @@ export default {
 	watch: {
 		"filters.visible" () {
 			let domains = this.calculateDomains();
-      
-			let oldDomainGraph = this.domainGraph;
-			let newDomainGraph = domains["graph"];
-			this.domainGraph = newDomainGraph;
+            
+			this.domainGraph = domains["graph"];
       
 			let oldDomainAmount = this.domainAmount;
-			let newDomainAmount = domains["amount"];
-			this.domainAmount = newDomainAmount;
+			this.domainAmount = domains["amount"];
       
-			window.requestAnimationFrame(this.domainTransitionStep(null, "domainGraphTranslation", newDomainGraph, oldDomainGraph));
-		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainAmountTranslation", newDomainAmount, oldDomainAmount));
+		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainAmountTranslation", this.domainAmount, oldDomainAmount));
 		},
 		"filters.selected" () {
 			this.updateAmountsData();
@@ -123,7 +117,6 @@ export default {
 		this.domainGraph = domains["graph"];
 		this.domainAmount = domains["amount"];
       
-		this.domainGraphTranslation = this.domainGraph;
 		this.domainAmountTranslation = this.domainAmount;
     
 		this.domainTransitionStep = (start, key, newDomain, oldDomain) => {
@@ -157,7 +150,6 @@ export default {
 				let years = scenario.filter(d => d.year >= this.filters.visible[0] && d.year <= this.filters.visible[1]);
 				let min_ = Math.min(...years.map(d => d.categories.prelevements.total));
 				let maxSum_ = Math.max(...years.map(d => d.categories.revenu.total + d.categories.prestations.total + d.categories.benefices.total));
-        
 				if (min_ < min) {
 					min = min_;
 				}
