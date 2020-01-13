@@ -5,7 +5,7 @@ import colors from "../../services/colors";
 const PADDING_LEFT = 5;
 const TICK_PADDING = 8;
 const BEZIER_CURVE = 10;
-const TRANSITION_DURATION = 200;
+const TRANSITION_DURATION = 400;
 const TRANSITION_EASE = d3.easeQuadInOut;
 
 class Graph {
@@ -97,7 +97,7 @@ class Graph {
 				.attr("data-category", category)
 				.attr("class", d => "band fill-current " + this.color(category))
 				.attr("y", d => this.bandY(category, d))
-				.attr("height", d => this.bandHeight(category, d))
+				.attr("height", d => 0)
 				.attr("x", d => this.scales.x(d.year))
 				.attr("width", this.scales.x.bandwidth());
 		});
@@ -133,7 +133,7 @@ class Graph {
 			.attr("fill", "transparent")
 			.attr("d", this.bezierLeftCurve());
       
-		this.bezierLeft = this.svg.append("path")
+		this.bezierRight = this.svg.append("path")
 			.attr("class", "hidden lg:block")
 			.attr("stroke", "#a1a1a1")
 			.attr("stroke-dasharray", 4)
@@ -147,7 +147,7 @@ class Graph {
 		this.filters = filters;
 
 		this.scales.y.domain(this.domainY);
-    
+        
 		this.axisY.transition()
 			.duration(TRANSITION_DURATION)
 			.ease(TRANSITION_EASE)
@@ -161,13 +161,13 @@ class Graph {
 			.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
 			.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
 			.attr("opacity", (d, i, node) => {
-				if (d.year < this.filters.visible[0] || d.year > this.filters.visible[1]) {
+				if (!this.filters.visibleCategories.includes(node[i].getAttribute("data-category"))) {
 					return 0;
 				} 
 				if (d.year < this.filters.selected[0] || d.year > this.filters.selected[1]) {
 					return 0.1;
 				}
-				if (this.filters.category != null && node[i].getAttribute("data-category") != this.filters.category) {
+				if (!this.filters.selectedCategories.includes(node[i].getAttribute("data-category"))) {
 					return 0.1;
 				} 
 				return 1;
@@ -204,7 +204,7 @@ class Graph {
 			.duration(TRANSITION_DURATION)
 			.attr("d", this.bezierLeftCurve());
       
-		this.bezierLeft
+		this.bezierRight
 			.transition()
 			.ease(TRANSITION_EASE)
 			.duration(TRANSITION_DURATION)
@@ -212,6 +212,9 @@ class Graph {
 	}
   
 	bandY (category, d) {
+		if (d.year < this.filters.visible[0] || d.year > this.filters.visible[1] || this.filters.firstAppear) {
+			return this.scales.y(0);
+		}
 		let y = Math.min(this.scales.y(0), this.scales.y(d.categories[category].total));
 		if (category == "prestations" || category == "benefices") {
 			y -= (this.scales.y(0) - this.scales.y(d.categories.revenu.total));
@@ -223,6 +226,9 @@ class Graph {
 	}
   
 	bandHeight (category, d) {
+		if (d.year < this.filters.visible[0] || d.year > this.filters.visible[1] || this.filters.firstAppear) {
+			return 0;
+		}
 		return Math.abs(this.scales.y(d.categories[category].total) - this.scales.y(0));
 	}
 

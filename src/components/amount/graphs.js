@@ -26,7 +26,7 @@ class Graphs {
 			top: 24,
 			bottom: TICK_MARGIN_TOP + 20,
 			left: 190,
-			right: 10
+			right: 100
 		};
     
 		this.width = this.containerWidth - this.margin.left - this.margin.right;
@@ -78,7 +78,7 @@ class Graphs {
 			let height = heightPerBar * data.length;
 			let g = this.svg.append("g")
 				.attr("transform", `translate(${0},${offset})`);
-			let graph = new Graph(g, height, this.width, data, this.scaleX, category);
+			let graph = new Graph(g, height, this.width, data, this.scaleX, category, this.filters);
 			this.graphs.push(graph);
 			graph.draw();
 			offset += height;
@@ -101,7 +101,7 @@ class Graphs {
 			.call(this.axisX.scale(this.scaleX));
             
 		this.graphs.forEach(g => {
-			g.redraw(this.data.find(d => d.name == g.category).amounts);
+			g.redraw(this.data.find(d => d.name == g.category).amounts, this.filters);
 		});
 	}
 }

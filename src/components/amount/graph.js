@@ -3,18 +3,19 @@ import * as d3 from "d3";
 import colors from "../../services/colors";
 import VueI18n from "../../i18n";
 
-const TRANSITION_DURATION = 200;
+const TRANSITION_DURATION = 400;
 const TRANSITION_EASE = d3.easeQuadInOut;
-const BAR_HEIGHT = 6;
+const BAR_HEIGHT = 4;
 
 class Graph {
 
-	constructor (container, height, width, data, scaleX, category) {
+	constructor (container, height, width, data, scaleX, category, filters) {
 
 		this.container = container;
 		this.data = data;
 		this.scaleX = scaleX;
-		this.category = category;    
+		this.category = category;
+		this.filters = filters;
     
 		this.margin = {
 			top: 0,
@@ -35,68 +36,77 @@ class Graph {
 		this.scaleY = this.getScaleY();
 	}
   
-	color (opacity) {
-		return "text-" + colors[this.category] + "-" + opacity;
-	}
-  
 	draw () {
 		this.drawBands();
       
 		this.origin = this.svg.append("line")
+			.attr("class", "y")
 			.attr("x1", this.scaleX(0))
 			.attr("x2", this.scaleX(0))
 			.attr("y1", 0)
 			.attr("y2", this.height)
 			.attr("stroke", "#000")
-			.attr("stroke-width", 1);
+			.attr("stroke-width", 1)
+			.attr("opacity", this.lineOpacity());
 	}
   
-	redraw (data) {
+	redraw (data, filters) {
 		this.data = data;
+		this.filters = filters;
 		this.scaleY = this.getScaleY();
     
 		this.drawBands();
 
-		this.origin = this.svg.append("line").transition()
+		this.origin = this.svg.select("line.y").transition()
 			.duration(TRANSITION_DURATION)
 			.ease(TRANSITION_EASE)
-			.attr("y2", this.height);
+			.attr("y2", this.height)
+			.attr("opacity", this.lineOpacity());
 	}
   
 	drawBands () {
-		this.bars.selectAll("g").data(this.data)
+		this.bars.selectAll("g").data(this.data, d => d.name)
 			.join(
 				enter =>  {
 					let g = enter.append("g")
-						.attr("transform", d => `translate(0,${this.scaleY(d.name)})`);
+						.attr("transform", d => `translate(0,${this.scaleY(d.name)})`)
+						.attr("opacity", d => this.bandOpacity(d));
 
 					g.append("rect")
-						.attr("class", d => "fill-current " + this.color("300"))
+						.attr("class", d => "fill-current " + this.colorClass("500"))
 						.attr("x", 0)
 						.attr("height", BAR_HEIGHT)
 						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2)
 						.attr("width", d => this.bandWidth(d));
 
 					g.append("circle")
-						.attr("class", d => "fill-current " + this.color("500"))
+						.attr("class", d => "fill-current " + this.colorClass("700"))
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d))
 						.attr("r", 6);
             
 					g.append("text")
-						.attr("class", d => "fill-current text-xs " + this.color("700"))
+						.attr("class", d => this.fontClasses(d, "label"))
 						.attr("text-anchor", "end")
 						.attr("alignment-baseline", "middle")
 						.text(d => VueI18n.tc(d.name))
-						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2 + 3)
-						.attr("x", -8)
-						.attr("opacity", d => (d.value == 0) ? 0.1 : 1);
+						.attr("y", d => (this.scaleY.bandwidth()) / 2 + 1)
+						.attr("x", -8);
+            
+					g.append("text")
+						.attr("class", d => this.fontClasses(d, "value"))
+						.attr("text-anchor", "start")
+						.attr("alignment-baseline", "middle")
+						.text(d => d.value.priceFormat())
+						.attr("y", d => (this.scaleY.bandwidth()) / 2 + 1)
+						.attr("x", d => this.bandWidth(d) + 10);
 				},
 				update => {
 					update.transition()
 						.duration(TRANSITION_DURATION)
 						.ease(TRANSITION_EASE)
-						.attr("transform", d => `translate(0,${this.scaleY(d.name)})`);
+						.attr("transform", d => `translate(0,${this.scaleY(d.name)})`)
+						.attr("opacity", d => this.bandOpacity(d));
             
 					update.select("rect")
 						.transition()
@@ -111,6 +121,19 @@ class Graph {
 						.ease(TRANSITION_EASE)
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d));
+            
+					update.select("text.label")
+						.attr("class", d => this.fontClasses(d, "label"))
+						.transition()
+						.duration(TRANSITION_DURATION)
+						.ease(TRANSITION_EASE)
+						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2 + 3);
+            
+					update.select("text.value")
+						.attr("class", d => this.fontClasses(d, "value"))
+						.text(d => d.value.priceFormat())
+						.attr("y", d => (this.scaleY.bandwidth()) / 2 + 1)
+						.attr("x", d => this.bandWidth(d) + 10);
 				},
 				exit => exit
 					.call(exit => exit
@@ -129,8 +152,47 @@ class Graph {
 			.padding(0.2);
 	}
   
+	lineOpacity () {
+		if (!this.filters.visibleCategories.includes(this.category)) {
+			return 0.1;
+		}
+		return 1;
+	}
+  
+	bandOpacity (d) {
+		if (!this.filters.visibleCategories.includes(this.category)) {
+			return 0.1;
+		}
+		if (d.value === 0) {
+			return 0.1;
+		}
+		if (this.filters.selectedCategories.includes(this.category)) {
+			return 1;
+		}
+		return 0.8;
+	}
+
 	bandWidth (d) {
+		if (this.filters.firstAppear) {
+			return 0;
+		}
+		if (!this.filters.visibleCategories.includes(this.category)) {
+			return 0;
+		}
 		return Math.abs(this.scaleX(d.value));
+	}
+  
+	colorClass (opacity) {
+		return "text-" + colors[this.category] + "-" + opacity;
+	}
+  
+	color () {
+		let opacity = (this.filters.selectedCategories.includes(this.category)) ? "800" : "500"; 
+		return this.colorClass(opacity);
+	}
+  
+	fontClasses (d, classes) {
+		return classes + " fill-current font-semibold text-xs " + this.color();
 	}
 }
 

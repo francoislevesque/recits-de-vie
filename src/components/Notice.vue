@@ -1,10 +1,12 @@
 <template>
   <div 
-    class="shadow-lg p-10 z-10 bg-white"
+    class="z-10"
     :class="{'push-top': pushTop, 'push-bottom': pushBottom}"
   >
     <div class="mx-auto max-w-2xl">
-      <slot />
+      <div class="bg-white p-10 shadow-lg ">
+        <slot />
+      </div>
     </div>
   </div>
 </template>

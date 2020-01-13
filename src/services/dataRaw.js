@@ -144,7 +144,7 @@ export default {
 			"85": "6504",
 			"86": "6504",
 			"87": "6504",
-			"category": "impots"
+			"category": "impot"
 		},
 		{
 			"18": "218",
@@ -996,7 +996,7 @@ export default {
 			"85": "8063",
 			"86": "8063",
 			"87": "8063",
-			"category": "impots"
+			"category": "impot"
 		},
 		{
 			"30": "650",

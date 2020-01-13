@@ -17,6 +17,7 @@
 
         <band-graph
           class="flex-grow overflow-hidden"
+          :class="{'opacity-25': !filters.selectedScenarios.includes(i)}"
           :mobile="mobile"
           :filters="filters"
           :domain-y="domainGraph"
@@ -28,6 +29,7 @@
         <div
           v-if="!mobile"
           class="h-full pt-10"
+          :class="{'opacity-25': !filters.selectedScenarios.includes(i)}"
         >
           <amount-graphs
             ref="graphAmount"
@@ -45,7 +47,7 @@
 
 import * as d3 from "d3";
 import BandGraph from "./band/Graph.vue";
-import AmountGraphs from "./amount/Graph2";
+import AmountGraphs from "./amount/Graphs.vue";
 import { mockData } from "../services/mock";
 import { amounts, scenarios } from "../services/format";
 

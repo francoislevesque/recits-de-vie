@@ -1,80 +1,53 @@
 <template>
   <div
-    ref="graphs"
-    class="h-full"
-  >
-    <div
-      v-for="category in data"
-      :key="category.name"
-    >
-      <graph
-        :category="category"
-        :domain-x="domainX"
-        :domain-x-translation="domainXTranslation"
-      />
-    </div>
-  </div>
+    ref="graph"
+    class="graph-amount h-full"
+  />
 </template>
 
 <script>
 
-import * as d3 from "d3";
-import Graph from "./Graph";
-
-const BAR_HEIGHT_PADDING = 12;
+import { Graphs } from "./graphs.js";
 
 export default {
-	components: {
-		Graph
-	},
 	props: {
 		data: {
+			required: true,
+			type: Array
+		},
+		domainX: {
 			required: true,
 			type: Array
 		},
 		filters: {
 			required: true,
 			type: Object
-		},
-		domainX: {
-			required: true,
-			type: Array
-		},
-		domainXTranslation: {
-			required: true,
-			type: Array
 		}
 	},
 	data () {
 		return {
-			fullWidth: 0,
-			fullHeight: 0
+			graphs: null
 		};
 	},
-	computed: {
-		numberOfBars () {
-			return this.data.reduce((acc, category) => acc += category.amounts.length, 0);
-		},
-		barHeight () {
-			return Math.round(this.fullHeight / this.numberOfBars) - BAR_HEIGHT_PADDING;
-		}
-	},
-	destroyed () {
-		window.removeEventListener("resize", this.onResize);
-	},
 	mounted () {
-		this.onResize();
-		window.addEventListener("resize", this.onResize);
+		this.graphs = new Graphs(this.$refs.graph, this.data, this.domainX, this.filters);
 	},
 	methods: {
-		onResize () {
-			this.fullHeight = this.$refs.graphs.clientHeight;
-			this.fullWidth = this.$refs.graphs.clientWidth;
+		redraw (domainX, data, filters) {
+			this.graphs.redraw(domainX, data, filters);
 		}
 	}
 };
 </script>
 
-<style>
-
+<style lang="scss">
+.graph-amount {
+  .axis {
+    &.axis-x {
+      & > path {
+        display: none;
+      }
+    }
+  }
+}
 </style>
