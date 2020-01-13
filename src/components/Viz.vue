@@ -30,9 +30,9 @@
           class="h-full pt-10"
         >
           <amount-graphs
+            ref="graphAmount"
             :filters="filters"
             :domain-x="domainAmount"
-            :domain-x-translation="domainAmountTranslation"
             :data="scenarioAmounts[i]"
           />
         </div>
@@ -44,8 +44,8 @@
 <script>
 
 import * as d3 from "d3";
-import BandGraph from "./band/Graph2";
-import AmountGraphs from "./amount/Graphs";
+import BandGraph from "./band/Graph.vue";
+import AmountGraphs from "./amount/Graph2";
 import { mockData } from "../services/mock";
 import { amounts, scenarios } from "../services/format";
 
@@ -64,7 +64,6 @@ export default {
 		return {
 			domainGraph: [0,0],
 			domainAmount: [0,0],
-			domainAmountTranslation: [0,0],
 			window: {
 				width: window.innerWidth,
 				height: window.innerHeight
@@ -79,67 +78,17 @@ export default {
 		}
 	},
 	watch: {
-		"filters.visible" () {
-			let domains = this.calculateDomains();
-            
-			this.domainGraph = domains["graph"];
-      
-			let oldDomainAmount = this.domainAmount;
-			this.domainAmount = domains["amount"];
-      
-		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainAmountTranslation", this.domainAmount, oldDomainAmount));
-		},
 		"filters.selected" () {
 			this.updateAmountsData();
+			this.calculateDomains();
       
-			let domains = this.calculateDomains();
-
-			let oldDomainAmount = this.domainAmount;
-			let newDomainAmount = domains["amount"];
-			this.domainAmount = newDomainAmount;
-      
-		  window.requestAnimationFrame(this.domainTransitionStep(null, "domainAmountTranslation", newDomainAmount, oldDomainAmount));
+			this.$refs.graphAmount.forEach((g, i) => g.redraw(this.domainAmount, this.scenarioAmounts[i], this.filters));
 		}
-	},
-	mounted () {
-		this.onResize();
-		window.addEventListener("resize", this.onResize);
-	},
-	destroyed () {
-		window.removeEventListener("resize", this.onResize);
 	},
 	created () {
 		this.scenarios = scenarios();
-		this.scenarioAmounts = amounts(this.scenarios, this.filters);
-    
-		let domains = this.calculateDomains();      
-      
-		this.domainGraph = domains["graph"];
-		this.domainAmount = domains["amount"];
-      
-		this.domainAmountTranslation = this.domainAmount;
-    
-		this.domainTransitionStep = (start, key, newDomain, oldDomain) => {
-			return (timestamp) => {
-
-				if (start == null) start = timestamp;
-      
-				let duration = 200;
-				let progress = timestamp - start;
-				let ratio = progress / duration;
-        
-				this[key] = [
-					(newDomain[0] - oldDomain[0]) * ratio + oldDomain[0],
-					(newDomain[1] - oldDomain[1]) * ratio + oldDomain[1],
-				];
-        
-				if (ratio < 1) {
-					window.requestAnimationFrame(this.domainTransitionStep(start, key, newDomain, oldDomain));
-				} else {
-					this[key] = newDomain;
-				}
-			};
-		};
+		this.updateAmountsData();
+		this.calculateDomains();
 	},
 	methods: {
 		calculateDomains () {
@@ -158,7 +107,7 @@ export default {
 				}
 			});
 
-			let maxAbsolute = Number.MIN_SAFE_INTEGER;
+			let maxAbsolute = 0;
 
 			this.scenarioAmounts.forEach(scenario => {
 				let maxAbsolute_ = Math.max(...scenario.map(category => Math.max(...category.amounts.map(a => a.value))));
@@ -166,15 +115,9 @@ export default {
 					maxAbsolute = maxAbsolute_;
 				}
 			});
-    
-			return {
-				graph: [min, maxSum],
-				amount: [0, maxAbsolute]
-			};
-		},
-		onResize () {
-			this.window.width = window.innerWidth;
-			this.window.height = window.innerHeight;
+      
+			this.domainGraph =  [min, maxSum];
+			this.domainAmount = [0, maxAbsolute];
 		},
 		updateAmountsData () {
 			this.scenarioAmounts = amounts(this.scenarios, this.filters);

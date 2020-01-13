@@ -125,9 +125,7 @@ class Graph {
 			.attr("y2", this.scales.y(0))
 			.attr("stroke", "#000")
 			.attr("stroke-width", 2);
-      
-		let bezierBottom = this.height + this.margin.bottom;
-      
+            
 		this.bezierLeft = this.svg.append("path")
 			.attr("class", "hidden lg:block")
 			.attr("stroke", "#a1a1a1")

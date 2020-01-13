@@ -1,20 +1,16 @@
 <template>
   <div
     ref="graph"
-    class="h-full"
+    class="graph-band h-full"
   />
 </template>
 
 <script>
 
-import { Graph } from "./graph";
+import { Graph } from "./graph.js";
 
 export default {
 	props: {
-		mobile: {
-			required: true,
-			type: Boolean
-		},
 		scenario: {
 			required: true,
 			type: Array
@@ -34,9 +30,6 @@ export default {
 		};
 	},
 	watch: {
-		"filters.visible" () {
-			this.graph.redraw(this.domainY, this.filters);
-		},
 		"filters.selected" () {
 			this.graph.redraw(this.domainY, this.filters);
 		}
@@ -48,29 +41,31 @@ export default {
 </script>
 
 <style lang="scss">
-.axis {
-  &.axis-y {
-    & > path {
-      display: none;
-    }
-    .tick {
-      line {
-        stroke: #d1d1d1;
-      }
-    }
-  }
-  &.axis-x {
-    & > path {
-      color: #e1e1e1;
-      stroke-width: 2;
-      @media only screen and (max-width: 1024px) {
+.graph-band {
+  .axis {
+    &.axis-y {
+      & > path {
         display: none;
       }
+      .tick {
+        line {
+          stroke: #d1d1d1;
+        }
+      }
     }
-    .tick {
-      opacity: 0;
-      &:nth-child(5n - 1) {
-        opacity: 1;
+    &.axis-x {
+      & > path {
+        color: #e1e1e1;
+        stroke-width: 2;
+        @media only screen and (max-width: 1024px) {
+          display: none;
+        }
+      }
+      .tick {
+        opacity: 0;
+        &:nth-child(5n - 1) {
+          opacity: 1;
+        }
       }
     }
   }

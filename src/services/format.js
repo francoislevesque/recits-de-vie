@@ -97,13 +97,13 @@ function _amounts (scenario, filters) {
 				};
 			})
 			.filter(a => {
-				return a.name != "total" && Math.abs(a.value) > 0; 
+				return a.name != "total";
 			})
 			.sort((a, b) => {
-				if (a.value > b.value) {
+				if (Math.abs(a.value) > Math.abs(b.value)) {
 					return -1;
 				}
-				if (a.value < b.value) {
+				if (Math.abs(a.value) < Math.abs(b.value)) {
 					return 1;
 				}
 				return 0;
