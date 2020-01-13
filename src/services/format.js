@@ -55,6 +55,32 @@ function year(rawData, year) {
 	return data;
 }
 
+function substractions (scenarios) {
+	return scenarios.map(s => {
+		return s.map(d => {
+			return {
+				year: d.year, 
+				value: d.categories.benefices.total + d.categories.prestations.total + d.categories.prelevements.total
+			};
+		});
+	});
+}
+
+function cumul (scenarios) {
+	return scenarios.map(s => {
+		let data = [];
+		let cumul = 0;
+		s.forEach(d => {
+			cumul += d.categories.benefices.total + d.categories.prestations.total + d.categories.prelevements.total;
+			data.push({
+				year: d.year, 
+				value: cumul
+			});
+		});
+		return data;
+	});
+}
+
 function amounts(scenarios, filters) {
 	return scenarios.map(s => {
 		return _amounts(s, filters);
@@ -118,4 +144,4 @@ function _amounts (scenario, filters) {
 	return filteredData;
 }
 
-export { scenarios, amounts };
+export { scenarios, substractions, cumul, amounts };

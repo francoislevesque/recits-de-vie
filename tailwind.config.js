@@ -4,6 +4,9 @@ module.exports = {
 			center: true,
 		},
 		extend: {
+			maxWidth: {
+				"8xl": "90rem"
+			},
 			height: {
 				"auto": "auto",
 				"1/3": "33.33%",

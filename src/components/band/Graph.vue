@@ -15,6 +15,14 @@ export default {
 			required: true,
 			type: Array
 		},
+		subs: {
+			required: true,
+			type: Array
+		},
+		cumuls: {
+			required: true,
+			type: Array
+		},
 		domainY: {
 			required: true,
 			type: Array
@@ -29,13 +37,13 @@ export default {
 			graph: {}
 		};
 	},
-	watch: {
-		"filters.selected" () {
-			this.graph.redraw(this.domainY, this.filters);
-		}
-	},
 	mounted () {
-		this.graph = new Graph(this.$refs.graph, this.scenario, this.domainY, this.filters);
+		this.graph = new Graph(this.$refs.graph, this.scenario, this.subs, this.cumuls, this.domainY, this.filters);
+	},
+	methods: {
+		redraw (domainY, filters) {
+			this.graph.redraw(domainY, filters);
+		}
 	}
 };
 </script>
