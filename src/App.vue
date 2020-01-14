@@ -422,6 +422,7 @@
         <span class="text-transparent">.</span>
       </div>
     </Scrollama>
+    <viz-interactive />
   </div>
 </template>
 
@@ -430,12 +431,14 @@ import "intersection-observer";
 import Scrollama from "vue-scrollama";
 import Notice from "@/components/Notice";
 import Viz from "@/components/Viz";
+import VizInteractive from "@/components/VizInteractive";
 
 export default {
 	components: {
 		Scrollama,
 		Notice,
-		Viz
+		Viz,
+		VizInteractive
 	},
 	data () {
 		return {

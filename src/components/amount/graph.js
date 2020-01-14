@@ -86,7 +86,7 @@ class Graph {
 						.attr("r", 6);
             
 					g.append("text")
-						.attr("class", d => this.fontClasses(d, "label"))
+						.attr("class", d => this.fontClasses(d, "label_"))
 						.attr("text-anchor", "end")
 						.attr("alignment-baseline", "middle")
 						.text(d => VueI18n.tc(d.name))
@@ -122,8 +122,8 @@ class Graph {
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d));
             
-					update.select("text.label")
-						.attr("class", d => this.fontClasses(d, "label"))
+					update.select("text.label_")
+						.attr("class", d => this.fontClasses(d, "label_"))
 						.transition()
 						.duration(TRANSITION_DURATION)
 						.ease(TRANSITION_EASE)

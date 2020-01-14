@@ -31,7 +31,7 @@ class Graph {
 			top: this.mobile ? 17 : 24,
 			bottom: this.mobile ? 2 : 40,
 			left: 52,
-			right: 0
+			right: 10
 		};
     
 		this.width = this.containerWidth - this.margin.left - this.margin.right;
