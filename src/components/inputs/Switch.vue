@@ -43,7 +43,16 @@
 import { uuid } from "../../services/utils";
 
 export default {
-	props: ["value", "color"],
+	props: {
+		value: {
+			required: true,
+			type: Boolean
+		},
+		color: {
+			required: true,
+			type: String
+		}
+	},
 	data() {
 		return {
 			uuid: uuid(),
