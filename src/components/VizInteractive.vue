@@ -2,7 +2,7 @@
   <div class="hidden lg:block w-full h-screen">
     <div class="flex h-full">
       <div class="w-90 shadow h-full">
-        <div class="py-8 px-5 border-b border-gray-200">
+        <div class="p-8 px-5 border-b border-gray-200">
           <h3 class="text-xl font-bold mb-3">
             Explorer les données!
           </h3>
@@ -10,71 +10,68 @@
             Vous pouvez à présent explorer les données comme bon vous semble.
           </p>
         </div>
-        <div class="py-8 px-5 border-b border-gray-200">
-          <div class="flex -m-2">
+        <div class="py-6 px-5 border-b border-gray-200">
+          <div class="mb-2">
+            Âge d'Ella
+          </div>
+          <div class="flex -mx-2 mb-2">
             <input
               v-model="filters.age[0]"
               type="number"
               min="18"
               max="87"
-              class="w-1/2 m-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="w-1/2 mx-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             >
             <input
               v-model="filters.age[1]"
               type="number"
               min="18"
               max="87"
-              class="w-1/2 m-2 shadow appearance-none border roundedpy-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="w-1/2 mx-2 shadow appearance-none border roundedpy-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             >
           </div>
-          <b-field>
-            <b-slider
-              v-model="filters.age"
-              :min="18"
-              :max="87"
-              :step="1"
-              type="is-black"
-            />
-          </b-field>
           <br>
-          <b-field>
-            <b-switch v-model="filters.showRevenu">
+          <div>
+            <v-switch
+              v-model="filters.showRevenu"
+              color="blue"
+            >
               Revenu de marché
-            </b-switch>
-          </b-field>
-          <b-field>
-            <b-switch
+            </v-switch>
+          </div>
+          <div>
+            <v-switch
               v-model="filters.showPrestations"
-              type="is-success"
+              color="green"
             >
               Prestations
-            </b-switch>
-          </b-field>
-          <b-field>
-            <b-switch
+            </v-switch>
+          </div>
+          <div>
+            <v-switch
               v-model="filters.showBenefices"
-              type="is-info"
+              color="teal"
             >
               Bénéfices publiques
-            </b-switch>
-          </b-field>
-          <b-field>
-            <b-switch
+            </v-switch>
+          </div>
+          <div>
+            <v-switch
               v-model="filters.showPrelevements"
-              type="is-danger"
+              color="red"
             >
               Prélèvements
-            </b-switch>
-          </b-field>
-          <b-field>
-            <b-switch
+            </v-switch>
+          </div>
+          <div>
+            <v-switch
               v-model="filters.showSubstraction"
-              type="is-primary"
+              color="purple"
               @input="onToggleSub"
             >
               Bénéfices & Prestations - Prélèvements
-            </b-switch>
-          </b-field>
+            </v-switch>
+          </div>
         </div>
       </div>
       <div class="flex-grow">
@@ -131,7 +128,8 @@ export default {
 				selectedCategories: categories,
 				amounts: [],
 				selectedScenarios: [0,1,2],
-				firstAppear: false
+				firstAppear: false,
+				tooltip: null
 			};
 		}
 	},
@@ -139,16 +137,16 @@ export default {
 		onToggleSub (value) {
 			if (value) {
 				this.oldFilters = JSON.parse(JSON.stringify(this.filters));
-				this.filters.showRevenu = false;
-				this.filters.showPrestations = false;
-				this.filters.showPrelevements = false;
-				this.filters.showBenefices = false;
+				this.$set(this.filters, "showRevenu", false);
+				this.$set(this.filters, "showPrestations", false);
+				this.$set(this.filters, "showPrelevements", false);
+				this.$set(this.filters, "showBenefices", false);
 			} else {
 				if (this.oldFilters != null) {
-					this.filters.showRevenu = this.oldFilters.showRevenu;
-					this.filters.showPrestations = this.oldFilters.showPrestations;
-					this.filters.showPrelevements = this.oldFilters.showPrelevements;
-					this.filters.showBenefices = this.oldFilters.showBenefices;
+					this.$set(this.filters, "showRevenu", this.oldFilters.showRevenu);
+					this.$set(this.filters, "showPrestations", this.oldFilters.showPrestations);
+					this.$set(this.filters, "showPrelevements", this.oldFilters.showPrelevements);
+					this.$set(this.filters, "showBenefices", this.oldFilters.showBenefices);
 					this.oldFilters = null;
 				}
 			}

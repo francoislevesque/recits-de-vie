@@ -2,6 +2,7 @@
 import * as d3 from "d3";
 import colors from "../../services/colors";
 import { isMobile } from "../../services/responsive";
+import tooltip from "../../services/tooltip";
 
 const PADDING_LEFT = 5;
 const TICK_PADDING = 8;
@@ -72,6 +73,8 @@ class Graph {
 			.ticks(5)
 			.tickFormat((d) => (+d).priceFormat())
 			.tickPadding(TICK_PADDING);
+      
+		this.createDefs();
       
 		this.draw();
     
@@ -173,6 +176,28 @@ class Graph {
 			.attr("stroke-dasharray", 4)
 			.attr("fill", "transparent")
 			.attr("d", this.bezierRightCurve());
+      
+		// Tooltip
+      
+		this.tooltip = this.svg.append("g")
+			.attr("class", "graph-tooltip")
+			.attr("transform", "translate(0,10)")
+			.attr("opacity", 0);
+      
+		this.tooltip.append("path")
+			.style("filter", "url(#drop-shadow)")
+			.attr("fill", "white")
+			.attr("d", this.tooltipPath(50, 20));
+    
+		this.tooltip.append("path")
+			.attr("fill", "white")
+			.attr("d", this.tooltipPath(50, 20));
+      
+		this.tooltip.append("text")
+			.text("test!!")
+			.attr("y", 4)
+			.attr("x", 12)
+			.attr("class", "text-sm font-semibold");
 	}
   
 	redraw (domainY, filters) {
@@ -260,6 +285,8 @@ class Graph {
 			.duration(TRANSITION_DURATION)
 			.attr("d", this.bezierRightCurve())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
+      
+		this.updateTooltip();
 	}
   
 	bandOpacity (d, category) {
@@ -347,6 +374,121 @@ class Graph {
 			return `M ${this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth()} 0 L ${this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth()} ${this.bezierBottom()}`;
 		}
 		return `M ${this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth()} 0 L ${this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth()} ${this.bezierBottom() - BEZIER_CURVE} q 0 ${BEZIER_CURVE} ${BEZIER_CURVE} ${BEZIER_CURVE} L ${this.width} ${this.bezierBottom()}`;
+	}
+  
+	createDefs () {
+		// filters go in defs element
+		this.defs = this.svg.append("defs");
+
+		// create filter with id #drop-shadow
+		// height=130% so that the shadow is not clipped
+		this.filter = this.defs.append("filter")
+			.attr("id", "drop-shadow")
+			.attr("height", "130%");
+
+		// SourceAlpha refers to opacity of graphic that this filter will be applied to
+		// convolve that with a Gaussian with standard deviation 3 and store result
+		// in blur
+		this.filter.append("feGaussianBlur")
+			.attr("in", "SourceAlpha")
+			.attr("stdDeviation", 2);
+
+		// translate output of Gaussian blur to the right and downwards with 2px
+		// store result in offsetBlur
+		this.filter.append("feOffset")
+			.attr("dx", 1)
+			.attr("dy", 1)
+			.attr("result", "offsetBlur");
+    
+		// Control opacity of shadow filter
+		this.feTransfer = this.filter.append("feComponentTransfer");
+    
+		this.feTransfer.append("feFuncA")
+			.attr("type", "linear")
+			.attr("slope", 0.4);
+    
+		// overlay original SourceGraphic over translated blurred opacity by using
+		// feMerge filter. Order of specifying inputs is important!
+		this.feMerge = this.filter.append("feMerge");
+
+		this.feMerge.append("feMergeNode")
+			.append("feMergeNode")
+			.attr("in", "SourceGraphic");
+      
+	}
+  
+	updateTooltip () {
+		if (this.filters.tooltip == null) {
+			this.tooltip
+				.transition()
+				.ease(TRANSITION_EASE)
+				.duration(TRANSITION_DURATION)
+				.attr("opacity", 0);
+		} else {
+
+			let year = this.filters.tooltip[0];
+			let category = this.filters.tooltip[1];
+			let d = this.data.find(d => d.year == year);
+			let amount = d.categories[category].total;
+
+			let x = this.scales.x(year);
+			let y = this.tooltipY(category, d);
+        
+			let textElement = this.tooltip.select("text");
+			textElement.text(amount.priceFormat());
+			let bbox = textElement.node().getBBox();
+			let width = bbox.width;
+			let height = bbox.height;
+      
+			let direction = "right";
+      
+			if (x + width + 10 > this.width) {
+				direction = "left";
+			}
+
+			if (direction == "right") {
+				x += (2 + this.scales.x.bandwidth());
+			} else {
+				x -= 2;
+			}
+      
+			this.tooltip
+				.transition()
+				.ease(TRANSITION_EASE)
+				.duration(TRANSITION_DURATION)
+				.attr("opacity", 1)
+				.attr("transform", `translate(${x},${y})`);
+        
+			textElement
+				.transition()
+				.ease(TRANSITION_EASE)
+				.duration(TRANSITION_DURATION)
+				.attr("x", (direction == "right") ? 12 : -width -12);
+      
+			this.tooltip.selectAll("path")
+				.transition()
+				.ease(TRANSITION_EASE)
+				.duration(TRANSITION_DURATION)
+				.attr("d", this.tooltipPath(width + 15, height + 4, direction));
+		}
+	}
+  
+	tooltipPath (width, height, direction = "right") {
+		return tooltip.tooltipPath(width, height, 5, 3, direction);
+	}
+  
+	tooltipY (category, d) {
+		if (d.year < this.filters.visible[0] || d.year > this.filters.visible[1] || this.filters.firstAppear || this.filters.showSubstraction || this.filters.showCumul) {
+			return this.scales.y(0);
+		}
+		let y = this.scales.y(d.categories[category].total);
+		if (category == "prestations" || category == "benefices") {
+			y -= (this.scales.y(0) - this.scales.y(d.categories.revenu.total));
+		}
+		if (category == "benefices") {
+			y -= (this.scales.y(0) - this.scales.y(d.categories.prestations.total));
+		}
+		return y;
 	}
 }
 

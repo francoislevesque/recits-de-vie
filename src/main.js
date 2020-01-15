@@ -3,14 +3,13 @@ import App from "./App.vue";
 import store from "./store";
 import helpers from "./services/helpers";
 import "./assets/tailwind.css";
+import Switch from "./components/inputs/Switch.vue";
 import "vue-scrollama/dist/vue-scrollama.css";
 import i18n from "./i18n";
-import Buefy from "buefy";
-import "buefy/dist/buefy.css";
-
-Vue.use(Buefy);
 
 Vue.config.productionTip = false;
+
+Vue.component("v-switch", Switch);
 
 new Vue({
 	store,

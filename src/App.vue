@@ -76,6 +76,7 @@
       <notice
         data-max="20"
         data-category="revenu"
+        data-tooltip="20,revenu"
         push-bottom
       >
         À <b>18 ans</b>, Ella habite chez ses parents, poursuit des études collégiales et travaille à temps partiel. Ella n’a pas encore formé de couple. Dans tous les scénarios, son <span class="revenu">revenu</span> est identique, soit près de <b>7 500 $</b>.
@@ -90,6 +91,7 @@
       <notice
         data-max="20"
         data-category="prelevements"
+        data-tooltip="20,prelevements"
         push-bottom
       >
         Pendant ces premières années, les <span class="prelevements">prélèvements</span> s'élèvent à environ <b>1 500 $</b>.
@@ -97,6 +99,7 @@
       <notice
         data-max="20"
         data-category="prelevements"
+        data-tooltip="20,prelevements"
         push-bottom
       >
         Ils sont à <b>76%</b> composés de <span class="prelevements">taxes à la consommation</span>.
@@ -104,6 +107,7 @@
       <notice
         data-max="20"
         data-category="prestations"
+        data-tooltip="20,prestations"
         push-bottom
       >
         En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit de solidarité</span> et  <span class="prestations">Crédit de TPS.</span>
@@ -111,6 +115,7 @@
       <notice
         data-max="20"
         data-category="benefices"
+        data-tooltip="20,benefices"
         push-bottom
       >
         La valeur des <span class="benefices">services publics</span> s'élève à plus de <b>14 000 $</b>. Comme Ella va au cégep, la majorité de cette valeur provient des <b>services d'enseignement supérieur</b>.
@@ -119,6 +124,7 @@
         data-min="21"
         data-max="26"
         data-category="revenu"
+        data-tooltip="26,revenu"
         push-bottom
       >
         À 21 ans, Ella quitte le domicile de ses parents et commence à travailler à temps plein. Son <span class="revenu">salaire</span> initial est d’un peu plus de <b>35 000 $</b> et augmente progressivement.
@@ -127,6 +133,7 @@
         data-min="21"
         data-max="26"
         data-category="prelevements"
+        data-tooltip="26,prelevements"
         push-bottom
       >
         Les <span class="prelevements">prélèvements fiscaux</span> augmentent également. Ceux-ci, composés des <span class="prelevements">impôts</span>, des <span class="prelevements">cotisations sociales</span> et <span class="prelevements">taxes à la consommation</span> totalisent environ <b>8 500 $</b> au début de la vie active d’Ella.
@@ -135,6 +142,7 @@
         data-min="21"
         data-max="26"
         data-category="prelevements"
+        data-tooltip="26,prelevements"
         push-bottom
       >
         <span class="prelevements">L’impôt fédéral et du Québec</span> constituent alors <b>un peu plus de la moitié</b> des prélèvements. 
@@ -143,6 +151,7 @@
         data-min="21"
         data-max="26"
         data-category="prestations"
+        data-tooltip="26,prestations"
         push-bottom
       >
         Un peu plus de la moitié <span class="prestations">prestations monétaires (crédit pour TPS et crédit pour solidarité)</span> qui totalisent plus de <b>1 000 $</b>. Ces montants diminuent lorsque le salaire d’Ella augmente.
@@ -151,6 +160,7 @@
         data-min="21"
         data-max="26"
         data-category="benefices"
+        data-tooltip="26,benefices"
         push-bottom
       >
         La valeur des <span class="benefices">services publics</span> de <span class="benefices">soins de santé</span> reçus est d’environ <b>2 000 $</b> par année. 
@@ -160,6 +170,7 @@
         data-max="28"
         data-category="revenu"
         data-scenarios="1,2"
+        data-tooltip="28,revenu"
         push-bottom
       >
         C'est à <b>27 ans</b>, que Ella forme un couple avec Luis. En conséquence les scénarios 2 et 3 prennent en compte le <span class="revenu">revenu du ménage</span> de plus de <b>93 000$</b> à la formation du couple. 
@@ -169,6 +180,7 @@
         data-max="28"
         data-category="prelevements"
         data-scenarios="1,2"
+        data-tooltip="28,prelevements"
         push-bottom
       >
         Les <span class="prelevements">prélèvements</span> assumés par Ella et Luis sont de près de <b>27 000$</b> à la formation du couple.
@@ -178,6 +190,7 @@
         data-max="28"
         data-category="benefices,prestations"
         data-scenarios="1,2"
+        data-tooltip="28,benefices"
         push-bottom
       >
         Le couple ne bénéficie au départ d’aucune <span class="prestations">prestation financière</span>. La valeur des <span class="benefices">services publics</span> reçus, composé exclusivement des <span class="benefices">soins de santé</span>, est d’un peu plus de <b>4 000 $</b>. 
@@ -187,6 +200,7 @@
         data-max="29"
         data-category="revenu"
         data-scenarios="1,2"
+        data-tooltip="29,revenu"
         push-bottom
       >
         À la naissance de son premier enfant, Ella cesse de travailler pendant 1 an dans les scénarios 2 et 3. Le <span class="revenu">revenu de salaire</span> du ménage diminue alors de moitié.
@@ -196,6 +210,7 @@
         data-max="29"
         data-category="prelevements"
         data-scenarios="1,2"
+        data-tooltip="29,prelevements"
         push-bottom
       >
         Les <span class="prelevements">prélèvements</span> passent à environ <b>20 000 $</b>.
@@ -205,6 +220,7 @@
         data-max="29"
         data-category="prestations"
         data-scenarios="1,2"
+        data-tooltip="29,prestations"
         push-bottom
       >
         Les nouveaux parents touchent des <span class="prestations">prestations</span> du <span class="prestations">Régime québécois d’assurance parentale</span> s’élevant à près de <b>31 000 $</b>. Des <span class="prestations">prestations financières pour la famille</span> d’environ <b>5 000 $</b> sont également touchées.
@@ -214,6 +230,7 @@
         data-max="29"
         data-category="benefices"
         data-scenarios="1,2"
+        data-tooltip="29,benefices"
         push-bottom
       >
         La valeur des <span class="benefices">soins de santé</span> reçus par la famille l’année de l’arrivée de l’enfant est d’environ <b>14 000$</b>.  
@@ -223,15 +240,17 @@
         data-max="30"
         data-category="benefices,revenu"
         data-scenarios="1,2"
+        data-tooltip="30,benefices"
         push-bottom
       >
-        Lorsque l’enfant a 1 an, Ella retourne sur le marché du travail et les <span class="benefices">services de garde subventionnés</span> sont utilisés. La valeur de ce <span class="benefices">service public</span> est d’un peu plus de <b>10 000$</b> par année par enfant.  
+        Lorsque l’enfant a 1 an, Ella retourne sur le <span class="revenu">marché du travail</span> et les <span class="benefices">services de garde subventionnés</span> sont utilisés. La valeur de ce <span class="benefices">service public</span> est d’un peu plus de <b>10 000$</b> par année par enfant.  
       </notice>
       <notice
         data-min="31"
         data-max="31"
         data-category="benefices"
         data-scenarios="1"
+        data-tooltip="31,benefices"
         push-bottom
       >
         À 31 ans, dans le cas du scénario 2, Ella cesse à nouveau de travailler pendant un an suite à l’arrivée du deuxième enfant. Le <span class="revenu">revenu</span> du couple est modifié en conséquence.  
@@ -240,6 +259,7 @@
         data-min="34"
         data-max="39"
         data-category="benefices"
+        data-tooltip="39,benefices"
         push-bottom
       >
         Lorsque Ella a <b>34 ans</b>, le premier enfant entre à la maternelle, la valeur des <span class="benefices">services publics</span> reçus diminue car l’utilisation des <span class="benefices">services de garde à contribution réduite</span> est remplacée par les <span class="benefices">services de garde en milieu scolaire</span> et les <span class="benefices">services d’enseignement primaire</span>.
@@ -249,6 +269,7 @@
         data-max="46"
         data-category="revenu"
         data-scenarios="2"
+        data-tooltip="46,revenu"
         push-bottom
       >
         À <b>40 ans</b>, le scénario 3 montre l’effet de la rupture d’Ella et de son conjoint, celle-ci conserve la garde exclusive de son enfant unique. Le revenu n’est plus constitué que du salaire d’Ella, soit près de <b>53 000 $</b>.
@@ -258,6 +279,7 @@
         data-max="46"
         data-category="prelevements"
         data-scenarios="2"
+        data-tooltip="46,prelevements"
         push-bottom
       >
         Dans le scénario 3, suite à la rupture, les <span class="prelevements">prélèvements</span> passent à <b>15 000 $</b>. 
@@ -267,6 +289,7 @@
         data-max="46"
         data-category="prestations"
         data-scenarios="2"
+        data-tooltip="46,prestations"
         push-bottom
       >
         Toujours en situation monoparentale les <span class="prestations">prestations financières</span> d’Ella sont majorées, les prestations pour la famille passent à <b>7 600 $</b>. 
@@ -276,6 +299,7 @@
         data-max="48"
         data-category="prestations"
         data-scenarios="1,2"
+        data-tooltip="48,prestations"
         push-bottom
       >
         Lorsque le premier enfant atteint <b>18 ans</b>, les <span class="prestations">prestations familiales</span> diminuent et la valeur des <span class="benefices">services publics</span> qui lui sont attribués ne sont plus pris en compte.
@@ -287,6 +311,7 @@
         data-max="50"
         data-category="prestations"
         data-scenarios="1,2"
+        data-tooltip="50,prestations"
         push-bottom
       >
         Une deuxième réduction des <span class="prestations">prestations financières</span> et de la valeur des <span class="benefices">services publics</span> reçus survient lorsqu’Ella a <b>49 ans</b>, soit lorsque le deuxième enfant atteint <b>18 ans</b>.
@@ -295,6 +320,7 @@
         data-min="60"
         data-max="74"
         data-category="revenu"
+        data-tooltip="74,revenu"
         push-bottom
       >
         Dans tous les scénarios Ella prend sa retraite à <b>60 ans</b>.
@@ -306,6 +332,7 @@
       <notice
         data-min="60"
         data-max="74"
+        data-tooltip="74,prelevements"
         data-category="prelevements"
         push-bottom
       >
@@ -318,6 +345,7 @@
         data-max="74"
         data-category="prestations"
         data-scenarios="1"
+        data-tooltip="74,prestations"
         push-bottom
       >
         Dans le <b>scénario 2</b>, Luis touche les <span class="prestations">prestations de la régie des rentes du Québec</span> dès la prise de la retraite. Ella touche ces prestations à <b>61 ans</b>. Tous deux obtiennent la <span class="prestations">prestation de la sécurité de la vieillesse</span> à <b>65 ans</b>. 
@@ -327,6 +355,7 @@
         data-min="75"
         data-max="81"
         data-category="prestations"
+        data-tooltip="81,prestations"
         push-bottom
       >
         À compter de <b>75 ans</b>, Ella touche le <span class="prestations">crédit d’impôt pour maintien à domicile</span>. 
@@ -337,6 +366,7 @@
         data-max="84"
         data-category="benefices,prelevements"
         data-scenarios="1"
+        data-tooltip="84,benefices"
         push-bottom
       >
         Luis décède lorsque Ella est âgée de <b>82 ans</b> (scénario 2), modifiant le revenu, la valeur des <span class="prelevements">prélèvements</span> et celle des <span class="benefices">bénéfices publics</span> reçus. 
@@ -346,6 +376,7 @@
         data-min="82"
         data-max="87"
         data-category="benefices"
+        data-tooltip="87,benefices"
         push-bottom
       >
         À l’âge adulte, la valeur des <span class="benefices">services de soins de santé</span> reçus augmente avec l’âge. Dans le cas où Ella vit seule à la retraite (scénarios 1 et 3), ils passent de <b>6 000 $</b> à 65 ans, à <b>28 000 $</b> à 85 ans.
@@ -453,7 +484,8 @@ export default {
 				selectedCategories: [],
 				amounts: [],
 				selectedScenarios: [0,1,2],
-				firstAppear: true
+				firstAppear: true,
+				tooltip: null
 			}
 		};
 	},
@@ -466,6 +498,9 @@ export default {
 
 			let min = parseInt(element.getAttribute("data-min") || 18);
 			let max = parseInt(element.getAttribute("data-max"));
+      
+			let tooltip = element.getAttribute("data-tooltip") || null;
+      
 			let showAmounts = element.getAttribute("data-amounts") !== "false";
 			let showSelection = element.getAttribute("data-show-selection") !== "false";
 			let showSubstraction = element.getAttribute("data-show-substraction") === "true";
@@ -489,8 +524,13 @@ export default {
 					visibleCategories.push(c);
 				}
 			});
+      
+			if (tooltip != null) {
+				tooltip = tooltip.split(",");
+			}
 
 			this.$set(this.filters, "firstAppear", false);
+			this.$set(this.filters, "tooltip", tooltip);
 			this.$set(this.filters, "visible", [18,max]);
 			this.$set(this.filters, "selected", [min,max]);
 			this.$set(this.filters, "selectedScenarios", selectedScenarios);
