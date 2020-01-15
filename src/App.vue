@@ -649,7 +649,7 @@ export default {
 	},
 	methods: {
 		onResize:debounce(() => {
-			window.location.reload(false);
+			//window.location.reload(false);
 		}, 250),
 		stepEnterHandler ({element, index, direction}) {
 
