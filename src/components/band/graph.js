@@ -199,7 +199,7 @@ class Graph {
 			.attr("y", 4)
 			.attr("x", 12)
 			.attr("class", "text-sm font-semibold");
-      
+            
 		this.interactionRect = this.svg.append("rect")
 			.attr("height", this.height)
 			.attr("width", this.width)

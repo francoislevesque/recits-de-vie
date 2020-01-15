@@ -41,6 +41,16 @@ export default {
 </script>
 
 <style lang="scss">
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.6);
+    }
+}
+
 .graph-amount {
   .axis {
     &.axis-x {
@@ -48,6 +58,10 @@ export default {
         display: none;
       }
     }
+  }
+
+  circle.highlight {
+    animation: pop 0.5s ease-in-out infinite alternate;
   }
 }
 </style>

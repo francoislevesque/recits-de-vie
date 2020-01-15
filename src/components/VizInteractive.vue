@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden relative lg:block w-full h-screen bg-blue-200">
+  <div class="relative w-full h-screen bg-blue-200">
     <div class="flex h-full">
       <div class="w-90 shadow h-full">
         <div class="p-8 px-5 border-b border-blue-300">
@@ -140,6 +140,7 @@ export default {
 				categories.push("prelevements");
 			}
 			return {
+				showHighlights: false,
 				showAmounts: true,
 				showSelection: true,
 				showSubstraction: this.filters.showSubstraction,

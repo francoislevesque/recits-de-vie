@@ -78,9 +78,16 @@ class Graph {
 						.attr("height", BAR_HEIGHT)
 						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2)
 						.attr("width", d => this.bandWidth(d));
+            
+					g.append("circle")
+						.attr("class", d => "highlight fill-current " + this.colorClass("500"))
+						.attr("cy", this.scaleY.bandwidth() / 2)
+						.attr("cx", d => this.bandWidth(d))
+						.style("transform-origin", d => `${this.bandWidth(d)}px ${this.scaleY.bandwidth() / 2}px`)
+						.attr("r", 6);
 
 					g.append("circle")
-						.attr("class", d => "fill-current " + this.colorClass("700"))
+						.attr("class", d => "dot fill-current " + this.colorClass("700"))
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d))
 						.attr("r", 6);
@@ -115,12 +122,21 @@ class Graph {
 						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2)
 						.attr("width", d => this.bandWidth(d));
             
-					update.select("circle")
+					update.select("circle.dot")
 						.transition()
 						.duration(TRANSITION_DURATION)
 						.ease(TRANSITION_EASE)
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d));
+            
+					update.select("circle.highlight")
+						.transition()
+						.duration(TRANSITION_DURATION)
+						.ease(TRANSITION_EASE)
+						.attr("cy", this.scaleY.bandwidth() / 2)
+						.attr("cx", d => this.bandWidth(d))
+						.style("transform-origin", d => `${this.bandWidth(d)}px ${this.scaleY.bandwidth() / 2}px`)
+						.attr("opacity", (this.filters.selectedCategories.includes(this.category) && this.filters.showHighlights) ? 0.6 : 0);
             
 					update.select("text.label_")
 						.attr("class", d => this.fontClasses(d, "label_"))
@@ -131,6 +147,9 @@ class Graph {
             
 					update.select("text.value")
 						.attr("class", d => this.fontClasses(d, "value"))
+						.transition()
+						.duration(TRANSITION_DURATION)
+						.ease(TRANSITION_EASE)
 						.text(d => d.value.priceFormat())
 						.attr("y", d => (this.scaleY.bandwidth()) / 2 + 1)
 						.attr("x", d => this.bandWidth(d) + 10);
@@ -187,8 +206,7 @@ class Graph {
 	}
   
 	color () {
-		let opacity = (this.filters.selectedCategories.includes(this.category)) ? "800" : "500"; 
-		return this.colorClass(opacity);
+		return this.colorClass("800");
 	}
   
 	fontClasses (d, classes) {

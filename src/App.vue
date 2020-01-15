@@ -584,6 +584,7 @@
       </notice>
 
       <notice
+        v-show="!mobile"
         data-step="end"
       >
         <h2 class="text-lg font-bold mb-2">
@@ -596,7 +597,7 @@
         <span class="text-transparent">.</span>
       </div>
     </Scrollama>
-    <viz-interactive />
+    <viz-interactive v-if="!mobile" />
   </div>
 </template>
 
@@ -606,6 +607,8 @@ import Scrollama from "vue-scrollama";
 import Notice from "@/components/Notice";
 import Viz from "@/components/Viz";
 import VizInteractive from "@/components/VizInteractive";
+import { debounce } from "./services/utils";
+import { isMobile } from "./services/responsive";
 
 export default {
 	components: {
@@ -617,6 +620,7 @@ export default {
 	data () {
 		return {
 			filters: {
+				showHighlights: true,
 				showAmounts: true,
 				showSelection: true,
 				showSubstraction: false,
@@ -632,7 +636,21 @@ export default {
 			}
 		};
 	},
+	computed: {
+		mobile () {
+			return isMobile();
+		}
+	},
+	mounted () {
+		window.addEventListener("resize", this.onResize);
+	},
+	destroyed () {
+		window.removeEventListener("resize", this.onResize);
+	},
 	methods: {
+		onResize:debounce(() => {
+			window.location.reload(false);
+		}, 250),
 		stepEnterHandler ({element, index, direction}) {
 
 			if (element.getAttribute("data-step") === "end") {
