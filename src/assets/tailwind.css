@@ -1,9 +1,14 @@
+@import url("https://use.typekit.net/lge8ozm.css");
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
 
+html {
+    @apply font-sans;
+}
 
 p {
     @apply text-xl leading-snug;
@@ -27,4 +32,18 @@ p {
 
 .notice {
     @apply shadow-lg p-10 z-10 bg-white;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Fade
+ |--------------------------------------------------------------------------
+*/
+
+.fade-enter-active, .fade-leave-active {
+    transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+  
+.fade-enter, .fade-leave-active {
+    opacity: 0 !important;
 }

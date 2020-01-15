@@ -39,7 +39,7 @@ class Graphs {
 		this.axisX = d3.axisBottom(this.scaleX)
 			.tickSize(5)
 			.tickPadding(TICK_PADDING)
-			.ticks(3)
+			.ticks(2)
 			.tickFormat((d) => (+d).priceFormat());
 
 		this.svg = d3.select(container).append("svg")

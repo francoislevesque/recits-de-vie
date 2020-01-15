@@ -7,8 +7,14 @@ let categories = {
 	prelevements: ["impot", "frais-de-garde", "rrq", "rqap", "ae", "taxes", "fond-service-sante", "regime-assurance-medicament"],
 };
 
+// Keep in cache
+let scenariosData = null;
+
 function scenarios() {
-	return Object.values(rawData).map(d => scenario(d));
+	if (scenariosData == null) {
+		scenariosData = Object.values(rawData).map(d => scenario(d));
+	}
+	return scenariosData;
 }
 
 function scenario(rawData) {

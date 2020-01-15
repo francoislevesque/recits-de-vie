@@ -4,20 +4,22 @@
       v-for="(scenario, i) in scenarios"
       :key="i"
       ref="scenario"
-      class="p-4 h-1/3 lg:h-auto lg:p-5 lg:w-1/3 lg:flex lg:flex-col overflow-hidden"
+      class="p-4 pb-0 h-1/3 lg:h-auto lg:p-5 lg:pb-5 lg:w-1/3 lg:flex lg:flex-col overflow-hidden"
     >
       <div
         ref="graph-container"
         class="flex flex-col h-full lg:h-4/10 band-graph"
         :style="{transform: `translateY(${graphOffset}px)`}"
       >
-        <div class="flex justify-between leading-none mb-6 lg:block lg:mb-4 lg:leading-tight">
-          <div class="text-sm text-gray-500">
+        <div class="flex align-baseline justify-between mb-4 lg:mb-1">
+          <div class="text-sm text-gray-800 font-bold lg:text-base">
             Scénario {{ i + 1 }}
           </div>
-          <div class="text-sm text-gray-900 lg:text-base lg:font-semibold">
-            {{ scenarioName(i) }}
-          </div>
+          <img
+            :src="require(`@/assets/${i+1}.svg`)"
+            :alt="`Scénario ${ i + 1 }`"
+            class="inline h-3 w-auto opacity-75"
+          >
         </div>
 
         <band-graph
@@ -29,6 +31,7 @@
           :scenario="scenario"
           :subs="scenarioSubs[i]"
           :cumuls="scenarioCumuls[i]"
+          @mousemove="onMouseMove($event, i)"
         />
       </div>
 
@@ -181,6 +184,13 @@ export default {
 			if (this.$refs.graphAmount) {
 				this.$refs.graphAmount.forEach((g, i) => g.redraw(this.domainAmount, this.scenarioAmounts[i], this.filters));
 			}
+		},
+		onMouseMove (data, i) {
+			let data_ = data;
+			if (data != null) {
+				data_.scenario = i;
+			}
+			this.$emit("mousemove", data_);
 		}
 	}
 };

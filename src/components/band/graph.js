@@ -12,7 +12,7 @@ const TRANSITION_EASE = d3.easeQuadInOut;
 
 class Graph {
 
-	constructor (container, data, subs, cumuls, domainY, filters) {
+	constructor (container, data, subs, cumuls, domainY, filters, callbacks) {
 
 		this.container = container;
 		this.data = data;
@@ -20,6 +20,7 @@ class Graph {
 		this.cumulData = cumuls;
 		this.domainY = domainY;
 		this.filters = filters;
+		this.callbacks = callbacks;
     
 		this.categories = ["revenu", "prestations", "benefices", "prelevements"];
 
@@ -30,7 +31,7 @@ class Graph {
   
 		this.margin = {
 			top: this.mobile ? 17 : 24,
-			bottom: this.mobile ? 2 : 40,
+			bottom: this.mobile ? 16 : 40,
 			left: 52,
 			right: 10
 		};
@@ -198,6 +199,15 @@ class Graph {
 			.attr("y", 4)
 			.attr("x", 12)
 			.attr("class", "text-sm font-semibold");
+      
+		this.interactionRect = this.svg.append("rect")
+			.attr("height", this.height)
+			.attr("width", this.width)
+			.attr("fill", "transparent");
+      
+		this.interactionRect
+			.on("mousemove", this.handleMouseOver(this))
+			.on("mouseout", this.handleMouseOut(this));
 	}
   
 	redraw (domainY, filters) {
@@ -489,6 +499,38 @@ class Graph {
 			y -= (this.scales.y(0) - this.scales.y(d.categories.prestations.total));
 		}
 		return y;
+	}
+  
+	handleMouseOver (ctx) {
+		return function () {
+			let svgPoint = d3.mouse(this);
+			let windowPointX = d3.event.clientX;
+			let windowPointY = d3.event.clientY;
+      
+			let year = ctx.scaleBandInvert(ctx.scales.x)(svgPoint[0]);
+			ctx.callbacks.mousemove({
+				year: year,
+				x: windowPointX,
+				y: windowPointY
+			});
+		};
+	}
+  
+	handleMouseOut (ctx) {
+		return function () {
+			console.log("out");
+			ctx.callbacks.mousemove(null);
+		};
+	}
+
+	scaleBandInvert (scale) {
+		var domain = scale.domain();
+		var paddingOuter = scale(domain[0]);
+		var eachBand = scale.step();
+		return function (value) {
+			var index = Math.floor(((value - paddingOuter) / eachBand));
+			return domain[Math.max(0,Math.min(index, domain.length-1))];
+		};
 	}
 }
 

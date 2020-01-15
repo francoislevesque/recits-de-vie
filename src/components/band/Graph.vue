@@ -38,9 +38,14 @@ export default {
 		};
 	},
 	mounted () {
-		this.graph = new Graph(this.$refs.graph, this.scenario, this.subs, this.cumuls, this.domainY, this.filters);
+		this.graph = new Graph(this.$refs.graph, this.scenario, this.subs, this.cumuls, this.domainY, this.filters, {
+			mousemove: this.onMouseMove
+		});
 	},
 	methods: {
+		onMouseMove (data) {
+			this.$emit("mousemove", data);
+		},
 		redraw (domainY, filters) {
 			this.graph.redraw(domainY, filters);
 		}
