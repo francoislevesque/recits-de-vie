@@ -317,10 +317,10 @@ class Graph {
 			return this.scales.y(0);
 		}
 		let y = Math.min(this.scales.y(0), this.scales.y(d.categories[category].total));
-		if (category == "prestations" || category == "benefices") {
+		if ((category == "prestations" || category == "benefices") && this.filters.visibleCategories.includes("revenu")) {
 			y -= (this.scales.y(0) - this.scales.y(d.categories.revenu.total));
 		}
-		if (category == "benefices") {
+		if (category == "benefices" && this.filters.visibleCategories.includes("prestations") ) {
 			y -= (this.scales.y(0) - this.scales.y(d.categories.prestations.total));
 		}
 		return y;
