@@ -56,7 +56,7 @@
               v-model="filters.showBenefices"
               color="teal"
             >
-              Bénéfices publiques
+              Services publics
             </v-switch>
           </div>
           <div>
@@ -73,7 +73,7 @@
               color="purple"
               @input="onToggleSub"
             >
-              Bénéfices & Prestations - Prélèvements
+              Prestations & Services publics - Prélèvements
             </v-switch>
           </div>
         </div>

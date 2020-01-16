@@ -36,7 +36,7 @@
       <div class="container max-w-2xl bg-blue-100">
         <div class="p-8 lg:p-10">
           <p class="mb-10">
-            Nous allons suivre la vie d'Ella, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>. Ella présente les caractéristiques représentative d’une femme québécoise, pour <b>3 scénarios de vie distincts</b> :
+            Nous allons suivre la vie d'Ella, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>. Ella présente les caractéristiques représentatives d’une femme québécoise, pour <b>3 scénarios de vie distincts</b> :
           </p>
           <div class="mb-10">
             <div class="pl-6 border-blue-500 border-l-4 mb-10">
@@ -200,7 +200,7 @@
         data-tooltip="20,prestations"
         push-bottom
       >
-        En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit de solidarité</span> et  <span class="prestations">Crédit de TPS.</span>
+        En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit de solidarité</span> et <span class="prestations">Crédit de TPS.</span>
       </notice>
       <notice
         data-max="20"
@@ -248,7 +248,7 @@
         data-tooltip="26,prestations"
         push-bottom
       >
-        Un peu plus de la moitié <span class="prestations">prestations monétaires (crédit pour TPS et crédit pour solidarité)</span> qui totalisent plus de <b>1 000 $</b>. Ces montants diminuent lorsque le salaire d’Ella augmente.
+        Un peu plus de la moitié provient des <span class="prestations">prestations monétaires (crédit pour TPS et crédit pour solidarité)</span> qui totalisent plus de <b>1 000 $</b>. Ces montants diminuent lorsque le salaire d’Ella augmente.
       </notice>
       <notice
         data-min="21"
@@ -257,7 +257,7 @@
         data-tooltip="26,benefices"
         push-bottom
       >
-        La valeur des <span class="benefices">services publics</span> de <span class="benefices">soins de santé</span> reçus est d’environ <b>2 000 $</b> par année. 
+        La valeur des <span class="benefices">services publics</span> de <span class="benefices">soins de santé</span> reçus est d’environ <b>2 000 $</b> par année.
       </notice>
       <notice
         data-min="27"
@@ -291,7 +291,7 @@
         data-tooltip="28,benefices"
         push-bottom
       >
-        Le couple ne bénéficie au départ d’aucune <span class="prestations">prestation financière</span>. La valeur des <span class="benefices">services publics</span> reçus, composé exclusivement des <span class="benefices">soins de santé</span>, est d’un peu plus de <b>4 000 $</b>. 
+        Le couple ne bénéficie au départ d’aucune <span class="prestations">prestation financière</span>. La valeur des <span class="benefices">services publics</span> reçus, composés exclusivement des <span class="benefices">soins de santé</span>, est d’un peu plus de <b>4 000 $</b>. 
       </notice>
       <notice
         data-min="29"
@@ -354,16 +354,16 @@
       <notice
         data-min="31"
         data-max="31"
-        data-category="benefices"
-        data-scenarios="2"
-        data-tooltip="31,benefices"
+        data-category="revenu"
+        data-scenarios="1"
+        data-tooltip="31,revenu"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
           Deuxième enfant | 
           <span class="text-gray-600 mr-1">31 ans</span> 
         </h2>
-        À 31 ans, dans le cas du scénario 3, Ella cesse à nouveau de travailler pendant un an suite à l’arrivée du deuxième enfant. Le <span class="revenu">revenu</span> du couple est modifié en conséquence.  
+        À 31 ans, dans le cas du scénario 2, Ella cesse à nouveau de travailler pendant un an suite à l’arrivée du deuxième enfant. Le <span class="revenu">revenu</span> du couple est modifié en conséquence.  
       </notice>
       <notice
         data-min="34"
@@ -410,7 +410,7 @@
         data-tooltip="46,prestations"
         push-bottom
       >
-        Toujours en situation monoparentale les <span class="prestations">prestations financières</span> d’Ella sont majorées, les prestations pour la famille passent à <b>7 600 $</b>. 
+        Toujours en situation monoparentale les <span class="prestations">prestations financières</span> d’Ella sont majorées, les prestations pour la famille passent à <b>7 500 $</b>. 
       </notice>
       <notice
         data-min="47"
@@ -431,9 +431,9 @@
       <notice
         data-min="49"
         data-max="50"
-        data-category="prestations"
+        data-category="prestations,benefices"
         data-scenarios="1,2"
-        data-tooltip="50,prestations"
+        data-tooltip="50,benefices"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -495,7 +495,7 @@
         data-max="84"
         data-category="benefices,prelevements"
         data-scenarios="1"
-        data-tooltip="84,benefices"
+        data-tooltip="84,prelevements"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -569,7 +569,7 @@
         data-show-selection="false"
         push-bottom
       >
-        Le <b>cumulatif annuel des bénéfices et prélèvements</b> permet d’évaluer sommairement si, au cours de sa vie adulte, Ella a obtenu davantage en <span class="prestations">prestations</span> et <span class="benefices">services publics</span> que ce qu’elle a déboursé en matière de <span class="prelevements">prélèvement</span>.  
+        Le <b>cumulatif annuel des bénéfices et prélèvements</b> permet d’évaluer sommairement si, au cours de sa vie adulte, Ella a obtenu davantage en <span class="prestations">prestations</span> et <span class="benefices">services publics</span> que ce qu’elle a déboursé en matière de <span class="prelevements">prélèvements</span>.  
       </notice>
 
       <notice
@@ -580,7 +580,7 @@
         data-show-selection="false"
         push-bottom
       >
-        On remarque que les scénarios où Elle a un enfant, le "point zéro" arrive plus tôt: à <b>74 ans</b> pour le scénario 2 et à <b>80 ans</b> pour le scénario 3. 
+        On remarque que les scénarios où Ella a un enfant, le "point zéro" arrive plus tôt: à <b>74 ans</b> pour le scénario 2 et à <b>80 ans</b> pour le scénario 3. 
       </notice>
 
       <notice
