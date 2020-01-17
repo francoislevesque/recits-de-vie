@@ -219,7 +219,7 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Début de carrière | 
-          <span class="text-gray-600 mr-1">20 ans</span> 
+          <span class="text-gray-600 mr-1">21 ans</span> 
         </h2>
         À 21 ans, Ella quitte le domicile de ses parents et commence à travailler à temps plein. Son <span class="revenu">salaire</span> initial est d’un peu plus de <b>35 000 $</b> et augmente progressivement.
       </notice>
@@ -347,7 +347,7 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Retour au travail | 
-          <span class="text-gray-600 mr-1">20 ans</span> 
+          <span class="text-gray-600 mr-1">30 ans</span> 
         </h2>
         Lorsque l’enfant a 1 an, Ella retourne sur le <span class="revenu">marché du travail</span> et les <span class="benefices">services de garde subventionnés</span> sont utilisés. La valeur de ce <span class="benefices">service public</span> est d’un peu plus de <b>10 000$</b> par année par enfant.  
       </notice>
@@ -388,7 +388,7 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Rupture | 
-          <span class="text-gray-600 mr-1">46 ans</span> 
+          <span class="text-gray-600 mr-1">40 ans</span> 
         </h2>
         À <b>40 ans</b>, le scénario 3 montre l’effet de la rupture d’Ella et de son conjoint, celle-ci conserve la garde exclusive de son enfant unique. Le revenu n’est plus constitué que du salaire d’Ella, soit près de <b>53 000 $</b>.
       </notice>
@@ -506,12 +506,16 @@
       </notice>
 
       <notice
-        data-min="82"
+        data-min="85"
         data-max="87"
         data-category="benefices"
         data-tooltip="87,benefices"
         push-bottom
       >
+        <h2 class="text-lg font-bold mb-2">
+          Fin de vie | 
+          <span class="text-gray-600 mr-1">85 ans</span> 
+        </h2>
         À l’âge adulte, la valeur des <span class="benefices">services de soins de santé</span> reçus augmente avec l’âge. Dans le cas où Ella vit seule à la retraite (scénarios 1 et 3), ils passent de <b>6 000 $</b> à 65 ans, à <b>28 000 $</b> à 85 ans.
       </notice>
 
@@ -519,13 +523,14 @@
         data-min="18"
         data-max="87"
         data-amounts="false"
+        data-visible-category="prestations,benefices,prelevements"
         data-show-selection="false"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
           Bénéfices et gains au cours d'une vie 
         </h2>
-        Au cours d'une vie, chaque ménage a eu droit à des <span class="revenu">revenus</span>, <span class="benefices">service publiques</span> et <span class="prestations">prestations</span>, et a assumé des <span class="prelevements">prélèvements</span>.
+        Au cours d'une vie, chaque ménage a eu droit à des <span class="benefices">service publiques</span> et <span class="prestations">prestations</span>, et a assumé des <span class="prelevements">prélèvements</span>.
         <b>Nous pouvons observer simultanément ces deux quantités.</b>
       </notice>
 
@@ -598,6 +603,35 @@
       </div>
     </Scrollama>
     <viz-interactive v-if="!mobile" />
+    <div class="py-12 bg-blue-100">
+      <div class="container max-w-2xl">
+        <h2 class="text-lg font-semibold mb-3">
+          Méthodologie
+        </h2>
+        <p class="text-base mb-5">
+          Les calculs sont basés sur le régime fiscal de 2018. La majorité des caractéristiques de nos personnages sont issues des données produites par Statistique Canada. Pour chacun des paramètres, le cas médian (ou moyen) est retenu afin de baser l’analyse sur les situations les plus représentatives possible.  Il est important de noter que seul un échantillon de services publics et, par conséquent, des bénéfices publics est présenté. Dans le même ordre d’idée, certains prélèvements tels les impôts fonciers n’ont pas été pris en compte.
+        </p>
+        <p class="text-base mb-5">
+          Cette analyse ne doit donc pas être vue comme un bilan précis des gains et bénéfices de la vie dans la société québécoise pour un cheminement de vie donné, mais plutôt comme une représentation de l’évolution des prélèvements fiscaux et des bénéfices publics au cours d’une vie.
+        </p>
+        <p class="text-base ">
+          Les hypothèses sur lesquelles se basent l’ensemble des calculs sont disponibles à : <i>(adresse internet à venir)</i>.
+        </p>
+        <hr class="my-10">
+        <p class="text-base mb-2">
+          Calculs produits par <b>Michaël Robert-Angers</b> (Chaire de recherche en fiscalité de l'Université de Sherbrooke).
+        </p>
+        <p class="text-base">
+          Outil interactif développé & designé par <b>François Lévesque</b> (<a
+            class="underline"
+            href="https://witify.io"
+          >Witify</a>) et <b>Thomas Hurtut</b> (<a
+            class="underline"
+            href="http://www.professeurs.polymtl.ca/thomas.hurtut/"
+          >Polytechnique Montréal</a>).
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -685,6 +719,12 @@ export default {
 					visibleCategories.push(c);
 				}
 			});
+      
+			visibleCategories = element.getAttribute("data-visible-category") || "";
+			visibleCategories = visibleCategories.split(",").filter(d => d != "");
+			if (visibleCategories.length == 0) {
+				visibleCategories= this.filters.visibleCategories;
+			}
       
 			if (tooltip != null) {
 				tooltip = tooltip.split(",");

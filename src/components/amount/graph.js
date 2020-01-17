@@ -210,7 +210,7 @@ class Graph {
 	}
   
 	fontClasses (d, classes) {
-		return classes + " fill-current font-semibold text-xs " + this.color();
+		return classes + " fill-current text-xs " + this.color();
 	}
 }
 

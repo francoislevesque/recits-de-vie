@@ -1,8 +1,13 @@
 <template>
-  <div
-    ref="graph"
-    class="graph-amount h-full"
-  />
+  <div class="h-full">
+    <h2 class="text-center leading-none font-semibold">
+      <b>Moyenne</b> des montants entre {{ filters.selected[0] }} et {{ filters.selected[1] }} ans
+    </h2>
+    <div
+      ref="graph"
+      class="graph-amount h-full"
+    />
+  </div>
 </template>
 
 <script>

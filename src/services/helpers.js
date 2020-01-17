@@ -19,3 +19,8 @@ Number.prototype.percentageFormat = function() {
 Number.prototype.priceFormat = function() {
 	return this.format(0, ",", " ") + "$";
 };
+
+/** Price Format */
+Number.prototype.priceFormatK = function() {
+	return (this/1000).format(0, ",", " ") + "k$";
+};

@@ -452,7 +452,7 @@ class Graph {
       
 			let direction = "right";
       
-			if (x + width + 10 > this.width) {
+			if (x + width + 20 > this.width) {
 				direction = "left";
 			}
 

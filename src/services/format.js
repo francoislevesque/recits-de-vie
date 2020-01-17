@@ -1,7 +1,7 @@
 import rawData from "./dataRaw";
 
 let categories = {
-	revenu: ["revenu"],
+	revenu: ["revenu-salaire", "revenu-retraite"],
 	prestations: ["credit-tps", "credit-solidarite", "afe", "pension", "allocation-cad-enfants", "paiement-soutien-enfants", "regime-assurance-parentale", "allocation-fournitures-scolaires", "cisd"],
 	benefices: ["sante", "service-es", "service-de-garde", "service-de-garde-scolaire", "primaire-secondaire", "assurance-medicament", "rentes"],
 	prelevements: ["impot", "frais-de-garde", "rrq", "rqap", "ae", "taxes", "fond-service-sante", "regime-assurance-medicament"],

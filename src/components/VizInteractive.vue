@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-screen bg-blue-200">
+  <div class="relative w-full h-screen bg-blue-200 overflow-y-hidden border-t border-b border-blue-300">
     <div class="flex h-full">
       <div class="w-90 shadow h-full">
         <div class="p-8 px-5 border-b border-blue-300">

@@ -25,8 +25,8 @@ class Graphs {
 		this.margin = {
 			top: 24,
 			bottom: TICK_MARGIN_TOP + 20,
-			left: 190,
-			right: 100
+			left: 210,
+			right: 62
 		};
     
 		this.width = this.containerWidth - this.margin.left - this.margin.right;
@@ -39,8 +39,7 @@ class Graphs {
 		this.axisX = d3.axisBottom(this.scaleX)
 			.tickSize(5)
 			.tickPadding(TICK_PADDING)
-			.ticks(2)
-			.tickFormat((d) => (+d).priceFormat());
+			.tickFormat((d) => (+d).priceFormatK());
 
 		this.svg = d3.select(container).append("svg")
 			.attr("width", this.width + this.margin.left + this.margin.right)
@@ -94,6 +93,14 @@ class Graphs {
 		this.filters = filters;
 
 		this.scaleX.domain(this.domainX);
+
+		let step = 2,
+			min = 0,
+			max = Math.round(this.domainX[1] / 1000) * 1000,
+			stepValue = (max - min) / (step - 1),
+			tickValues = d3.range(min, max + stepValue, stepValue);
+    
+		this.axisX.tickValues(tickValues);
     
 		this.gAxisX.transition()
 			.duration(TRANSITION_DURATION)
