@@ -618,7 +618,7 @@
           Les hypothèses sur lesquelles se basent l’ensemble des calculs sont disponibles à : <i>(adresse internet à venir)</i>.
         </p>
         <hr class="my-10">
-        <p class="text-base mb-2">
+        <!-- <p class="text-base mb-2">
           Calculs produits par <b>Michaël Robert-Angers</b> (Chaire de recherche en fiscalité de l'Université de Sherbrooke).
         </p>
         <p class="text-base">
@@ -629,7 +629,7 @@
             class="underline"
             href="http://www.professeurs.polymtl.ca/thomas.hurtut/"
           >Polytechnique Montréal</a>).
-        </p>
+        </p> -->
       </div>
     </div>
   </div>
