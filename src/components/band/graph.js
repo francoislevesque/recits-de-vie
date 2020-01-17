@@ -74,7 +74,7 @@ class Graph {
 			.ticks(5)
 			.tickFormat((d) => (+d).priceFormat())
 			.tickPadding(TICK_PADDING);
-      
+          
 		this.createDefs();
       
 		this.draw();

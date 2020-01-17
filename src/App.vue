@@ -603,7 +603,7 @@
       </div>
     </Scrollama>
     <viz-interactive v-if="!mobile" />
-    <div class="py-12 bg-blue-100">
+    <div class="py-12 px-6 bg-blue-100">
       <div class="container max-w-2xl">
         <h2 class="text-lg font-semibold mb-3">
           Méthodologie

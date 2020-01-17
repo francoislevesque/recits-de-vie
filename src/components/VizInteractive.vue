@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full h-screen bg-blue-200 overflow-y-hidden border-t border-b border-blue-300">
     <div class="flex h-full">
-      <div class="w-90 shadow h-full">
+      <div class="w-90 h-full bg-blue-100 border-r border-blue-300">
         <div class="p-8 px-5 border-b border-blue-300">
           <h3 class="text-xl font-bold mb-3">
             3 récits de vie
@@ -16,25 +16,42 @@
           </div>
           <div class="flex -mx-2 mb-2">
             <div class="w-1/2 px-2">
-              <input
-                v-model="filters.age[0]"
-                type="number"
-                min="18"
-                max="87"
-                class="w-full h-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              >
+              <div>
+                <input
+                  v-model="filters.age[0]"
+                  type="number"
+                  min="18"
+                  :max="filters.age[1]"
+                  class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  @input="onMinAgeChange"
+                >
+                <div
+                  class="text-sm text-red-800"
+                  :class="{'opacity-0': minAgeError == '-'}"
+                >
+                  {{ minAgeError }}
+                </div>
+              </div>
             </div>
             <div class="w-1/2 px-2">
-              <input
-                v-model="filters.age[1]"
-                type="number"
-                min="18"
-                max="87"
-                class="w-full h-full shadow appearance-none border roundedpy-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              >
+              <div>
+                <input
+                  v-model="filters.age[1]"
+                  type="number"
+                  :min="filters.age[0]"
+                  max="87"
+                  class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  @input="onMaxAgeChange"
+                >
+                <div
+                  class="text-sm text-red-800"
+                  :class="{'opacity-0': maxAgeError == '-'}"
+                >
+                  {{ maxAgeError }}
+                </div>
+              </div>
             </div>
           </div>
-          <br>
           <div>
             <v-switch
               v-model="filters.showRevenu"
@@ -98,6 +115,7 @@
 
 import Viz from "./Viz";
 import Tooltip from "./Tooltip";
+import debounce from "lodash/debounce";
 
 export default {
 	components: {
@@ -106,6 +124,8 @@ export default {
 	},
 	data () {
 		return {
+			minAgeError: "-",
+			maxAgeError: "-",
 			showTooltip: false,
 			tooltip: {
 				x: 100,
@@ -115,6 +135,7 @@ export default {
 			},
 			filters: {
 				age: [18,87],
+				validatedAge: [18,87],
 				showRevenu: true,
 				showPrestations: true,
 				showBenefices: true,
@@ -146,7 +167,7 @@ export default {
 				showSubstraction: this.filters.showSubstraction,
 				showCumul: false,
 				visible: [18,87],
-				selected: this.filters.age,
+				selected: this.filters.validatedAge,
 				visibleCategories: categories,
 				selectedCategories: categories,
 				amounts: [],
@@ -157,6 +178,24 @@ export default {
 		}
 	},
 	methods: {
+		onMinAgeChange (event) {
+			this.minAgeError = "-";
+			let age = event.target.value;
+			if (age && age >= 18 && age <= 87 && age <= this.filters.age[1]) {
+				this.$set(this.filters.validatedAge, 0, age);
+			} else {
+				this.minAgeError = "Valeur invalide";
+			}
+		},
+		onMaxAgeChange (event) {
+			this.maxAgeError = "-";
+			let age = event.target.value;
+			if (age && age >= 18 && age <= 87 && age >= this.filters.validatedAge[0]) {
+				this.$set(this.filters.validatedAge, 1, age);
+			} else {
+				this.maxAgeError = "Valeur invalide";
+			}
+		},
 		onMouseMove (data) {
 			if (data == null) {
 				this.showTooltip = false;
