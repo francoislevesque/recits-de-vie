@@ -5,18 +5,23 @@ import { Graph } from "./graph";
 
 const TICK_PADDING = 6;
 const TICK_MARGIN_TOP = 10;
-const TRANSITION_DURATION = 200;
+const TRANSITION_DURATION = 400;
 const TRANSITION_EASE = d3.easeQuadInOut;
 
 class Graphs {
 
-	constructor (container, data, domainX, filters) {
+	constructor (container, data, domainX, filters, options = {}) {
 
 		this.container = container;
 		this.data = data;
 		this.domainX = domainX;
 		this.filters = filters;
     
+		this.options = {
+			transition: options.transition === undefined ? true : options.transition,
+			transitionDuration: options.transitionDuration === undefined ? TRANSITION_DURATION : options.transitionDuration
+		};
+        
 		this.categories = ["revenu", "prestations", "benefices", "prelevements"];
 
 		this.containerWidth = this.container.clientWidth;
@@ -54,6 +59,15 @@ class Graphs {
 		return "text-" + colors[category] + "-500";
 	}
   
+	transition (g) {
+		if (this.options.transition) {
+			return g.transition()
+				.duration(this.options.transitionDuration)
+				.ease(TRANSITION_EASE);
+		}
+		return g;
+	}
+  
 	draw () {
 
 		this.gAxisX = this.svg.append("g")
@@ -77,7 +91,7 @@ class Graphs {
 			let height = heightPerBar * data.length;
 			let g = this.svg.append("g")
 				.attr("transform", `translate(${0},${offset})`);
-			let graph = new Graph(g, height, this.width, data, this.scaleX, category, this.filters);
+			let graph = new Graph(g, height, this.width, data, this.scaleX, category, this.filters, this.options);
 			this.graphs.push(graph);
 			graph.draw();
 			offset += height;
@@ -102,9 +116,7 @@ class Graphs {
     
 		this.axisX.tickValues(tickValues);
     
-		this.gAxisX.transition()
-			.duration(TRANSITION_DURATION)
-			.ease(TRANSITION_EASE)
+		this.transition(this.gAxisX)
 			.call(this.axisX.scale(this.scaleX));
             
 		this.graphs.forEach(g => {

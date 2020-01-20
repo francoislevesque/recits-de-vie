@@ -11,6 +11,12 @@ import { Graph } from "./graph.js";
 
 export default {
 	props: {
+		options: {
+			default () {
+				return {};
+			},
+			type: Object
+		},
 		scenario: {
 			required: true,
 			type: Array
@@ -39,12 +45,16 @@ export default {
 	},
 	mounted () {
 		this.graph = new Graph(this.$refs.graph, this.scenario, this.subs, this.cumuls, this.domainY, this.filters, {
-			mousemove: this.onMouseMove
-		});
+			mousemove: this.onMouseMove,
+			brushed: this.brushed,
+		}, this.options);
 	},
 	methods: {
 		onMouseMove (data) {
 			this.$emit("mousemove", data);
+		},
+		brushed (data) {
+			this.$emit("brushed", data);
 		},
 		redraw (domainY, filters) {
 			this.graph.redraw(domainY, filters);
@@ -80,6 +90,13 @@ export default {
           opacity: 1;
         }
       }
+    }
+  }
+  .brush {
+    .selection {
+      stroke: none;
+      fill-opacity: 0;
+      fill: transparent;
     }
   }
 }

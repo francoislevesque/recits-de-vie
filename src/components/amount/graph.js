@@ -9,13 +9,18 @@ const BAR_HEIGHT = 4;
 
 class Graph {
 
-	constructor (container, height, width, data, scaleX, category, filters) {
+	constructor (container, height, width, data, scaleX, category, filters, options = {}) {
 
 		this.container = container;
 		this.data = data;
 		this.scaleX = scaleX;
 		this.category = category;
 		this.filters = filters;
+    
+		this.options = {
+			transition: options.transition === undefined ? true : options.transition,
+			transitionDuration: options.transitionDuration === undefined ? TRANSITION_DURATION : options.transitionDuration
+		};
     
 		this.margin = {
 			top: 0,
@@ -34,6 +39,15 @@ class Graph {
 		this.bars = this.svg.append("g").attr("class","bars");
     
 		this.scaleY = this.getScaleY();
+	}
+  
+	transition (g) {
+		if (this.options.transition) {
+			return g.transition()
+				.duration(this.options.transitionDuration)
+				.ease(TRANSITION_EASE);
+		}
+		return g;
 	}
   
 	draw () {
@@ -57,9 +71,7 @@ class Graph {
     
 		this.drawBands();
 
-		this.origin = this.svg.select("line.y").transition()
-			.duration(TRANSITION_DURATION)
-			.ease(TRANSITION_EASE)
+		this.origin = this.transition(this.svg.select("line.y"))
 			.attr("y2", this.height)
 			.attr("opacity", this.lineOpacity());
 	}
@@ -109,56 +121,36 @@ class Graph {
 						.attr("x", d => this.bandWidth(d) + 10);
 				},
 				update => {
-					update.transition()
-						.duration(TRANSITION_DURATION)
-						.ease(TRANSITION_EASE)
+					this.transition(update)
 						.attr("transform", d => `translate(0,${this.scaleY(d.name)})`)
 						.attr("opacity", d => this.bandOpacity(d));
             
-					update.select("rect")
-						.transition()
-						.duration(TRANSITION_DURATION)
-						.ease(TRANSITION_EASE)
+					this.transition(update.select("rect"))
 						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2)
 						.attr("width", d => this.bandWidth(d));
             
-					update.select("circle.dot")
-						.transition()
-						.duration(TRANSITION_DURATION)
-						.ease(TRANSITION_EASE)
+					this.transition(update.select("circle.dot"))
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d));
             
-					update.select("circle.highlight")
-						.transition()
-						.duration(TRANSITION_DURATION)
-						.ease(TRANSITION_EASE)
+					this.transition(update.select("circle.highlight"))
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d))
 						.style("transform-origin", d => `${this.bandWidth(d)}px ${this.scaleY.bandwidth() / 2}px`)
 						.attr("opacity", (this.filters.selectedCategories.includes(this.category) && this.filters.showHighlights) ? 0.6 : 0);
             
-					update.select("text.label_")
-						.attr("class", d => this.fontClasses(d, "label_"))
-						.transition()
-						.duration(TRANSITION_DURATION)
-						.ease(TRANSITION_EASE)
+					this.transition(update.select("text.label_")
+						.attr("class", d => this.fontClasses(d, "label_")))
 						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2 + 3);
             
-					update.select("text.value")
-						.attr("class", d => this.fontClasses(d, "value"))
-						.transition()
-						.duration(TRANSITION_DURATION)
-						.ease(TRANSITION_EASE)
+					this.transition(update.select("text.value")
+						.attr("class", d => this.fontClasses(d, "value")))
 						.text(d => d.value.priceFormat())
 						.attr("y", d => (this.scaleY.bandwidth()) / 2 + 1)
 						.attr("x", d => this.bandWidth(d) + 10);
 				},
 				exit => exit
-					.call(exit => exit
-						.transition()
-						.duration(TRANSITION_DURATION)
-						.ease(TRANSITION_EASE)
+					.call(exit => this.transition(exit)
 						.attr("transform", "scale(0, 1)")
 						.remove())
 			);

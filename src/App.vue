@@ -618,8 +618,11 @@
           Les hypothèses sur lesquelles se basent l’ensemble des calculs sont disponibles à : <i>(adresse internet à venir)</i>.
         </p>
         <hr class="my-10">
-        <!-- <p class="text-base mb-2">
-          Calculs produits par <b>Michaël Robert-Angers</b> (Chaire de recherche en fiscalité de l'Université de Sherbrooke).
+        <p class="text-base mb-2">
+          Travail collectif où ont participé <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b>, <b>Suzie St-Cerny</b> et <b>Luc Godbout</b>.
+        </p>
+        <p class="text-base mb-2">
+          Les auteurs collaborent aux travaux de la Chaire de recherche en fiscalité et en finances publiques, qu’ils remercient pour l’appui financier qui a rendu possible la réalisation de cet outil.
         </p>
         <p class="text-base">
           Outil interactif développé & designé par <b>François Lévesque</b> (<a
@@ -629,7 +632,7 @@
             class="underline"
             href="http://www.professeurs.polymtl.ca/thomas.hurtut/"
           >Polytechnique Montréal</a>).
-        </p> -->
+        </p>
       </div>
     </div>
   </div>

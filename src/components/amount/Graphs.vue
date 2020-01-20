@@ -16,6 +16,12 @@ import { Graphs } from "./graphs.js";
 
 export default {
 	props: {
+		options: {
+			default () {
+				return {};
+			},
+			type: Object
+		},
 		data: {
 			required: true,
 			type: Array
@@ -35,7 +41,7 @@ export default {
 		};
 	},
 	mounted () {
-		this.graphs = new Graphs(this.$refs.graph, this.data, this.domainX, this.filters);
+		this.graphs = new Graphs(this.$refs.graph, this.data, this.domainX, this.filters, this.options);
 	},
 	methods: {
 		redraw (domainX, data, filters) {

@@ -12,8 +12,14 @@ const TRANSITION_EASE = d3.easeQuadInOut;
 
 class Graph {
 
-	constructor (container, data, subs, cumuls, domainY, filters, callbacks) {
+	constructor (container, data, subs, cumuls, domainY, filters, callbacks, options = {}) {
 
+		this.options = {
+			brush: options.brush === undefined ? false : options.brush,
+			transition: options.transition === undefined ? true : options.transition,
+			transitionDuration: options.transitionDuration === undefined ? TRANSITION_DURATION : options.transitionDuration
+		};
+    
 		this.container = container;
 		this.data = data;
 		this.subData = subs;
@@ -30,7 +36,7 @@ class Graph {
 		this.mobile = isMobile();
   
 		this.margin = {
-			top: this.mobile ? 17 : 24,
+			top: this.mobile ? 17 : 20,
 			bottom: this.mobile ? 16 : 40,
 			left: 52,
 			right: 10
@@ -74,12 +80,25 @@ class Graph {
 			.ticks(5)
 			.tickFormat((d) => (+d).priceFormat())
 			.tickPadding(TICK_PADDING);
-          
+    
+		this.brush = d3.brushX()
+			.extent([[this.scales.x.bandwidth(),0],[this.width,this.height]])
+			.on("brush", this.onBrushed(this));
+
 		this.createDefs();
       
 		this.draw();
     
 		this.redraw(this.domainY, this.filters);
+	}
+  
+	transition (g) {
+		if (this.options.transition) {
+			return g.transition()
+				.duration(this.options.transitionDuration)
+				.ease(TRANSITION_EASE);
+		}
+		return g;
 	}
   
 	color (category) {
@@ -199,15 +218,16 @@ class Graph {
 			.attr("y", 4)
 			.attr("x", 12)
 			.attr("class", "text-sm font-semibold");
-            
-		this.interactionRect = this.svg.append("rect")
-			.attr("height", this.height)
-			.attr("width", this.width)
-			.attr("fill", "transparent");
       
-		this.interactionRect
-			.on("mousemove", this.handleMouseOver(this))
-			.on("mouseout", this.handleMouseOut(this));
+		if (this.options.brush) {
+			this.brushG = this.svg.append("g")
+				.attr("transform", "translate(0,0)")
+				.attr("class", "brush")
+				.call(this.brush)
+				.on("dblclick", this.onBrushedDoubleClick(this))
+				.on("mousemove", this.handleMouseOver(this))
+				.on("mouseout", this.handleMouseOut(this));
+		}
 	}
   
 	redraw (domainY, filters) {
@@ -217,82 +237,59 @@ class Graph {
 
 		this.scales.y.domain(this.domainY);
         
-		this.axisY.transition()
-			.duration(TRANSITION_DURATION)
-			.ease(TRANSITION_EASE)
+		this.transition(this.axisY)
 			.call(this.axis.y.scale(this.scales.y));
     
-		this.bars
-			.selectAll("rect")
-			.transition()
-			.duration(TRANSITION_DURATION)
-			.ease(TRANSITION_EASE)
+		if (this.options.brush) {
+			this.brush.move(this.brushG, 
+				[this.scales.x(this.filters.selected[0]), this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth()]
+			); 
+		}
+    
+		this.transition(this.bars.selectAll("rect"))
 			.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
 			.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
 			.attr("opacity", (d, i, node) => {
 				return this.bandOpacity(d, node[i].getAttribute("data-category"));
 			});
       
-		this.barSubs
-			.selectAll("rect")
-			.transition()
-			.duration(TRANSITION_DURATION)
-			.ease(TRANSITION_EASE)
+		this.transition(this.barSubs.selectAll("rect"))
 			.attr("height", d =>this.bandSubHeight(d))
 			.attr("y", d => this.bandSubY(d))
 			.attr("opacity", (d, i, node) => {
 				return this.bandSubOpacity(d);
 			});
       
-		this.barCumuls
-			.selectAll("rect")
-			.transition()
-			.duration(TRANSITION_DURATION)
-			.ease(TRANSITION_EASE)
+		this.transition(this.barCumuls.selectAll("rect"))
 			.attr("height", d =>this.bandCumulHeight(d))
 			.attr("y", d => this.bandCumulY(d))
 			.attr("opacity", (d, i, node) => {
 				return this.bandSubOpacity(d);
 			});
       
-		this.abscisse
-			.transition()
-			.ease(TRANSITION_EASE)
-			.duration(TRANSITION_DURATION)
+		this.transition(this.abscisse)
 		  .attr("x1", this.scales.x(0))
 			.attr("x2", this.width)
 			.attr("y1", this.scales.y(0))
 			.attr("y2", this.scales.y(0));
     
-		this.selectLineTop
-			.transition()
-			.ease(TRANSITION_EASE)
-			.duration(TRANSITION_DURATION)
+		this.transition(this.selectLineTop)
 			.attr("x1", this.scales.x(this.filters.selected[0]))
 			.attr("x2", this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
       
-		this.selectLineBottom
-			.transition()
-			.ease(TRANSITION_EASE)
-			.duration(TRANSITION_DURATION)
+		this.transition(this.selectLineBottom)
 			.attr("x1", this.scales.x(this.filters.selected[0]))
 			.attr("x2", this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth())
 			.attr("y1", this.scales.y(0))
 			.attr("y2", this.scales.y(0))
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
       
-		this.bezierLeft
-			.transition()
-			.ease(TRANSITION_EASE)
-			.duration(TRANSITION_DURATION)
+		this.transition(this.bezierLeft)
 			.attr("d", this.bezierLeftCurve())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
       
-		this.bezierRight
-			.transition()
-			.ease(TRANSITION_EASE)
-			.duration(TRANSITION_DURATION)
+		this.transition(this.bezierRight)
 			.attr("d", this.bezierRightCurve())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
       
@@ -429,10 +426,7 @@ class Graph {
   
 	updateTooltip () {
 		if (this.filters.tooltip == null) {
-			this.tooltip
-				.transition()
-				.ease(TRANSITION_EASE)
-				.duration(TRANSITION_DURATION)
+			this.transition(this.tooltip)
 				.attr("opacity", 0);
 		} else {
 
@@ -462,23 +456,14 @@ class Graph {
 				x -= 2;
 			}
       
-			this.tooltip
-				.transition()
-				.ease(TRANSITION_EASE)
-				.duration(TRANSITION_DURATION)
+			this.transition(this.tooltip)
 				.attr("opacity", 1)
 				.attr("transform", `translate(${x},${y})`);
         
-			textElement
-				.transition()
-				.ease(TRANSITION_EASE)
-				.duration(TRANSITION_DURATION)
+			this.transition(textElement)
 				.attr("x", (direction == "right") ? 12 : -width -12);
       
-			this.tooltip.selectAll("path")
-				.transition()
-				.ease(TRANSITION_EASE)
-				.duration(TRANSITION_DURATION)
+			this.transition(this.tooltip.selectAll("path"))
 				.attr("d", this.tooltipPath(width + 15, height + 4, direction));
 		}
 	}
@@ -518,7 +503,6 @@ class Graph {
   
 	handleMouseOut (ctx) {
 		return function () {
-			console.log("out");
 			ctx.callbacks.mousemove(null);
 		};
 	}
@@ -530,6 +514,26 @@ class Graph {
 		return function (value) {
 			var index = Math.floor(((value - paddingOuter) / eachBand));
 			return domain[Math.max(0,Math.min(index, domain.length-1))];
+		};
+	}
+  
+	onBrushed (ctx) {
+		return function () {
+			if (!d3.event.sourceEvent) return; // Ignore "move"
+			if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
+			let s = d3.event.selection || this.scales.x.range();
+			let invertX = ctx.scaleBandInvert(ctx.scales.x);
+			ctx.callbacks.brushed([invertX(s[0]), invertX(s[1])]);
+		};
+	}
+  
+	onBrushedDoubleClick (ctx) {
+		return function () {
+			if (ctx.options.brush) {
+				ctx.brush.move(ctx.brushG, 
+					ctx.scales.x.range()
+				); 
+			}
 		};
 	}
 }

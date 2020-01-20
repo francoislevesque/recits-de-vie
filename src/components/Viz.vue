@@ -31,7 +31,9 @@
           :scenario="scenario"
           :subs="scenarioSubs[i]"
           :cumuls="scenarioCumuls[i]"
+          :options="options"
           @mousemove="onMouseMove($event, i)"
+          @brushed="brushed"
         />
       </div>
 
@@ -46,6 +48,7 @@
         >
           <amount-graphs
             ref="graphAmount"
+            :options="options"
             :filters="filters"
             :domain-x="domainAmount"
             :data="scenarioAmounts[i]"
@@ -71,6 +74,12 @@ export default {
 		AmountGraphs
 	},
 	props: {
+		options: {
+			default () {
+				return {};
+			},
+			type: Object
+		},
 		filters: {
 			required: true,
 			type: Object
@@ -191,6 +200,9 @@ export default {
 				data_.scenario = i;
 			}
 			this.$emit("mousemove", data_);
+		},
+		brushed (data) {
+			this.$emit("brushed", data);
 		}
 	}
 };
