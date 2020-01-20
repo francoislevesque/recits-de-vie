@@ -92,8 +92,8 @@ class Graph {
 		this.redraw(this.domainY, this.filters);
 	}
   
-	transition (g) {
-		if (this.options.transition) {
+	transition (g, animated = true) {
+		if (this.options.transition && animated) {
 			return g.transition()
 				.duration(this.options.transitionDuration)
 				.ease(TRANSITION_EASE);
@@ -245,27 +245,6 @@ class Graph {
 				[this.scales.x(this.filters.selected[0]), this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth()]
 			); 
 		}
-    
-		this.transition(this.bars.selectAll("rect"))
-			.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
-			.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
-			.attr("opacity", (d, i, node) => {
-				return this.bandOpacity(d, node[i].getAttribute("data-category"));
-			});
-      
-		this.transition(this.barSubs.selectAll("rect"))
-			.attr("height", d =>this.bandSubHeight(d))
-			.attr("y", d => this.bandSubY(d))
-			.attr("opacity", (d, i, node) => {
-				return this.bandSubOpacity(d);
-			});
-      
-		this.transition(this.barCumuls.selectAll("rect"))
-			.attr("height", d =>this.bandCumulHeight(d))
-			.attr("y", d => this.bandCumulY(d))
-			.attr("opacity", (d, i, node) => {
-				return this.bandSubOpacity(d);
-			});
       
 		this.transition(this.abscisse)
 		  .attr("x1", this.scales.x(0))
@@ -273,27 +252,53 @@ class Graph {
 			.attr("y1", this.scales.y(0))
 			.attr("y2", this.scales.y(0));
     
-		this.transition(this.selectLineTop)
+		this.updateSelected();
+      
+		this.updateTooltip();
+	}
+  
+	updateSelected (animated = true) {
+
+		this.transition(this.bars.selectAll("rect"), animated)
+			.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
+			.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
+			.attr("opacity", (d, i, node) => {
+				return this.bandOpacity(d, node[i].getAttribute("data-category"));
+			});
+      
+		this.transition(this.barSubs.selectAll("rect"), animated)
+			.attr("height", d =>this.bandSubHeight(d))
+			.attr("y", d => this.bandSubY(d))
+			.attr("opacity", (d, i, node) => {
+				return this.bandSubOpacity(d);
+			});
+      
+		this.transition(this.barCumuls.selectAll("rect"), animated)
+			.attr("height", d =>this.bandCumulHeight(d))
+			.attr("y", d => this.bandCumulY(d))
+			.attr("opacity", (d, i, node) => {
+				return this.bandSubOpacity(d);
+			});
+      
+		this.transition(this.selectLineTop, animated)
 			.attr("x1", this.scales.x(this.filters.selected[0]))
 			.attr("x2", this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
       
-		this.transition(this.selectLineBottom)
+		this.transition(this.selectLineBottom, animated)
 			.attr("x1", this.scales.x(this.filters.selected[0]))
 			.attr("x2", this.scales.x(this.filters.selected[1]) + this.scales.x.bandwidth())
 			.attr("y1", this.scales.y(0))
 			.attr("y2", this.scales.y(0))
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
       
-		this.transition(this.bezierLeft)
+		this.transition(this.bezierLeft, animated)
 			.attr("d", this.bezierLeftCurve())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
       
-		this.transition(this.bezierRight)
+		this.transition(this.bezierRight, animated)
 			.attr("d", this.bezierRightCurve())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
-      
-		this.updateTooltip();
 	}
   
 	bandOpacity (d, category) {
@@ -523,7 +528,9 @@ class Graph {
 			if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
 			let s = d3.event.selection || this.scales.x.range();
 			let invertX = ctx.scaleBandInvert(ctx.scales.x);
-			ctx.callbacks.brushed([invertX(s[0]), invertX(s[1])]);
+			ctx.filters.selected = [invertX(s[0]), invertX(s[1])];
+			ctx.callbacks.brushed(ctx.filters.selected);
+			ctx.updateSelected(false);
 		};
 	}
   

@@ -97,7 +97,7 @@
       </div>
       <div class="flex-grow">
         <viz
-          :options="{transition: false, brush: true}"
+          :options="{transition: 300, brush: true}"
           :filters="vizFilters"
           @mousemove="onMouseMove"
           @brushed="brushed"
@@ -206,10 +206,10 @@ export default {
 				this.tooltip = data;
 			}
 		},
-		brushed (data) {
+		brushed: debounce(function(data) {
 			this.$set(this.filters, "age", data);
 			this.$set(this.filters, "validatedAge", data);
-		},
+		}, 100),
 		onToggleSub (value) {
 			if (value) {
 				this.oldFilters = JSON.parse(JSON.stringify(this.filters));
