@@ -495,7 +495,7 @@
       <notice
         data-min="82"
         data-max="82"
-        data-category="benefices,prelevements"
+        data-category="benefices,prelevements,revenu"
         data-scenarios="1"
         data-tooltip="82,prelevements,left"
         push-bottom
@@ -511,7 +511,7 @@
         data-min="83"
         data-max="87"
         data-category="benefices"
-        data-tooltip="37,benefices,left"
+        data-tooltip="83,benefices,left"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
