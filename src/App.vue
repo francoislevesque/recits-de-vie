@@ -8,7 +8,7 @@
           alt="Logo chaire de recherche en fiscalité et finances publiques de l'Université de Sherbrooke"
         >
         <p class="text-xl font-bold text-white lg:text-4xl leading-tight mb-10">
-          Comment les impôts et les charges sociales, les prestations et les dépenses publiques affectent une contribuable au cours de sa vie ?
+          Comment les prélèvements fiscaux, les prestations et les dépenses publiques affectent une contribuable au cours de sa vie ?
         </p>
         <p class="text-white font-semibold leading-none mb-2">
           Par la 
@@ -36,7 +36,7 @@
       <div class="container max-w-2xl bg-blue-100">
         <div class="p-8 lg:p-10">
           <p class="mb-10">
-            Nous allons suivre la vie d'Ella, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>. Ella présente les caractéristiques représentatives d’une femme québécoise, pour <b>3 scénarios de vie distincts</b> :
+            Nous allons suivre la vie d'Ella, ui présente les caractéristiques représentatives d’une femme québécoise, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>, pour 3 scénarios de vie distincts :
           </p>
           <div class="mb-10">
             <div class="pl-6 border-blue-500 border-l-4 mb-10">
@@ -167,9 +167,9 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Aux études collégiales | 
-          <span class="text-gray-600">18 ans</span> 
+          <span class="text-gray-600">18 à 20 ans</span> 
         </h2>
-        À <b>18 ans</b>, Ella habite chez ses parents, poursuit des études collégiales et travaille à temps partiel. Ella n’a pas encore formé de couple. Dans tous les scénarios, son <span class="revenu">revenu</span> est identique, soit près de <b>7 500 $</b>.
+        À <b>18 ans</b>, Ella habite chez ses parents, poursuit des études collégiales et travaille à temps partiel. Ella n’a pas encore formé de couple. Dans tous les scénarios, son <span class="revenu">revenu</span> est identique, soit un peu plus de <b>7 500 $</b> par année.
       </notice>
       <div
         slot="graphic"
@@ -200,7 +200,7 @@
         data-tooltip="20,prestations"
         push-bottom
       >
-        En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit de solidarité</span> et <span class="prestations">Crédit de TPS.</span>
+        En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit d'impôt pour la solidarité</span> et <span class="prestations">Crédit pour TPS.</span>
       </notice>
       <notice
         data-max="20"
@@ -219,9 +219,9 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Début de carrière | 
-          <span class="text-gray-600 mr-1">21 ans</span> 
+          <span class="text-gray-600 mr-1">21 à 26 ans</span> 
         </h2>
-        À 21 ans, Ella quitte le domicile de ses parents et commence à travailler à temps plein. Son <span class="revenu">salaire</span> initial est d’un peu plus de <b>35 000 $</b> et augmente progressivement.
+        À 21 ans, Ella quitte le domicile de ses parents et commence à travailler à temps plein. Son <span class="revenu">salaire</span> initial est d’un peu plus de <b>35 000 $</b> et augmente progressivement chaque année, atteignant plus de <b>42 000 $</b> à 26 ans.
       </notice>
       <notice
         data-min="21"
@@ -230,7 +230,7 @@
         data-tooltip="26,prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements fiscaux</span> augmentent également. Ceux-ci, composés des <span class="prelevements">impôts</span>, des <span class="prelevements">cotisations sociales</span> et <span class="prelevements">taxes à la consommation</span> totalisent environ <b>8 500 $</b> au début de la vie active d’Ella.
+        Les <span class="prelevements">prélèvements fiscaux</span> augmentent également en fonction du revenu et passent de <b>8 500 $</b> à plus de <b>11 000 $</b>. 
       </notice>
       <notice
         data-min="21"
@@ -239,7 +239,7 @@
         data-tooltip="26,prelevements"
         push-bottom
       >
-        <span class="prelevements">L’impôt fédéral et du Québec</span> constituent alors <b>un peu plus de la moitié</b> des prélèvements. 
+        <span class="prelevements">L’impôt sur le revenu fédéral et du Québec</span> constituent alors <b>un peu plus de la moitié</b> des prélèvements. 
       </notice>
       <notice
         data-min="21"
@@ -248,7 +248,7 @@
         data-tooltip="26,prestations"
         push-bottom
       >
-        Un peu plus de la moitié provient des <span class="prestations">prestations monétaires (crédit pour TPS et crédit pour solidarité)</span> qui totalisent plus de <b>1 000 $</b>. Ces montants diminuent lorsque le salaire d’Ella augmente.
+        Les <span class="prestations">prestations</span> se composent du <span class="prestations">crédit pour TPS</span> et du <span class="prestations">crédit d’impôt pour solidarité</span> qui totalisent plus de <b>1 000 $</b>. Ces montants diminuent lorsque le salaire d’Ella augmente.
       </notice>
       <notice
         data-min="21"
@@ -257,7 +257,7 @@
         data-tooltip="26,benefices"
         push-bottom
       >
-        La valeur des <span class="benefices">services publics</span> de <span class="benefices">soins de santé</span> reçus est d’environ <b>2 000 $</b> par année.
+        La valeur moyenne des <span class="benefices">services publics de soins de santé reçus</span> est d’environ 2 000 $ par année. Cette valeur fluctue selon l’âge et s’établit à environ <b>2 700 $</b> à 26 ans.
       </notice>
       <notice
         data-min="27"
@@ -269,7 +269,7 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Vie en couple | 
-          <span class="text-gray-600 mr-1">27 ans</span> 
+          <span class="text-gray-600 mr-1">27 à 28 ans</span> 
         </h2>
         C'est à <b>27 ans</b>, qu'Ella forme un couple avec Luis. En conséquence les scénarios 2 et 3 prennent en compte le <span class="revenu">revenu du ménage</span> de plus de <b>93 000$</b> à la formation du couple. 
       </notice>
@@ -281,7 +281,7 @@
         data-tooltip="28,prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements</span> assumés par Ella et Luis sont de près de <b>27 000$</b> à la formation du couple.
+        Les <span class="prelevements">prélèvements</span> assumés par Ella et Luis sont d’environ <b>26 500 $</b>.
       </notice>
       <notice
         data-min="27"
@@ -291,7 +291,7 @@
         data-tooltip="28,benefices"
         push-bottom
       >
-        Le couple ne bénéficie au départ d’aucune <span class="prestations">prestation financière</span>. La valeur des <span class="benefices">services publics</span> reçus, composés exclusivement des <span class="benefices">soins de santé</span>, est d’un peu plus de <b>4 000 $</b>. 
+        Le couple ne bénéficie au départ d’aucune <span class="prestations">prestation financière</span>. La valeur des <span class="benefices">services publics</span> reçus, composés exclusivement des <span class="benefices">soins de santé</span>, est de près de <b>4 300 $</b>. 
       </notice>
       <notice
         data-min="29"
@@ -310,22 +310,22 @@
       <notice
         data-min="29"
         data-max="29"
-        data-category="prelevements"
-        data-scenarios="1,2"
-        data-tooltip="29,prelevements"
-        push-bottom
-      >
-        Les <span class="prelevements">prélèvements</span> passent à environ <b>20 000 $</b>.
-      </notice>
-      <notice
-        data-min="29"
-        data-max="29"
         data-category="prestations"
         data-scenarios="1,2"
         data-tooltip="29,prestations"
         push-bottom
       >
-        Les nouveaux parents touchent des <span class="prestations">prestations</span> du <span class="prestations">Régime québécois d’assurance parentale</span> s’élevant à près de <b>31 000 $</b>. Des <span class="prestations">prestations financières pour la famille</span> d’environ <b>5 000 $</b> sont également touchées.
+        Les nouveaux parents touchent des <span class="prestations">prestations</span> du <span class="prestations">Régime québécois d’assurance parentale</span> s’élevant à près de <b>31 000 $</b>. Des <span class="prestations">prestations financières pour la famille</span> d’environ <b>5 000 $</b> s’ajoutent également.
+      </notice>
+      <notice
+        data-min="29"
+        data-max="29"
+        data-category="prelevements"
+        data-scenarios="1,2"
+        data-tooltip="29,prelevements"
+        push-bottom
+      >
+        Les <span class="prelevements">prélèvements</span> passent à un peu moins de <b>20 500 $</b>.
       </notice>
       <notice
         data-min="29"
@@ -372,25 +372,25 @@
         data-tooltip="39,benefices"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Entrée à la maternelle | 
-          <span class="text-gray-600 mr-1">34 ans</span> 
+        <h2 class="text-lg font-bold mb-2 leading-tight">
+          Entrée à la maternelle et éducation primaire des 2 enfants (scénario 2), 1 seul enfant (scénario 3) | 
+          <span class="text-gray-600 mr-1">34 à 39 ans</span> 
         </h2>
-        Lorsque Ella a <b>34 ans</b>, le premier enfant entre à la maternelle, la valeur des <span class="benefices">services publics</span> reçus diminue car l’utilisation des <span class="benefices">services de garde à contribution réduite</span> est remplacée par les <span class="benefices">services de garde en milieu scolaire</span> et les <span class="benefices">services d’enseignement primaire</span>.
+        Lorsque Ella a <b>34 ans</b>, le premier enfant entre à la maternelle, la valeur des <span class="benefices">services publics</span> reçus diminue, car l’utilisation des <span class="benefices">services de garde à contribution réduite</span> est remplacée par les <span class="benefices">services de garde en milieu scolaire</span> et les <span class="benefices">services d’enseignement primaire</span>.
       </notice>
       <notice
         data-min="40"
-        data-max="46"
+        data-max="40"
         data-category="revenu"
         data-scenarios="2"
-        data-tooltip="46,revenu"
+        data-tooltip="40,revenu"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
           Rupture | 
           <span class="text-gray-600 mr-1">40 ans</span> 
         </h2>
-        À <b>40 ans</b>, le scénario 3 montre l’effet de la rupture d’Ella et de son conjoint, celle-ci conserve la garde exclusive de son enfant unique. Le revenu n’est plus constitué que du salaire d’Ella, soit près de <b>53 000 $</b>.
+        À <b>40 ans</b>, le scénario 3 montre l’effet de la rupture d’Ella et de son conjoint. Celle-ci conserve la garde exclusive de son enfant unique. Le revenu n’est plus constitué que du salaire d’Ella, soit près de <b>53 000 $</b>.
       </notice>
       <notice
         data-min="40"
@@ -400,7 +400,7 @@
         data-tooltip="46,prelevements"
         push-bottom
       >
-        Dans le scénario 3, suite à la rupture, les <span class="prelevements">prélèvements</span> passent à <b>15 000 $</b>. 
+        Dans le scénario 3, suite à la rupture, les <span class="prelevements">prélèvements</span> passent à environ <b>15 000 $</b>. 
       </notice>
       <notice
         data-min="40"
@@ -410,23 +410,23 @@
         data-tooltip="46,prestations"
         push-bottom
       >
-        Toujours en situation monoparentale les <span class="prestations">prestations financières</span> d’Ella sont majorées, les prestations pour la famille passent à <b>7 500 $</b>. 
+        Toujours en situation monoparentale, les <span class="prestations">prestations financières</span> d’Ella sont majorées. Elles passent à <b>7 500 $</b>. 
       </notice>
       <notice
         data-min="47"
-        data-max="48"
+        data-max="47"
         data-category="prestations"
         data-scenarios="1,2"
-        data-tooltip="48,prestations"
+        data-tooltip="47,prestations"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
           Le premier enfant devient majeur | 
           <span class="text-gray-600 mr-1">47 ans</span> 
         </h2>
-        Lorsque le premier enfant atteint <b>18 ans</b>, les <span class="prestations">prestations familiales</span> diminuent et la valeur des <span class="benefices">services publics</span> qui lui sont attribués ne sont plus pris en compte.
+        Lorsque le premier enfant atteint <b>18 ans</b>, les <span class="prestations">prestations financières</span> diminuent et la valeur des <span class="benefices">services publics</span> attribués à cet enfant n’est plus prise en compte.
         <br>
-        Dans le cas du scénario où Ella est monoparentale, les <span class="prestations">prestations financières</span> <b>(7 500 $)</b> disparaissent complètement et une diminution de la valeur des <span class="benefices">services publics</span> de près de <b>14 000 $</b> est alors observée.  
+        Dans le cas du scénario où Ella est monoparentale, les <span class="prestations">prestations financières</span> <b class="whitespace-no-wrap">(7&nbsp;500 $)</b> disparaissent complètement et une diminution de la valeur des <span class="benefices">services publics</span> d'environ <b class="whitespace-no-wrap">13&nbsp;700 $</b> est alors observée.  
       </notice>
       <notice
         data-min="49"
@@ -440,7 +440,7 @@
           Deuxième enfant devient majeur | 
           <span class="text-gray-600 mr-1">49 ans</span> 
         </h2>
-        Une deuxième réduction des <span class="prestations">prestations financières</span> et de la valeur des <span class="benefices">services publics</span> reçus survient lorsqu’Ella a <b>49 ans</b>, soit lorsque le deuxième enfant atteint <b>18 ans</b>.
+        Dans le cas du scénario 2, une deuxième réduction des <span class="prestations">prestations financières</span> et de la valeur des <span class="benefices">services publics</span> reçus survient lorsqu’Ella a <b>49 ans</b>, soit lorsque le deuxième enfant atteint <b>18 ans</b>.
       </notice>
       <notice
         data-min="60"
@@ -451,9 +451,9 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Retraite | 
-          <span class="text-gray-600 mr-1">60 ans</span> 
+          <span class="text-gray-600 mr-1">60 à 74 ans </span> 
         </h2>
-        Dans tous les scénarios Ella prend sa retraite à <b>60 ans</b>. C’est également le cas de Luis (scénario 2). Le <span class="revenu">revenu</span> provient alors de leurs fonds de retraite privé. Il est moins important qu’en période de vie active.
+        Dans tous les scénarios Ella prend sa retraite à <b>60 ans</b>. Luis prend sa retraite au même moment qu’Ella (scénario 2). Le <span class="revenu">revenu</span> provient alors de leurs fonds de retraite privé. Il est moins important qu’en période de vie active.
       </notice>
       <notice
         data-min="60"
@@ -462,7 +462,7 @@
         data-category="prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements</span> diminuent également. Les <b>impôts</b>, <b>taxes à la consommation</b> et les <b>cotisations sociales</b> sont remplacées par les <span class="prelevements">cotisations au régime d’assurance-médicament</span> et au <span class="prelevements">Fonds de service de santé</span>. 
+        Les <span class="prelevements">prélèvements</span> diminuent également. Les <b>cotisations sociales</b> prélevées sur le salaire sont remplacées par les <span class="prelevements">cotisations au régime d’assurance-médicament</span> et au <span class="prelevements">Fonds de service de santé</span>. 
       </notice>
 
       <notice
@@ -473,7 +473,7 @@
         data-tooltip="74,prestations"
         push-bottom
       >
-        Dans le <b>scénario 2</b>, Luis touche les <span class="prestations">prestations de la régie des rentes du Québec</span> dès la prise de la retraite. Ella touche ces prestations à <b>61 ans</b>. Tous deux obtiennent la <span class="prestations">prestation de la sécurité de la vieillesse</span> à <b>65 ans</b>. 
+        Ella touche les <span class="prestations">prestations du Régime des rentes du Québec</span> à 61 ans. Dans le scénario 2, Luis touche ces prestations dès la prise de la retraite. Tous deux obtiennent la <span class="prestations">pension de la sécurité de la vieillesse</span> à <b>65 ans</b>.
       </notice>
 
       <notice
@@ -485,28 +485,28 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Maintien à domicile | 
-          <span class="text-gray-600 mr-1">75 ans</span> 
+          <span class="text-gray-600 mr-1">75 à 81 ans</span> 
         </h2>
         À compter de <b>75 ans</b>, Ella touche le <span class="prestations">crédit d’impôt pour maintien à domicile</span>. 
       </notice>
 
       <notice
         data-min="82"
-        data-max="84"
+        data-max="82"
         data-category="benefices,prelevements"
         data-scenarios="1"
-        data-tooltip="84,prelevements"
+        data-tooltip="82,prelevements"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
           Décès du conjoint | 
           <span class="text-gray-600 mr-1">82 ans</span> 
         </h2>
-        Luis décède lorsque Ella est âgée de <b>82 ans</b> (scénario 2), modifiant le revenu, la valeur des <span class="prelevements">prélèvements</span> et celle des <span class="benefices">bénéfices publics</span> reçus. 
+        Luis décède lorsque Ella est âgée de <b>82 ans</b> (scénario 2), modifiant le <span class="revenu">revenu</span>, la valeur des <span class="prelevements">prélèvements</span> et celle des <span class="benefices">bénéfices publics</span> reçus. 
       </notice>
 
       <notice
-        data-min="85"
+        data-min="83"
         data-max="87"
         data-category="benefices"
         data-tooltip="87,benefices"
@@ -514,9 +514,9 @@
       >
         <h2 class="text-lg font-bold mb-2">
           Fin de vie | 
-          <span class="text-gray-600 mr-1">85 ans</span> 
+          <span class="text-gray-600 mr-1">83 à 87 ans</span> 
         </h2>
-        À l’âge adulte, la valeur des <span class="benefices">services de soins de santé</span> reçus augmente avec l’âge. Dans le cas où Ella vit seule à la retraite (scénarios 1 et 3), ils passent de <b>6 000 $</b> à 65 ans, à <b>28 000 $</b> à 85 ans.
+        À l’âge adulte, la valeur des <span class="benefices">services de soins de santé</span> reçus augmente avec l’âge. Dans le cas où Ella vit seule à la retraite (scénarios 1 et 3), cette valeur passe d’un peu moins de <b>6 000 $</b> à 65 ans, à plus de <b>28 000 $</b> à 85 ans.
       </notice>
 
       <notice
@@ -530,8 +530,7 @@
         <h2 class="text-lg font-bold mb-2">
           Bénéfices et gains au cours d'une vie 
         </h2>
-        Au cours d'une vie, chaque ménage a eu droit à des <span class="benefices">service publiques</span> et <span class="prestations">prestations</span>, et a assumé des <span class="prelevements">prélèvements</span>.
-        <b>Nous pouvons observer simultanément ces deux quantités.</b>
+        Au cours d'une vie, les 3 ménages d’Ella bénéficient de <span class="benefices">services publics</span>, touchent des <span class="prestations">prestations</span> et, en contrepartie assument des <span class="prelevements">prélèvements</span>. <b>Nous pouvons observer simultanément ces flux monétaires</b>.
       </notice>
 
       <notice
@@ -542,7 +541,7 @@
         data-show-substraction="true"
         push-bottom
       >
-        En effectuant la <b>différence entre les deux</b>, il est possible de voir si l'on reçoit davantage que l'on donne.
+        En effectuant la <b>différence entre ce qui a été reçu et ce qui a été payé</b>, il est possible de voir si le ménage d’Ella retire un bénéfice net (valeur positive) ou encore si celui-ci est contributeur net (valeur négative) au cours d’une année de vie en particulier.
       </notice>
 
       <notice
@@ -553,7 +552,18 @@
         data-show-substraction="true"
         push-bottom
       >
-        Dans les scénarios 2 et 3, on remarque que <b>le ménage reçoit davantage lorsque les enfants sont mineurs</b>.
+        Dans le cas des scénarios 2 et 3, on remarque <b>l’effet de l’arrivée des enfants</b> et des <span class="prestations">bénéfices publics</span> reçus lorsqu’ils sont d’âge préscolaire.
+      </notice>
+
+      <notice
+        data-min="40"
+        data-max="46"
+        data-amounts="false"
+        data-scenarios="2"
+        data-show-substraction="true"
+        push-bottom
+      >
+        Suite à la <b>rupture du couple</b>, les <span class="prestations">bénéfices publics</span> obtenus par la famille monoparentale (scénario 3) surpassent les <span class="prelevements">prélèvements</span>, jusqu’à ce que l’enfant atteigne 18 ans.
       </notice>
 
       <notice
@@ -563,7 +573,7 @@
         data-show-substraction="true"
         push-bottom
       >
-        <b>À la retraite</b>, dans tous les scénarios, Ella <b>reçoit plus qu'elle donne</b>.
+        Dans tous les cas, les ménages d’Ella sont <span class="prestations">bénéficiaires nets</span> à compter du moment où celle-ci touche les prestations du <span class="prestations">Régime des rentes du Québec</span>. 
       </notice>
 
       <notice
@@ -574,7 +584,7 @@
         data-show-selection="false"
         push-bottom
       >
-        Le <b>cumulatif annuel des bénéfices et prélèvements</b> permet d’évaluer sommairement si, au cours de sa vie adulte, Ella a obtenu davantage en <span class="prestations">prestations</span> et <span class="benefices">services publics</span> que ce qu’elle a déboursé en matière de <span class="prelevements">prélèvements</span>.  
+        Le <b>cumul annuel des bénéfices et prélèvements</b> permet d’évaluer, pour une année particulière, la différence entre, d’une part, l’ensemble des <span class="prestations">prestations</span> et <span class="benefices">services publics</span> obtenus jusque-là au cours de la vie adulte et, d’autre part l’ensemble des <span class="prelevements">prélèvements</span> assumés. 
       </notice>
 
       <notice
@@ -585,7 +595,31 @@
         data-show-selection="false"
         push-bottom
       >
-        On remarque que les scénarios où Ella a un enfant, le "point zéro" arrive plus tôt: à <b>74 ans</b> pour le scénario 2 et à <b>80 ans</b> pour le scénario 3. 
+        La <b>présence d’enfant</b> et les <b>bénéfices publics offerts à deux retraités plutôt qu’un seul</b> ont pour effet de devancer le moment à partir duquel le ménage d’Ella commence à obtenir rétrospectivement davantage que ce qu’il a versé sur un cycle de vie complet. 
+        <br>
+        <br>
+        Ce moment arrive lorsque Ella a :
+        <ul class="list-disc ml-5">
+          <li><b>74 ans</b> pour le scénario 2</li>
+          <li>
+            <b>80 ans</b> pour le scénario 3
+          </li>
+          <li><b>85 ans</b> pour le scénario 1</li>
+        </ul>
+      </notice>
+
+      <notice
+        data-min="18"
+        data-max="87"
+        data-amounts="false"
+        data-show-cumul="true"
+        data-show-selection="false"
+        push-bottom
+      >
+        De façon générale, les <span class="prelevements">prélèvements</span> dominent pendant la <b>vie active</b> tandis que la valeur des <span class="prestations">bénéfices publics</span> est plus importante à la <b>retraite</b>. 
+        <br>
+        <br>
+        Ella assume une charge fiscale importante à certains moments de sa vie sans toujours obtenir une contrepartie équivalente sous forme de bénéfices publics, cependant, dans son cas, cette situation est temporaire.
       </notice>
 
       <notice
@@ -595,7 +629,7 @@
         <h2 class="text-lg font-bold mb-2">
           À vous d'explorer!
         </h2>
-        Vous pouvez à présent explorer les données comme bon vous semble.
+        Vous pouvez à présent explorer les données comme bon vous semble. Les informations relatives à une année particulière s’affichent lorsque l’on pointe le curseur sur les graphiques.
       </notice>
 
       <div data-step="end">
@@ -606,23 +640,47 @@
     <div class="py-12 px-6 bg-blue-100">
       <div class="container max-w-2xl">
         <h2 class="text-lg font-semibold mb-3">
-          Méthodologie
+          Méthodologie et interprétation
         </h2>
         <p class="text-base mb-5">
-          Les calculs sont basés sur le régime fiscal de 2018. La majorité des caractéristiques de nos personnages sont issues des données produites par Statistique Canada. Pour chacun des paramètres, le cas médian (ou moyen) est retenu afin de baser l’analyse sur les situations les plus représentatives possible.  Il est important de noter que seul un échantillon de services publics et, par conséquent, des bénéfices publics est présenté. Dans le même ordre d’idée, certains prélèvements tels les impôts fonciers n’ont pas été pris en compte.
+          Les calculs sont basés sur le régime fiscal de 2018, le ménage vivant l’ensemble de sa vie dans ce système fiscal. La majorité des caractéristiques de nos personnages sont issues des données produites par Statistique Canada. Pour chacun des paramètres, le cas médian (ou moyen) est retenu afin de baser l’analyse sur les situations les plus représentatives possible.  Il est important de noter que seul un échantillon de services publics et, par conséquent, des bénéfices publics est présenté. Dans le même ordre d’idée, certains prélèvements tels les impôts fonciers n’ont pas été pris en compte.
         </p>
         <p class="text-base mb-5">
           Cette analyse ne doit donc pas être vue comme un bilan précis des gains et bénéfices de la vie dans la société québécoise pour un cheminement de vie donné, mais plutôt comme une représentation de l’évolution des prélèvements fiscaux et des bénéfices publics au cours d’une vie.
         </p>
         <p class="text-base ">
-          Les hypothèses sur lesquelles se basent l’ensemble des calculs sont disponibles à : <i>(adresse internet à venir)</i>.
+          Les hypothèses sur lesquelles se basent l’ensemble des calculs sont disponibles à : <a
+            class="underline text-blue-700"
+            href="http://cffp.recherche.usherbrooke.ca/impots-et-services-publics-approche-par-recit-de-vie/"
+          >http://cffp.recherche.usherbrooke.ca/impots-et-services-publics-approche-par-recit-de-vie/</a>.
         </p>
+
+        <a
+          href="#"
+          class="items-center inline-flex px-2 py-2 pr-4 bg-gray-200 rounded mt-8"
+        > 
+          <svg
+            class="inline"
+            style="width:24px;height:24px"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"
+            />
+          </svg>
+          <span class="ml-1">Retourner au début</span>
+        </a>
+
         <hr class="my-10">
         <p class="text-base mb-2">
-          Travail collectif où ont participé <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b>, <b>Suzie St-Cerny</b> et <b>Luc Godbout</b>.
+          Travail collectif où ont participé <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b> et <b>Luc Godbout</b>.
         </p>
         <p class="text-base mb-2">
-          Les auteurs collaborent aux travaux de la Chaire de recherche en fiscalité et en finances publiques, qu’ils remercient pour l’appui financier qui a rendu possible la réalisation de cet outil.
+          Les auteurs collaborent aux travaux de la <a
+            class="underline"
+            href="http://cffp.recherche.usherbrooke.ca/"
+          >Chaire de recherche en fiscalité et en finances publiques</a>, qu’ils remercient pour l’appui financier qui a rendu possible la réalisation de cet outil.
         </p>
         <p class="text-base">
           Outil interactif développé & designé par <b>François Lévesque</b> (<a
@@ -657,6 +715,7 @@ export default {
 	data () {
 		return {
 			filters: {
+				agglomerationAverage: true,
 				showHighlights: true,
 				showAmounts: true,
 				showSelection: true,

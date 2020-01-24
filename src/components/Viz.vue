@@ -124,7 +124,13 @@ export default {
       
 			this.redrawGraphs();
 			this.redrawAmountGraphs();
-		}
+		},
+		"filters.agglomerationAverage" () {
+			this.updateAmountsData();
+			this.calculateDomains();
+      
+			this.redrawAmountGraphs();
+		},
 	},
 	created () {
 		this.scenarios = scenarios();

@@ -29,9 +29,9 @@ class Graphs {
   
 		this.margin = {
 			top: 24,
-			bottom: TICK_MARGIN_TOP + 20,
+			bottom: TICK_MARGIN_TOP + 40,
 			left: 210,
-			right: 62
+			right: 72
 		};
     
 		this.width = this.containerWidth - this.margin.left - this.margin.right;
@@ -70,10 +70,10 @@ class Graphs {
   
 	draw () {
 
-		this.gAxisX = this.svg.append("g")
+		/** this.gAxisX = this.svg.append("g")
 			.attr("class", "axis axis-x")
 			.attr("transform", "translate(0," + (this.height + TICK_MARGIN_TOP) + ")")
-			.call(this.axisX);
+			.call(this.axisX); */
       
 		this.bars = this.svg.selectAll(".bar")
 			.data(this.data)
@@ -116,8 +116,8 @@ class Graphs {
     
 		this.axisX.tickValues(tickValues);
     
-		this.transition(this.gAxisX)
-			.call(this.axisX.scale(this.scaleX));
+		/** this.transition(this.gAxisX)
+			.call(this.axisX.scale(this.scaleX)); */
             
 		this.graphs.forEach(g => {
 			g.redraw(this.data.find(d => d.name == g.category).amounts, this.filters);

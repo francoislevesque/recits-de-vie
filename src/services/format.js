@@ -2,8 +2,8 @@ import rawData from "./dataRaw";
 
 let categories = {
 	revenu: ["revenu-salaire", "revenu-retraite"],
-	prestations: ["credit-tps", "credit-solidarite", "afe", "pension", "allocation-cad-enfants", "paiement-soutien-enfants", "regime-assurance-parentale", "allocation-fournitures-scolaires", "cisd"],
-	benefices: ["sante", "service-es", "service-de-garde", "service-de-garde-scolaire", "primaire-secondaire", "assurance-medicament", "rentes"],
+	prestations: ["credit-tps", "credit-solidarite", "afe", "pension", "allocation-cad-enfants", "paiement-soutien-enfants", "regime-assurance-parentale", "allocation-fournitures-scolaires", "cisd", "rentes"],
+	benefices: ["sante", "service-es", "service-de-garde", "service-de-garde-scolaire", "primaire-secondaire", "assurance-medicament"],
 	prelevements: ["impot", "frais-de-garde", "rrq", "rqap", "ae", "taxes", "fond-service-sante", "regime-assurance-medicament"],
 };
 
@@ -112,7 +112,11 @@ function _amounts (scenario, filters) {
 			}
             
 			Object.keys(amounts).forEach(name => {
-				data[category][name] += amounts[name] / selected.length;
+				let amount = amounts[name];
+				if (filters.agglomerationAverage) {
+					amount = amounts[name] / selected.length;
+				}
+				data[category][name] += amount;
 			});
 		});
 	});

@@ -94,6 +94,27 @@
             </v-switch>
           </div>
         </div>
+        <div class="pt-6 pb-4 px-5 border-b border-blue-300">
+          <div class="text-sm font-semibold mb-2">
+            Affichage des montants
+          </div>
+          <div class="flex">
+            <button
+              class="flex-1 border border-gray-400 px-3 py-2 text-base bg-white rounded-l hover:bg-gray-100"
+              :class="{'bg-gray-300 hover:bg-gray-300': filters.agglomerationAverage}"
+              @click="$set(filters, 'agglomerationAverage', true)"
+            >
+              Moyenne
+            </button>
+            <button
+              class="flex-1 border border-l-0 border-gray-400 px-3 py-2 text-base bg-white rounded-r hover:bg-gray-100"
+              :class="{'bg-gray-300 hover:bg-gray-300': !filters.agglomerationAverage}"
+              @click="$set(filters, 'agglomerationAverage', false)"
+            >
+              Somme
+            </button>
+          </div>
+        </div>
       </div>
       <div class="flex-grow">
         <viz
@@ -136,6 +157,7 @@ export default {
 				year: 40
 			},
 			filters: {
+				agglomerationAverage: true,
 				age: [18,87],
 				validatedAge: [18,87],
 				showRevenu: true,
@@ -163,6 +185,7 @@ export default {
 				categories.push("prelevements");
 			}
 			return {
+				agglomerationAverage: this.filters.agglomerationAverage,
 				showHighlights: false,
 				showAmounts: true,
 				showSelection: true,
