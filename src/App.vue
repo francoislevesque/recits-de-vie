@@ -257,7 +257,7 @@
         data-tooltip="26,benefices"
         push-bottom
       >
-        La valeur moyenne des <span class="benefices">services publics de soins de santé reçus</span> est d’environ 2 000 $ par année. Cette valeur fluctue selon l’âge et s’établit à environ <b>2 700 $</b> à 26 ans.
+        La valeur moyenne des <span class="benefices">services publics de soins de santé reçus</span> est d’environ <span class="whitespace-no-wrap">2&nbsp;000 $</span> par année. Cette valeur fluctue selon l’âge et s’établit à environ <b class="whitespace-no-wrap">2&nbsp;700 $</b> à 26 ans.
       </notice>
       <notice
         data-min="27"
@@ -281,7 +281,7 @@
         data-tooltip="28,prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements</span> assumés par Ella et Luis sont d’environ <b>26 500 $</b>.
+        Les <span class="prelevements">prélèvements</span> assumés par Ella et Luis sont d’environ <b class="whitespace-no-wrap">26&nbsp;500 $</b>.
       </notice>
       <notice
         data-min="27"
@@ -486,7 +486,7 @@
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
-          Maintien à domicile | 
+          Retraite | 
           <span class="text-gray-600 mr-1">75 à 81 ans</span> 
         </h2>
         À compter de <b>75 ans</b>, Ella touche le <span class="prestations">crédit d’impôt pour maintien à domicile</span>. 
