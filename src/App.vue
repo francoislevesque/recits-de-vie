@@ -446,7 +446,7 @@
         data-min="60"
         data-max="74"
         data-category="revenu"
-        data-tooltip="74,revenu"
+        data-tooltip="60,revenu,left"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -470,7 +470,7 @@
         data-max="74"
         data-category="prestations"
         data-scenarios="1"
-        data-tooltip="74,prestations"
+        data-tooltip="60,prestations,left"
         push-bottom
       >
         Ella touche les <span class="prestations">prestations du Régime des rentes du Québec</span> à 61 ans. Dans le scénario 2, Luis touche ces prestations dès la prise de la retraite. Tous deux obtiennent la <span class="prestations">pension de la sécurité de la vieillesse</span> à <b>65 ans</b>.
@@ -480,7 +480,7 @@
         data-min="75"
         data-max="81"
         data-category="prestations"
-        data-tooltip="81,prestations"
+        data-tooltip="75,prestations,left"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">

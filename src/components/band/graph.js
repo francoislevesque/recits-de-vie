@@ -437,6 +437,7 @@ class Graph {
 
 			let year = this.filters.tooltip[0];
 			let category = this.filters.tooltip[1];
+			let direction = this.filters.tooltip.length > 2 ? this.filters.tooltip[2] : null;
 			let d = this.data.find(d => d.year == year);
 			let amount = d.categories[category].total;
 
@@ -449,10 +450,13 @@ class Graph {
 			let width = bbox.width;
 			let height = bbox.height;
       
-			let direction = "right";
-      
-			if (x + width + 20 > this.width) {
-				direction = "left";
+			if (direction == null) {
+
+				direction = "right";
+        
+				if (x + width + 20 > this.width) {
+					direction = "left";
+				}
 			}
 
 			if (direction == "right") {
