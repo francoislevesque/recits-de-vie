@@ -1,6 +1,6 @@
 <template>
   <div class="relative h-full">
-    <h2 class="text-center leading-none font-semibold">
+    <h2 class="text-center leading-none font-semibold mb-4">
       <span v-if="filters.selected[0] != filters.selected[1]">
         <span v-if="filters.agglomerationAverage">Montants <b>moyens</b> annuels entre {{ filters.selected[0] }} et {{ filters.selected[1] }} ans</span>
         <span v-else><b>Cumul</b> des montants entre {{ filters.selected[0] }} et {{ filters.selected[1] }} ans</span>

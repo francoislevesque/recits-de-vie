@@ -418,7 +418,7 @@
         data-category="prestations,benefices"
         data-scenarios="1,2"
         data-tooltip="47,prestations"
-        data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,allocation-fournitures-scolaires,primaire-secondaire,service-es"
+        data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,service-es"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -435,7 +435,7 @@
         data-category="prestations,benefices"
         data-scenarios="1"
         data-tooltip="49,benefices"
-        data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,allocation-fournitures-scolaires,primaire-secondaire,service-es"
+        data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,service-es"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -460,7 +460,7 @@
       <notice
         data-min="60"
         data-max="74"
-        data-tooltip="74,prelevements"
+        data-tooltip="60,prelevements,left"
         data-category="prelevements"
         push-bottom
       >
@@ -497,7 +497,7 @@
         data-max="82"
         data-category="benefices,prelevements"
         data-scenarios="1"
-        data-tooltip="82,prelevements"
+        data-tooltip="82,prelevements,left"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -511,7 +511,7 @@
         data-min="83"
         data-max="87"
         data-category="benefices"
-        data-tooltip="87,benefices"
+        data-tooltip="37,benefices,left"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">

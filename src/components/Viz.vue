@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-8xl mx-auto h-full overflow-hidden lg:flex lg:p-5">
+  <div class="max-w-8xl mx-auto h-full overflow-hidden lg:flex lg:px-5">
     <div
       v-for="(scenario, i) in scenarios"
       :key="i"
@@ -11,7 +11,7 @@
         class="flex flex-col h-full lg:h-4/10 band-graph"
         :style="{transform: `translateY(${graphOffset}px)`}"
       >
-        <div class="flex align-baseline justify-between mb-4 lg:mb-1">
+        <div class="flex align-baseline justify-between mb-4 lg:mb-2">
           <div class="text-sm text-gray-800 font-bold lg:text-base">
             Scénario {{ i + 1 }}
           </div>
@@ -43,7 +43,7 @@
       >
         <div
           v-if="!mobile"
-          class="h-full pt-10"
+          class="h-full pt-4"
           :class="{'opacity-25': !filters.selectedScenarios.includes(i)}"
         >
           <amount-graphs

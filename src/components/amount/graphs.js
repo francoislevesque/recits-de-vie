@@ -28,8 +28,8 @@ class Graphs {
 		this.containerHeight = this.container.clientHeight;
   
 		this.margin = {
-			top: 24,
-			bottom: TICK_MARGIN_TOP + 40,
+			top: 0,
+			bottom: TICK_MARGIN_TOP + 60,
 			left: 210,
 			right: 72
 		};
