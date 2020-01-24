@@ -36,7 +36,7 @@
       <div class="container max-w-2xl bg-blue-100">
         <div class="p-8 lg:p-10">
           <p class="mb-10">
-            Nous allons suivre la vie d'Ella, ui présente les caractéristiques représentatives d’une femme québécoise, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>, pour 3 scénarios de vie distincts :
+            Nous allons suivre la vie d'Ella, qui présente les caractéristiques représentatives d’une femme québécoise, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>, pour 3 scénarios de vie distincts :
           </p>
           <div class="mb-10">
             <div class="pl-6 border-blue-500 border-l-4 mb-10">
