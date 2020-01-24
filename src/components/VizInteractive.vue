@@ -164,7 +164,7 @@ export default {
 				showPrestations: true,
 				showBenefices: true,
 				showPrelevements: true,
-				showSubstraction: false,
+				showSubstraction: false
 			},
 			oldFilters: null
 		};
@@ -198,7 +198,8 @@ export default {
 				amounts: [],
 				selectedScenarios: [0,1,2],
 				firstAppear: false,
-				tooltip: null
+				tooltip: null,
+				forceHighlight: []
 			};
 		}
 	},

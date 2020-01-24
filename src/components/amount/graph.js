@@ -171,6 +171,9 @@ class Graph {
 	}
   
 	bandOpacity (d) {
+		if (this.filters.forceHighlight.includes(d.name)) {
+			return 1;
+		}
 		if (!this.filters.visibleCategories.includes(this.category)) {
 			return 0.1;
 		}

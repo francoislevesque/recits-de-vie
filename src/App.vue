@@ -415,9 +415,10 @@
       <notice
         data-min="47"
         data-max="47"
-        data-category="prestations"
+        data-category="prestations,benefices"
         data-scenarios="1,2"
         data-tooltip="47,prestations"
+        data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,allocation-fournitures-scolaires,primaire-secondaire,service-es"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -434,6 +435,7 @@
         data-category="prestations,benefices"
         data-scenarios="1,2"
         data-tooltip="50,benefices"
+        data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,allocation-fournitures-scolaires,primaire-secondaire,service-es"
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
@@ -728,7 +730,8 @@ export default {
 				amounts: [],
 				selectedScenarios: [0,1,2],
 				firstAppear: true,
-				tooltip: null
+				tooltip: null,
+				forceHighlight: []
 			}
 		};
 	},
@@ -791,6 +794,9 @@ export default {
 			if (tooltip != null) {
 				tooltip = tooltip.split(",");
 			}
+      
+			let forceHighlight = element.getAttribute("data-force-highlight") || "";
+			forceHighlight = forceHighlight.split(",").filter(d => d != "");
 
 			this.$set(this.filters, "firstAppear", false);
 			this.$set(this.filters, "tooltip", tooltip);
@@ -803,6 +809,7 @@ export default {
 			this.$set(this.filters, "showSelection", showSelection);
 			this.$set(this.filters, "showSubstraction", showSubstraction);
 			this.$set(this.filters, "showCumul", showCumul);
+			this.$set(this.filters, "forceHighlight", forceHighlight);
 		}
 	}
 };
