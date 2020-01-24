@@ -431,10 +431,10 @@
       </notice>
       <notice
         data-min="49"
-        data-max="50"
+        data-max="49"
         data-category="prestations,benefices"
-        data-scenarios="1,2"
-        data-tooltip="50,benefices"
+        data-scenarios="1"
+        data-tooltip="49,benefices"
         data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,allocation-fournitures-scolaires,primaire-secondaire,service-es"
         push-bottom
       >
