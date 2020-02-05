@@ -18,7 +18,7 @@
           <img
             :src="require(`@/assets/${i+1}.svg`)"
             :alt="`Scénario ${ i + 1 }`"
-            class="inline h-3 w-auto opacity-75"
+            class="inline h-3 w-auto opacity-75 mr-3"
           >
         </div>
 

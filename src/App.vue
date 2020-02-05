@@ -200,7 +200,7 @@
         data-tooltip="20,prestations"
         push-bottom
       >
-        En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit d'impôt pour la solidarité</span> et <span class="prestations">Crédit pour TPS.</span>
+        En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit d'impôt pour solidarité</span> et <span class="prestations">Crédit pour TPS.</span>
       </notice>
       <notice
         data-max="20"
@@ -368,6 +368,7 @@
       <notice
         data-min="34"
         data-max="39"
+        data-scenarios="1,2"
         data-category="benefices"
         data-tooltip="39,benefices"
         push-bottom
@@ -457,15 +458,6 @@
         </h2>
         Dans tous les scénarios Ella prend sa retraite à <b>60 ans</b>. Luis prend sa retraite au même moment qu’Ella (scénario 2). Le <span class="revenu">revenu</span> provient alors de leurs fonds de retraite privé. Il est moins important qu’en période de vie active.
       </notice>
-      <notice
-        data-min="60"
-        data-max="74"
-        data-tooltip="60,prelevements,left"
-        data-category="prelevements"
-        push-bottom
-      >
-        Les <span class="prelevements">prélèvements</span> diminuent également. Les <b>cotisations sociales</b> prélevées sur le salaire sont remplacées par les <span class="prelevements">cotisations au régime d’assurance-médicament</span> et au <span class="prelevements">Fonds de service de santé</span>. 
-      </notice>
 
       <notice
         data-min="60"
@@ -475,7 +467,17 @@
         data-tooltip="60,prestations,left"
         push-bottom
       >
-        Ella touche les <span class="prestations">prestations du Régime des rentes du Québec</span> à 61 ans. Dans le scénario 2, Luis touche ces prestations dès la prise de la retraite. Tous deux obtiennent la <span class="prestations">pension de la sécurité de la vieillesse</span> à <b>65 ans</b>.
+        Ella touche les <span class="prestations">prestations du Régime de rentes du Québec</span> à 61 ans. Dans le scénario 2, Luis touche ces prestations dès la prise de la retraite. Tous deux obtiennent la <span class="prestations">pension de la sécurité de la vieillesse</span> à <b>65 ans</b>.
+      </notice>
+      
+      <notice
+        data-min="60"
+        data-max="74"
+        data-tooltip="60,prelevements,left"
+        data-category="prelevements"
+        push-bottom
+      >
+        Les <span class="prelevements">prélèvements</span> diminuent. Les <b>cotisations sociales</b> prélevées sur le salaire sont remplacées par les <span class="prelevements">cotisations au régime d’assurance-médicament</span> et au <span class="prelevements">Fonds des service de santé</span>. 
       </notice>
 
       <notice
@@ -530,7 +532,7 @@
         push-bottom
       >
         <h2 class="text-lg font-bold mb-2">
-          Bénéfices et gains au cours d'une vie 
+          Bénéfices publics et prélèvements au cours d’une vie
         </h2>
         Au cours d'une vie, les 3 ménages d’Ella bénéficient de <span class="benefices">services publics</span>, touchent des <span class="prestations">prestations</span> et, en contrepartie assument des <span class="prelevements">prélèvements</span>. <b>Nous pouvons observer simultanément ces flux monétaires</b>.
       </notice>
@@ -575,7 +577,7 @@
         data-show-substraction="true"
         push-bottom
       >
-        Dans tous les cas, les ménages d’Ella sont <span class="prestations">bénéficiaires nets</span> à compter du moment où celle-ci touche les prestations du <span class="prestations">Régime des rentes du Québec</span>. 
+        Dans tous les cas, les ménages d’Ella sont <span class="prestations">bénéficiaires nets</span> à compter du moment où celle-ci touche les prestations du <span class="prestations">Régime de rentes du Québec</span>. 
       </notice>
 
       <notice
@@ -685,7 +687,7 @@
           >Chaire de recherche en fiscalité et en finances publiques</a>, qu’ils remercient pour l’appui financier qui a rendu possible la réalisation de cet outil.
         </p>
         <p class="text-base">
-          Outil interactif développé & designé par <b>François Lévesque</b> (<a
+          Outil interactif conçu et réalisé par <b>François Lévesque</b> (<a
             class="underline"
             href="https://witify.io"
           >Witify</a>) et <b>Thomas Hurtut</b> (<a
