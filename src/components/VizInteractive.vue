@@ -207,7 +207,7 @@ export default {
 		onMinAgeChange (event) {
 			this.minAgeError = "-";
 			let age = event.target.value;
-			if (age && age >= 18 && age <= 87 && age <= this.filters.age[1]) {
+			if (!isNaN(age) && age >= 18 && age <= 87 && age <= this.filters.age[1]) {
 				this.$set(this.filters.validatedAge, 0, age);
 			} else {
 				this.minAgeError = "Valeur invalide";
@@ -216,7 +216,7 @@ export default {
 		onMaxAgeChange (event) {
 			this.maxAgeError = "-";
 			let age = event.target.value;
-			if (age && age >= 18 && age <= 87 && age >= this.filters.validatedAge[0]) {
+			if (!isNaN(age) && age >= 18 && age <= 87 && age >= this.filters.validatedAge[0]) {
 				this.$set(this.filters.validatedAge, 1, age);
 			} else {
 				this.maxAgeError = "Valeur invalide";
