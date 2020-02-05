@@ -94,8 +94,8 @@
             </v-switch>
           </div>
         </div>
-        <div class="pt-6 pb-4 px-5 border-b border-blue-300">
-          <div class="text-sm font-semibold mb-2">
+        <div class="pt-6 pb-4 px-5">
+          <div class="mb-2">
             Affichage des montants
           </div>
           <div class="flex">
