@@ -29,7 +29,7 @@ class Graphs {
   
 		this.margin = {
 			top: 0,
-			bottom: TICK_MARGIN_TOP + 60,
+			bottom: TICK_MARGIN_TOP + 80,
 			left: 210,
 			right: 72
 		};

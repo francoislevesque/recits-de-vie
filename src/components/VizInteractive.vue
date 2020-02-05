@@ -100,14 +100,14 @@
           </div>
           <div class="flex">
             <button
-              class="flex-1 border border-gray-400 px-3 py-2 text-base bg-white rounded-l hover:bg-gray-100"
+              class="flex-1 border border-gray-400 px-3 py-1 text-base bg-white rounded-l hover:bg-gray-100"
               :class="{'bg-gray-300 hover:bg-gray-300': filters.agglomerationAverage}"
               @click="$set(filters, 'agglomerationAverage', true)"
             >
               Moyenne
             </button>
             <button
-              class="flex-1 border border-l-0 border-gray-400 px-3 py-2 text-base bg-white rounded-r hover:bg-gray-100"
+              class="flex-1 border border-l-0 border-gray-400 px-3 py-1 text-base bg-white rounded-r hover:bg-gray-100"
               :class="{'bg-gray-300 hover:bg-gray-300': !filters.agglomerationAverage}"
               @click="$set(filters, 'agglomerationAverage', false)"
             >
