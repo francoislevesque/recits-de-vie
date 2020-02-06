@@ -41,6 +41,14 @@ class Graph {
 		this.scaleY = this.getScaleY();
 	}
   
+	resetLayout (width, height, offset) {
+		this.container.attr("transform", `translate(${0},${offset})`);
+		this.width = width - this.margin.left - this.margin.right;
+		this.height = height - this.margin.top - this.margin.bottom;
+      
+		this.svg.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+	}
+  
 	transition (g) {
 		if (this.options.transition) {
 			return g.transition()
@@ -64,7 +72,10 @@ class Graph {
 			.attr("opacity", this.lineOpacity());
 	}
   
-	redraw (data, filters) {
+	redraw (data, filters, width, height, offset) {
+
+		this.resetLayout(width, height, offset);
+    
 		this.data = data;
 		this.filters = filters;
 		this.scaleY = this.getScaleY();

@@ -4,7 +4,7 @@
       v-for="(scenario, i) in scenarios"
       :key="i"
       ref="scenario"
-      class="p-4 pb-0 h-1/3 lg:h-auto lg:p-4 lg:pb-5 lg:w-1/3 lg:flex lg:flex-col overflow-hidden"
+      class="p-5 pb-0 h-1/3 lg:h-auto lg:px-1 xl:p-4 lg:pb-5 lg:w-1/3 lg:flex lg:flex-col overflow-hidden"
     >
       <div
         ref="graph-container"

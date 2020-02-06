@@ -630,7 +630,7 @@
       </notice>
 
       <notice
-        v-show="!mobile"
+        v-show="isDesktop"
         data-step="end"
       >
         <h2 class="text-lg font-bold mb-2">
@@ -644,7 +644,7 @@
       </div>
     </Scrollama>
     <viz-interactive
-      v-if="!mobile"
+      v-if="isDesktop"
       ref="vizInteractive"
     />
     <div class="py-12 px-6 bg-blue-100">
@@ -713,7 +713,7 @@ import Notice from "@/components/Notice";
 import Viz from "@/components/Viz";
 import debounce from "lodash/debounce";
 import VizInteractive from "@/components/VizInteractive";
-import { isMobile } from "./services/responsive";
+import { isDesktop } from "./services/responsive";
 
 export default {
 	components: {
@@ -724,7 +724,7 @@ export default {
 	},
 	data () {
 		return {
-			mobile: isMobile(),
+			isDesktop: isDesktop(),
 			filters: {
 				agglomerationAverage: true,
 				showHighlights: true,
@@ -752,9 +752,10 @@ export default {
 	},
 	methods: {
 		onResize: debounce(function() {
-			this.mobile = isMobile();
+
+			this.isDesktop = isDesktop();
 			this.$refs.viz.onResize();
-			if (!this.mobile && this.$refs.vizInteractive) {
+			if (this.isDesktop && this.$refs.vizInteractive) {
 				this.$refs.vizInteractive.onResize();
 			}
 		}, 200),

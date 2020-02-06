@@ -46,13 +46,36 @@ class Graphs {
 			.tickPadding(TICK_PADDING)
 			.tickFormat((d) => (+d).priceFormatK());
 
-		this.svg = d3.select(container).append("svg")
+		this.svgContainer = d3.select(container).append("svg")
 			.attr("width", this.width + this.margin.left + this.margin.right)
-			.attr("height", this.height + this.margin.top + this.margin.bottom)
-			.append("g")
+			.attr("height", this.height + this.margin.top + this.margin.bottom);
+      
+		this.svg = this.svgContainer.append("g")
 			.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
       
 		this.draw();
+	}
+  
+	resetLayout () {
+		this.containerWidth = this.container.clientWidth;
+		this.containerHeight = this.container.clientHeight;
+  
+		this.margin = {
+			top: 0,
+			bottom: TICK_MARGIN_TOP + 80,
+			left: 210,
+			right: 72
+		};
+    
+		this.width = this.containerWidth - this.margin.left - this.margin.right;
+		this.height = this.containerHeight - this.margin.top - this.margin.bottom;
+        
+		this.scaleX.range([0, this.width]);
+      
+		this.svgContainer.attr("width", this.width + this.margin.left + this.margin.right)
+			.attr("height", this.height + this.margin.top + this.margin.bottom);
+      
+		this.svg.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 	}
   
 	color (category) {
@@ -102,13 +125,15 @@ class Graphs {
   
 	redraw (domainX, data, filters) {
 
+		this.resetLayout();
+
 		this.data = data;
 		this.domainX = domainX;
 		this.filters = filters;
 
 		this.scaleX.domain(this.domainX);
 
-		let step = 2,
+		/** let step = 2,
 			min = 0,
 			max = Math.round(this.domainX[1] / 1000) * 1000,
 			stepValue = (max - min) / (step - 1),
@@ -116,11 +141,18 @@ class Graphs {
     
 		this.axisX.tickValues(tickValues);
     
-		/** this.transition(this.gAxisX)
-			.call(this.axisX.scale(this.scaleX)); */
+		this.transition(this.gAxisX)
+      .call(this.axisX.scale(this.scaleX)); */
+      
+		let numberOfBars = this.data.reduce((acc, d) => acc += d.amounts.length, 0);
+		let heightPerBar = this.height / numberOfBars;  
+		let offset = 0;
             
-		this.graphs.forEach(g => {
-			g.redraw(this.data.find(d => d.name == g.category).amounts, this.filters);
+		this.graphs.forEach(graph => {
+			let data = this.data.find(d => d.name == graph.category).amounts;
+			let height = heightPerBar * data.length;
+			graph.redraw(this.data.find(d => d.name == graph.category).amounts, this.filters, this.width, height, offset);
+			offset += height;
 		});
 	}
 }
