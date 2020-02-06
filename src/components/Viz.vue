@@ -87,6 +87,7 @@ export default {
 	},
 	data () {
 		return {
+			mobile: isMobile(),
 			graphOffset: 0,
 			domainGraph: [0,0],
 			domainAmount: [0,0],
@@ -96,21 +97,9 @@ export default {
 			scenarioAmounts: [],
 		};
 	},
-	computed: {
-		mobile () {
-			return isMobile();
-		}
-	},
 	watch: {
 		"filters.showAmounts" () {
-			if (this.filters.showAmounts) {
-				this.graphOffset = 0;
-			} else {
-				if (!isMobile()) {
-					let el = this.$refs["graph-container"][0];
-					this.graphOffset = (this.$refs["scenario"][0].clientHeight / 2) - (el.clientHeight / 2);
-				}
-			}
+			this.checkOffset();
 		},
 		"filters.showSubstraction" () {
 			this.redrawGraphs();
@@ -190,6 +179,20 @@ export default {
 				"Ella est monoparentale avec 1 enfant"
 			];
 			return names[i];
+		},
+		onResize () {
+			this.mobile = isMobile();
+			this.checkOffset();
+			this.redrawGraphs();
+			this.redrawAmountGraphs();
+		},
+		checkOffset () {
+			if (this.filters.showAmounts || isMobile()) {
+				this.graphOffset = 0;
+			} else {
+				let el = this.$refs["graph-container"][0];
+				this.graphOffset = (this.$refs["scenario"][0].clientHeight / 2) - (el.clientHeight / 2);
+			}
 		},
 		redrawGraphs () {
 			this.$refs.graph.forEach((g, i) => g.redraw(this.domainGraph, this.filters));

@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full h-screen bg-blue-200 overflow-y-hidden border-t border-b border-blue-300">
-    <div class="flex h-full">
+    <div class="flex h-full w-full">
       <div class="w-90 h-full bg-blue-100 border-r border-blue-300">
         <div class="p-8 px-5 border-b border-blue-300">
           <h3 class="text-xl font-bold mb-3">
@@ -116,8 +116,9 @@
           </div>
         </div>
       </div>
-      <div class="flex-grow">
+      <div class="flex-1 overflow-x-hidden">
         <viz
+          ref="viz"
           :options="{transition: 300, brush: true}"
           :filters="vizFilters"
           @mousemove="onMouseMove"
@@ -204,6 +205,9 @@ export default {
 		}
 	},
 	methods: {
+		onResize () {
+			this.$refs.viz.onResize();
+		},
 		onMinAgeChange (event) {
 			this.minAgeError = "-";
 			let age = event.target.value;

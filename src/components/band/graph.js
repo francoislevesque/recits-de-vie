@@ -29,7 +29,17 @@ class Graph {
 		this.callbacks = callbacks;
     
 		this.categories = ["revenu", "prestations", "benefices", "prelevements"];
-
+    
+		this.scales = {
+			x: null,
+			y: null
+		};
+    
+		this.axis = {
+			x: null,
+			y: null
+		};
+    
 		this.containerWidth = this.container.clientWidth;
 		this.containerHeight = this.container.clientHeight;
     
@@ -45,11 +55,6 @@ class Graph {
 		this.width = this.containerWidth - this.margin.left - this.margin.right;
 		this.height = this.containerHeight - this.margin.top - this.margin.bottom;
     
-		this.scales = {
-			x: null,
-			y: null
-		};
-    
 		this.scales.x = d3.scaleBand()
 			.domain(this.data.map(d => d.year))
 			.range([PADDING_LEFT, this.width])
@@ -58,18 +63,7 @@ class Graph {
 		this.scales.y = d3.scaleLinear()
 			.domain(this.domainY)
 			.range([this.height, 0]);
-      
-		this.axis = {
-			x: null,
-			y: null
-		};
 
-		this.svg = d3.select(container).append("svg")
-			.attr("width", this.width + this.margin.left + this.margin.right)
-			.attr("height", this.height + this.margin.top + this.margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
-      
 		this.axis.x = d3.axisTop(this.scales.x)
 			.tickSize(0)
 			.ticks(1)
@@ -84,6 +78,15 @@ class Graph {
 		this.brush = d3.brushX()
 			.extent([[this.scales.x.bandwidth(),0],[this.width,this.height]])
 			.on("brush", this.onBrushed(this));
+      
+		this.svgContainer = d3.select(this.container).append("svg")
+			.attr("width", this.width + this.margin.left + this.margin.right)
+			.attr("height", this.height + this.margin.top + this.margin.bottom);
+      
+		this.svg = this.svgContainer.append("g")
+			.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+    
+		this.resetLayout();
 
 		this.createDefs();
       
@@ -92,6 +95,37 @@ class Graph {
 		this.redraw(this.domainY, this.filters);
 	}
   
+	resetLayout () {
+		this.containerWidth = this.container.clientWidth;
+		this.containerHeight = this.container.clientHeight;
+    
+		this.mobile = isMobile();
+  
+		this.margin = {
+			top: this.mobile ? 17 : 20,
+			bottom: this.mobile ? 16 : 40,
+			left: 52,
+			right: 10
+		};
+    
+		this.width = this.containerWidth - this.margin.left - this.margin.right;
+		this.height = this.containerHeight - this.margin.top - this.margin.bottom;
+        
+		this.scales.x.range([PADDING_LEFT, this.width]);
+      
+		this.scales.y.range([this.height, 0]);
+      
+		this.axis.y.tickSize(-this.width);
+    
+		this.brush.extent([[this.scales.x.bandwidth(),0],[this.width,this.height]]);
+    
+		this.svgContainer
+			.attr("width", this.width + this.margin.left + this.margin.right)
+			.attr("height", this.height + this.margin.top + this.margin.bottom);
+      
+		this.svg.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+	}
+
 	transition (g, animated = true) {
 		if (this.options.transition && animated) {
 			return g.transition()
@@ -232,13 +266,19 @@ class Graph {
   
 	redraw (domainY, filters) {
 
+		this.resetLayout();
+
 		this.domainY = domainY;
 		this.filters = filters;
-
-		this.scales.y.domain(this.domainY);
-        
+    
+		this.scales.x.range([PADDING_LEFT, this.width]);
+		this.scales.y.range([this.height, 0]).domain(this.domainY);
+            
 		this.transition(this.axisY)
 			.call(this.axis.y.scale(this.scales.y));
+    
+		this.transition(this.axisX)
+			.call(this.axis.x.scale(this.scales.x));
     
 		if (this.options.brush) {
 			this.brush.move(this.brushG, 
@@ -260,6 +300,8 @@ class Graph {
 	updateSelected (animated = true) {
 
 		this.transition(this.bars.selectAll("rect"), animated)
+			.attr("x", d => this.scales.x(d.year))
+			.attr("width", this.scales.x.bandwidth())
 			.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
 			.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
 			.attr("opacity", (d, i, node) => {
@@ -267,6 +309,8 @@ class Graph {
 			});
       
 		this.transition(this.barSubs.selectAll("rect"), animated)
+			.attr("x", d => this.scales.x(d.year))
+			.attr("width", this.scales.x.bandwidth())
 			.attr("height", d =>this.bandSubHeight(d))
 			.attr("y", d => this.bandSubY(d))
 			.attr("opacity", (d, i, node) => {
@@ -276,6 +320,8 @@ class Graph {
 		this.transition(this.barCumuls.selectAll("rect"), animated)
 			.attr("height", d =>this.bandCumulHeight(d))
 			.attr("y", d => this.bandCumulY(d))
+			.attr("x", d => this.scales.x(d.year))
+			.attr("width", this.scales.x.bandwidth())
 			.attr("opacity", (d, i, node) => {
 				return this.bandSubOpacity(d);
 			});

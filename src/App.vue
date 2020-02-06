@@ -175,7 +175,10 @@
         slot="graphic"
         class="h-screen"
       >
-        <viz :filters="filters" />
+        <viz
+          ref="viz"
+          :filters="filters"
+        />
       </div> 
       
       <notice
@@ -640,7 +643,10 @@
         <span class="text-transparent">.</span>
       </div>
     </Scrollama>
-    <viz-interactive v-if="!mobile" />
+    <viz-interactive
+      v-if="!mobile"
+      ref="vizInteractive"
+    />
     <div class="py-12 px-6 bg-blue-100">
       <div class="container max-w-2xl">
         <h2 class="text-lg font-semibold mb-3">
@@ -705,8 +711,8 @@ import "intersection-observer";
 import Scrollama from "vue-scrollama";
 import Notice from "@/components/Notice";
 import Viz from "@/components/Viz";
+import debounce from "lodash/debounce";
 import VizInteractive from "@/components/VizInteractive";
-import { debounce } from "./services/utils";
 import { isMobile } from "./services/responsive";
 
 export default {
@@ -718,6 +724,7 @@ export default {
 	},
 	data () {
 		return {
+			mobile: isMobile(),
 			filters: {
 				agglomerationAverage: true,
 				showHighlights: true,
@@ -737,11 +744,6 @@ export default {
 			}
 		};
 	},
-	computed: {
-		mobile () {
-			return isMobile();
-		}
-	},
 	mounted () {
 		window.addEventListener("resize", this.onResize);
 	},
@@ -749,9 +751,13 @@ export default {
 		window.removeEventListener("resize", this.onResize);
 	},
 	methods: {
-		onResize:debounce(() => {
-			//window.location.reload(false);
-		}, 250),
+		onResize: debounce(function() {
+			this.mobile = isMobile();
+			this.$refs.viz.onResize();
+			if (!this.mobile && this.$refs.vizInteractive) {
+				this.$refs.vizInteractive.onResize();
+			}
+		}, 200),
 		stepEnterHandler ({element, index, direction}) {
 
 			if (element.getAttribute("data-step") === "end") {
