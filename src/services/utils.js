@@ -14,4 +14,8 @@ function uuid(n = 12) {
 	return text;
 }
 
-export { scrollPosition, uuid };
+function deepCopy (data) {
+	return JSON.parse(JSON.stringify(data));
+}
+
+export { scrollPosition, uuid, deepCopy };

@@ -140,6 +140,7 @@
 import Viz from "./Viz";
 import Tooltip from "./Tooltip";
 import debounce from "lodash/debounce";
+import { deepCopy } from "../services/utils";
 
 export default {
 	components: {
@@ -235,8 +236,8 @@ export default {
 			}
 		},
 		brushed: debounce(function(data) {
-			this.$set(this.filters, "age", data);
-			this.$set(this.filters, "validatedAge", data);
+			this.$set(this.filters, "age", deepCopy(data));
+			this.$set(this.filters, "validatedAge", deepCopy(data));
 		}, 100),
 		onToggleSub (value) {
 			if (value) {
