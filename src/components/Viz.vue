@@ -108,16 +108,18 @@ export default {
 			this.redrawGraphs();
 		},
 		"filters.selected" () {
-			this.updateAmountsData();
-			this.calculateDomains();
-      
+			this.updateGraphDomain();
 			this.redrawGraphs();
-			this.redrawAmountGraphs();
+      
+			if (!this.mobile) {
+				this.updateAmountsData();
+				this.updateAmountsDomain();
+				this.redrawAmountGraphs();
+			}
 		},
 		"filters.agglomerationAverage" () {
 			this.updateAmountsData();
-			this.calculateDomains();
-      
+			this.updateAmountsDomain();
 			this.redrawAmountGraphs();
 		},
 	},
@@ -130,11 +132,16 @@ export default {
 		this.scenarioCumulsDomainY = d3.extent(this.scenarioCumuls.map(s => d3.extent(s, s => s.value)).flat());
 
 		this.updateAmountsData();
-		this.calculateDomains();
+    
+		this.updateGraphDomain();
+		this.updateAmountsDomain();
 	},
 	methods: {
 		calculateDomains () {
-
+			this.updateGraphDomain();
+			this.updateAmountsDomain();
+		},
+		updateGraphDomain () {
 			let min = Number.MAX_SAFE_INTEGER;
 			let maxSum = Number.MIN_SAFE_INTEGER;
       
@@ -157,7 +164,8 @@ export default {
 
 				this.domainGraph =  [min, maxSum];
 			}
-
+		},
+		updateAmountsDomain () {
 			let maxAbsolute = 0;
 
 			this.scenarioAmounts.forEach(scenario => {
@@ -181,8 +189,16 @@ export default {
 			return names[i];
 		},
 		onResize () {
+			let oldMobile = this.mobile;
 			this.mobile = isMobile();
 			this.checkOffset();
+      
+			// If we go from mobile to desktop, the amount data is not up to date
+			if (oldMobile && !this.mobile) {
+				this.updateAmountsData();
+				this.updateAmountsDomain();
+			}
+
 			this.redrawGraphs();
 			this.redrawAmountGraphs();
 		},

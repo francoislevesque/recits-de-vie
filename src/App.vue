@@ -714,6 +714,7 @@ import Viz from "@/components/Viz";
 import debounce from "lodash/debounce";
 import VizInteractive from "@/components/VizInteractive";
 import { isDesktop } from "./services/responsive";
+import { deepCopy } from "./services/utils";
 
 export default {
 	components: {
@@ -806,19 +807,23 @@ export default {
       
 			let forceHighlight = element.getAttribute("data-force-highlight") || "";
 			forceHighlight = forceHighlight.split(",").filter(d => d != "");
-
-			this.$set(this.filters, "firstAppear", false);
-			this.$set(this.filters, "tooltip", tooltip);
-			this.$set(this.filters, "visible", [18,max]);
-			this.$set(this.filters, "selected", [min,max]);
-			this.$set(this.filters, "selectedScenarios", selectedScenarios);
-			this.$set(this.filters, "visibleCategories", visibleCategories);
-			this.$set(this.filters, "selectedCategories", selectedCategories);
-			this.$set(this.filters, "showAmounts", showAmounts);
-			this.$set(this.filters, "showSelection", showSelection);
-			this.$set(this.filters, "showSubstraction", showSubstraction);
-			this.$set(this.filters, "showCumul", showCumul);
-			this.$set(this.filters, "forceHighlight", forceHighlight);
+      
+			let filters = deepCopy(this.filters);
+      
+			filters.firstAppear = false;
+			filters.tooltip = tooltip;
+			filters.selected = [min,max];
+			filters.visible = [18,max];
+			filters.selectedScenarios = selectedScenarios;
+			filters.visibleCategories = visibleCategories;
+			filters.selectedCategories = selectedCategories;
+			filters.showAmounts = showAmounts;
+			filters.showSelection = showSelection;
+			filters.showSubstraction = showSubstraction;
+			filters.showCumul = showCumul;
+			filters.forceHighlight = forceHighlight;
+      
+			this.filters = filters;
 		}
 	}
 };
