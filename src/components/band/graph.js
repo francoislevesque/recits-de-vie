@@ -96,34 +96,39 @@ class Graph {
 	}
   
 	resetLayout () {
-		this.containerWidth = this.container.clientWidth;
-		this.containerHeight = this.container.clientHeight;
+		let containerWidth = this.container.clientWidth;
+		let containerHeight = this.container.clientHeight;
+		let mobile = isMobile();
     
-		this.mobile = isMobile();
+		if (containerWidth != this.containerWidth || containerHeight != this.containerHeight || mobile != this.mobile) {
+			this.containerWidth = containerWidth;
+			this.containerHeight = containerHeight;
+			this.mobile = mobile;
   
-		this.margin = {
-			top: this.mobile ? 17 : 20,
-			bottom: this.mobile ? 16 : 40,
-			left: 52,
-			right: 10
-		};
+			this.margin = {
+				top: this.mobile ? 17 : 20,
+				bottom: this.mobile ? 16 : 40,
+				left: 52,
+				right: 10
+			};
     
-		this.width = this.containerWidth - this.margin.left - this.margin.right;
-		this.height = this.containerHeight - this.margin.top - this.margin.bottom;
+			this.width = this.containerWidth - this.margin.left - this.margin.right;
+			this.height = this.containerHeight - this.margin.top - this.margin.bottom;
         
-		this.scales.x.range([PADDING_LEFT, this.width]);
+			this.scales.x.range([PADDING_LEFT, this.width]);
       
-		this.scales.y.range([this.height, 0]);
+			this.scales.y.range([this.height, 0]);
       
-		this.axis.y.tickSize(-this.width);
+			this.axis.y.tickSize(-this.width);
     
-		this.brush.extent([[this.scales.x.bandwidth(),0],[this.width,this.height]]);
+			this.brush.extent([[this.scales.x.bandwidth(),0],[this.width,this.height]]);
     
-		this.svgContainer
-			.attr("width", this.width + this.margin.left + this.margin.right)
-			.attr("height", this.height + this.margin.top + this.margin.bottom);
+			this.svgContainer
+				.attr("width", this.width + this.margin.left + this.margin.right)
+				.attr("height", this.height + this.margin.top + this.margin.bottom);
       
-		this.svg.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+			this.svg.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+		}
 	}
 
 	transition (g, animated = true) {
@@ -299,32 +304,45 @@ class Graph {
   
 	updateSelected (animated = true) {
 
-		this.transition(this.bars.selectAll("rect"), animated)
-			.attr("x", d => this.scales.x(d.year))
-			.attr("width", this.scales.x.bandwidth())
-			.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
-			.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
-			.attr("opacity", (d, i, node) => {
-				return this.bandOpacity(d, node[i].getAttribute("data-category"));
-			});
+		if (!this.filters.showSubstraction && !this.filters.showCumul) {
+			this.transition(this.bars.selectAll("rect"), animated)
+				.attr("x", d => this.scales.x(d.year))
+				.attr("width", this.scales.x.bandwidth())
+				.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
+				.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
+				.attr("opacity", (d, i, node) => {
+					return this.bandOpacity(d, node[i].getAttribute("data-category"));
+				});
+		} else {
+			this.bars.selectAll("rect").attr("opacity", 0);
+		}
       
-		this.transition(this.barSubs.selectAll("rect"), animated)
-			.attr("x", d => this.scales.x(d.year))
-			.attr("width", this.scales.x.bandwidth())
-			.attr("height", d =>this.bandSubHeight(d))
-			.attr("y", d => this.bandSubY(d))
-			.attr("opacity", (d, i, node) => {
-				return this.bandSubOpacity(d);
-			});
-      
-		this.transition(this.barCumuls.selectAll("rect"), animated)
-			.attr("height", d =>this.bandCumulHeight(d))
-			.attr("y", d => this.bandCumulY(d))
-			.attr("x", d => this.scales.x(d.year))
-			.attr("width", this.scales.x.bandwidth())
-			.attr("opacity", (d, i, node) => {
-				return this.bandSubOpacity(d);
-			});
+		if (this.filters.showSubstraction) {
+			this.transition(this.barSubs.selectAll("rect"), animated)
+				.attr("x", d => this.scales.x(d.year))
+				.attr("width", this.scales.x.bandwidth())
+				.attr("height", d =>this.bandSubHeight(d))
+				.attr("y", d => this.bandSubY(d))
+				.attr("opacity", (d, i, node) => {
+					return this.bandSubOpacity(d);
+				});
+		} else {
+			this.barSubs.selectAll("rect").attr("height", 0);
+		}
+    
+		if (this.filters.showCumul) {
+			this.transition(this.barCumuls.selectAll("rect"), animated)
+				.attr("height", d =>this.bandCumulHeight(d))
+				.attr("y", d => this.bandCumulY(d))
+				.attr("x", d => this.scales.x(d.year))
+				.attr("width", this.scales.x.bandwidth())
+				.attr("opacity", (d, i, node) => {
+					return this.bandSubOpacity(d);
+				});
+		} else {
+			this.barCumuls.selectAll("rect")
+				.attr("height", 0);
+		}
       
 		this.transition(this.selectLineTop, animated)
 			.attr("x1", this.scales.x(this.filters.selected[0]))
