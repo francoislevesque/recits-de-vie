@@ -62,7 +62,7 @@ class Graph {
       
 		this.scales.y = d3.scaleLinear()
 			.domain(this.domainY)
-			.range([this.height, 0]);
+			.rangeRound([this.height, 0]);
 
 		this.axis.x = d3.axisTop(this.scales.x)
 			.tickSize(0)
@@ -117,7 +117,7 @@ class Graph {
         
 			this.scales.x.range([PADDING_LEFT, this.width]);
       
-			this.scales.y.range([this.height, 0]);
+			this.scales.y.rangeRound([this.height, 0]);
       
 			this.axis.y.tickSize(-this.width);
     
@@ -360,7 +360,7 @@ class Graph {
 			.attr("y1", this.scales.y(0))
 			.attr("y2", this.scales.y(0))
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
-      
+    
 		this.transition(this.bezierLeft, animated)
 			.attr("d", this.bezierLeftCurve())
 			.attr("opacity", (this.filters.showSelection) ? 1 : 0);
