@@ -131,6 +131,18 @@ class Graph {
       
 			// The axis X will only change on resize
 			this.axisX.call(this.axis.x.scale(this.scales.x));
+      
+			this.bars.selectAll("rect")
+				.attr("x", d => this.scales.x(d.year))
+				.attr("width", this.scales.x.bandwidth());
+      
+			this.barSubs.selectAll("rect")
+				.attr("x", d => this.scales.x(d.year))
+				.attr("width", this.scales.x.bandwidth());
+      
+			this.barCumuls.selectAll("rect")
+				.attr("x", d => this.scales.x(d.year))
+				.attr("width", this.scales.x.bandwidth());
 		}
 	}
 
@@ -305,8 +317,6 @@ class Graph {
 
 		if (!this.filters.showSubstraction && !this.filters.showCumul) {
 			this.transition(this.bars.selectAll("rect"), animated)
-				.attr("x", d => this.scales.x(d.year))
-				.attr("width", this.scales.x.bandwidth())
 				.attr("height", (d, i, node) => this.bandHeight(node[i].getAttribute("data-category"), d))
 				.attr("y", (d, i, node) => this.bandY(node[i].getAttribute("data-category"), d))
 				.attr("opacity", (d, i, node) => {
@@ -318,8 +328,6 @@ class Graph {
       
 		if (this.filters.showSubstraction) {
 			this.transition(this.barSubs.selectAll("rect"), animated)
-				.attr("x", d => this.scales.x(d.year))
-				.attr("width", this.scales.x.bandwidth())
 				.attr("height", d =>this.bandSubHeight(d))
 				.attr("y", d => this.bandSubY(d))
 				.attr("opacity", (d, i, node) => {
@@ -333,8 +341,6 @@ class Graph {
 			this.transition(this.barCumuls.selectAll("rect"), animated)
 				.attr("height", d =>this.bandCumulHeight(d))
 				.attr("y", d => this.bandCumulY(d))
-				.attr("x", d => this.scales.x(d.year))
-				.attr("width", this.scales.x.bandwidth())
 				.attr("opacity", (d, i, node) => {
 					return this.bandSubOpacity(d);
 				});
