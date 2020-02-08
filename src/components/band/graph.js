@@ -128,6 +128,9 @@ class Graph {
 				.attr("height", this.height + this.margin.top + this.margin.bottom);
       
 			this.svg.attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+      
+			// The axis X will only change on resize
+			this.axisX.call(this.axis.x.scale(this.scales.x));
 		}
 	}
 
@@ -276,14 +279,10 @@ class Graph {
 		this.domainY = domainY;
 		this.filters = filters;
     
-		this.scales.x.range([PADDING_LEFT, this.width]);
-		this.scales.y.range([this.height, 0]).domain(this.domainY);
+		this.scales.y.domain(this.domainY);
             
 		this.transition(this.axisY)
 			.call(this.axis.y.scale(this.scales.y));
-    
-		this.transition(this.axisX)
-			.call(this.axis.x.scale(this.scales.x));
     
 		if (this.options.brush) {
 			this.brush.move(this.brushG, 
