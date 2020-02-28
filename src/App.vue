@@ -2,35 +2,18 @@
   <div>
     <div class="lg:p-10 bg-blue-900">
       <div class="container p-5 max-w-2xl">
-        <img
-          class="mx-auto w-48 mb-10"
-          src="@/assets/logo.png"
-          alt="Logo chaire de recherche en fiscalité et finances publiques de l'Université de Sherbrooke"
-        >
-        <p class="text-xl font-bold text-white lg:text-4xl leading-tight mb-10">
-          Comment les prélèvements fiscaux, les prestations et les dépenses publiques affectent une contribuable au cours de sa vie ?
+        <a href="http://cffp.recherche.usherbrooke.ca/">
+          <img
+            class="mx-auto w-48 mb-10"
+            src="@/assets/logo.png"
+            alt="Logo chaire de recherche en fiscalité et finances publiques de l'Université de Sherbrooke"
+          >
+        </a>
+        <p class="text-3xl font-bold text-blue-100 lg:text-4xl leading-tight mb-1">
+          Récits de vie
         </p>
-        <p class="text-white font-semibold leading-none mb-2">
-          Par la 
-          <a
-            href="http://cffp.recherche.usherbrooke.ca/"
-            class="underline"
-            target="_blank"
-          >Chaire en fiscalité et finances publiques de l'UdeS 
-            <svg
-              style="width:18px;height:18px"
-              viewBox="0 0 24 24"
-              class="inline"
-            >
-              <path
-                fill="currentColor"
-                d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
-              />
-            </svg>
-          </a>
-        </p>
-        <p class="text-white text-sm opacity-75 mb-10">
-          10 février 2020
+        <p class="text-blue-300 lg:text-2xl leading-tight mb-8">
+          Comment évoluent les prélèvements fiscaux, les prestations et les dépenses publiques pour une contribuable au cours de sa vie?
         </p>
       </div>
       <div class="container max-w-2xl bg-blue-100">
