@@ -17,10 +17,10 @@ Number.prototype.percentageFormat = function() {
 
 /** Price Format */
 Number.prototype.priceFormat = function() {
-	return this.format(0, ",", " ") + "$";
+	return "$" + this.format(0, ".", ",");
 };
 
 /** Price Format */
 Number.prototype.priceFormatK = function() {
-	return (this/1000).format(0, ",", " ") + "k$";
+	return "$" + (this/1000).format(0, ".", ",") + "k";
 };

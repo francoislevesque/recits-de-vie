@@ -1,10 +1,10 @@
 <template>
   <div
-    class="fixed z-10 top-0 left-0 rounded shadow-lg pt-3 p-5 hidden lg:block bg-white"
+    class="fixed top-0 left-0 z-10 hidden p-5 pt-3 bg-white rounded shadow-lg lg:block"
     :style="{transform: `translate(${x}px, ${data.y + 1}px)`, width: width + 'px'}"
   >
-    <div class="font-bold mb-2">
-      {{ data.year }} ans
+    <div class="mb-2 font-bold">
+      {{ data.year }} years old
     </div>
     <div
       v-for="category in scenario"
@@ -12,7 +12,7 @@
       class="mb-2"
     >
       <div
-        class="font-bold text-sm uppercase text-gray-700 mb-1"
+        class="mb-1 text-sm font-bold text-gray-700 uppercase"
         :class="category.category"
       >
         {{ $t(category.category) }}
@@ -21,9 +21,9 @@
         <div
           v-for="amount in category.amounts"
           :key="amount.name"
-          class="flex justify-between text-sm leading-none w-full mb-1"
+          class="flex justify-between w-full mb-1 text-sm leading-none"
         >
-          <div class="font-medium pr-1">
+          <div class="pr-1 font-medium">
             {{ $t(amount.name) }}
           </div>
           <div class="w-32 text-right">

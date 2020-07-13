@@ -1,24 +1,24 @@
 <template>
-  <div class="max-w-8xl mx-auto h-full overflow-hidden lg:flex lg:px-5">
+  <div class="h-full mx-auto overflow-hidden max-w-8xl lg:flex lg:px-5">
     <div
       v-for="(scenario, i) in scenarios"
       :key="i"
       ref="scenario"
-      class="p-5 pb-0 h-1/3 lg:h-auto lg:px-1 xl:p-4 lg:pb-5 lg:w-1/3 lg:flex lg:flex-col overflow-hidden"
+      class="p-5 pb-0 overflow-hidden h-1/3 lg:h-auto lg:px-1 xl:p-4 lg:pb-5 lg:w-1/3 lg:flex lg:flex-col"
     >
       <div
         ref="graph-container"
         class="flex flex-col h-full lg:h-4/10 band-graph"
         :style="{transform: `translateY(${graphOffset}px)`}"
       >
-        <div class="flex align-baseline justify-between mb-4 lg:mb-2">
-          <div class="text-sm text-gray-800 font-bold lg:text-base">
-            Scénario {{ i + 1 }}
+        <div class="flex justify-between mb-4 align-baseline lg:mb-2">
+          <div class="text-sm font-bold text-gray-800 lg:text-base">
+            Scenario {{ i + 1 }}
           </div>
           <img
             :src="require(`@/assets/${i+1}.svg`)"
             :alt="`Scénario ${ i + 1 }`"
-            class="inline h-3 w-auto opacity-75 mr-3"
+            class="inline w-auto h-3 mr-3 opacity-75"
           >
         </div>
 

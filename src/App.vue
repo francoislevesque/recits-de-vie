@@ -1,38 +1,38 @@
 <template>
   <div>
-    <div class="lg:p-10 bg-blue-900">
-      <div class="container p-5 max-w-2xl">
+    <div class="bg-blue-900 lg:p-10">
+      <div class="container max-w-2xl p-5">
         <a href="http://cffp.recherche.usherbrooke.ca/">
           <img
-            class="mx-auto w-48 mb-10"
+            class="w-48 mx-auto mb-10"
             src="@/assets/logo.png"
             alt="Logo chaire de recherche en fiscalité et finances publiques de l'Université de Sherbrooke"
           >
         </a>
-        <p class="text-3xl font-bold text-blue-100 lg:text-4xl leading-tight mb-1">
-          Récits de vie
+        <p class="mb-1 text-3xl font-bold leading-tight text-blue-100 lg:text-4xl">
+          Life stories
         </p>
-        <p class="text-blue-300 lg:text-2xl leading-tight mb-8">
-          Comment évoluent les prélèvements fiscaux, les prestations et les dépenses publiques pour une contribuable au cours de sa vie?
+        <p class="mb-8 leading-tight text-blue-300 lg:text-2xl">
+          How do tax levies, social benefits and government spending evolve for a taxpayer over the course of their life?
         </p>
       </div>
       <div class="container max-w-2xl bg-blue-100">
         <div class="p-8 lg:p-10">
           <p class="mb-10">
-            Nous allons suivre la vie d'Ella, qui présente les caractéristiques représentatives d’une femme québécoise, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>, pour 3 scénarios de vie distincts :
+            We will be following the life of Ella, who exhibits the typical features of a young Quebec woman, from her <b>18th birthday</b> until her death at <b>87 years old</b>, through three distinctive life scenarios: 
           </p>
           <div class="mb-10">
-            <div class="pl-6 border-blue-500 border-l-4 mb-10">
+            <div class="pl-6 mb-10 border-l-4 border-blue-500">
               <div class="flex items-baseline mb-3">
-                <h2 class="text-lg lg:text-xl font-bold mr-4">
-                  Scénario 1
+                <h2 class="mr-4 text-lg font-bold lg:text-xl">
+                  Scenario 1
                 </h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="65.649"
                   height="86.892"
                   viewBox="0 0 65.649 86.892"
-                  class="h-4 w-auto text-blue-700"
+                  class="w-auto h-4 text-blue-700"
                 ><g transform="translate(-147.54 -111.445)"><g transform="translate(147.54 162.719)"><path
                   d="M198.988,285.357a27.077,27.077,0,0,0-13.02-3.312H174.761a27.215,27.215,0,0,0-27.221,27.221v8.4h65.649v-8.4A27.211,27.211,0,0,0,198.988,285.357Z"
                   fill="currentColor"
@@ -45,20 +45,20 @@
               </div>
 
               <p class="">
-                Ella vit seule, sans enfant, durant toute sa vie.
+                Ella lives alone, without children, throughout her whole life.
               </p>
             </div>
-            <div class="pl-6 border-blue-500 border-l-4 mb-10">
+            <div class="pl-6 mb-10 border-l-4 border-blue-500">
               <div class="flex items-baseline mb-3">
-                <h2 class="text-lg lg:text-xl font-bold mr-4">
-                  Scénario 2
+                <h2 class="mr-4 text-lg font-bold lg:text-xl">
+                  Scenario 2
                 </h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="253.626"
                   height="86.892"
                   viewBox="0 0 253.626 86.892"
-                  class="h-4 w-auto text-blue-700"
+                  class="w-auto h-4 text-blue-700"
                 ><g transform="translate(-291.321 -142.218)"><g transform="translate(143.781 30.773)"><g transform="translate(147.54 162.719)"><path
                   d="M198.988,285.357a27.077,27.077,0,0,0-13.02-3.312H174.761a27.215,27.215,0,0,0-27.221,27.221v8.4h65.649v-8.4A27.211,27.211,0,0,0,198.988,285.357Z"
                   transform="translate(-147.54 -282.045)"
@@ -94,20 +94,20 @@
                 /></g></g></g></g></svg>
               </div>
               <p class="">
-                Ella forme un couple à l’âge de 27 ans, a deux enfants et demeure en couple jusqu’à 82 ans, son âge lors du décès de son conjoint.
+                Ella starts a relationship at 27, gives birth to two children and remains with her partner until his death, she will then be 82.
               </p>
             </div>
-            <div class="pl-6 border-blue-500 border-l-4 mb-10">
+            <div class="pl-6 mb-10 border-l-4 border-blue-500">
               <div class="flex items-baseline mb-3">
-                <h2 class="text-lg lg:text-xl font-bold mr-4">
-                  Scénario 3
+                <h2 class="mr-4 text-lg font-bold lg:text-xl">
+                  Scenario 3
                 </h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="121.968"
                   height="86.892"
                   viewBox="0 0 121.968 86.892"
-                  class="h-4 w-auto text-blue-700"
+                  class="w-auto h-4 text-blue-700"
                 ><g transform="translate(-634.321 -142.218)"><g transform="translate(486.781 30.773)"><g transform="translate(147.54 162.719)"><path
                   d="M198.988,285.357a27.077,27.077,0,0,0-13.02-3.312H174.761a27.215,27.215,0,0,0-27.221,27.221v8.4h65.649v-8.4A27.211,27.211,0,0,0,198.988,285.357Z"
                   transform="translate(-147.54 -282.045)"
@@ -127,12 +127,12 @@
                 /></g></g></g></g></svg>
               </div>
               <p class="">
-                Ella forme un couple, a un seul enfant et se sépare de son conjoint à 40 ans. Ella conserve la garde exclusive de son enfant mineur par la suite, tout en demeurant célibataire pour le reste de sa vie. 
+                Ella starts a relationship, gives birth to one child and parts ways with her partner when she reaches 40.  Ella has the sole custody of her minor child and remains single for the rest of her life.
               </p>
             </div>
           </div>
           <p class="">
-            Le <span class="revenu">revenu</span>, les <span class="prelevements">prélèvements</span>, les <span class="prestations">prestations financières</span> et la valeur des <span class="benefices">services publics</span> reçus sont présentés sur une <b>base annuelle</b> et représentent ce qui est payé et obtenu par Ella et, s’il y a lieu, son conjoint Luis et ses enfants mineurs.
+            The <span class="revenu">income</span>, the <span class="prelevements">levies</span>, the <span class="prestations">financial benefits</span> and the value of the <span class="benefices">public services</span> perceived are presented on an <b>annual basis</b> and represent what is payed and obtained by Ella and, when relevant, by her partner Luis and her minor children. 
           </p>
         </div>
       </div>
@@ -148,11 +148,11 @@
         data-tooltip="20,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Aux études collégiales | 
-          <span class="text-gray-600">18 à 20 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Studying in college | 
+          <span class="text-gray-600">18 to 20 years old</span> 
         </h2>
-        À <b>18 ans</b>, Ella habite chez ses parents, poursuit des études collégiales et travaille à temps partiel. Ella n’a pas encore formé de couple. Dans tous les scénarios, son <span class="revenu">revenu</span> est identique, soit un peu plus de <b>7 500 $</b> par année.
+        At <b>18</b>, Ella lives with her parents, studies in college and works part-time. She is not in a relationship yet. In every scenarios, her <span class="revenu">income</span> is identical: a little above <b>$7500</b> per year. 
       </notice>
       <div
         slot="graphic"
@@ -170,7 +170,7 @@
         data-tooltip="20,prelevements"
         push-bottom
       >
-        Pendant ces premières années, les <span class="prelevements">prélèvements</span> s'élèvent à environ <b>1 500 $</b>.
+        During those first years, the <span class="prelevements">levies</span> go up to about <b>$1500</b>. 
       </notice>
       <notice
         data-max="20"
@@ -178,7 +178,7 @@
         data-tooltip="20,prelevements"
         push-bottom
       >
-        Ils sont à <b>76%</b> composés de <span class="prelevements">taxes à la consommation</span>.
+        The <span class="prelevements">consumption taxes</span> represent <b>76%</b> of those levies. 
       </notice>
       <notice
         data-max="20"
@@ -186,7 +186,7 @@
         data-tooltip="20,prestations"
         push-bottom
       >
-        En contrepartie, Ella reçoit également près de 600$ en <span class="prestations">Crédit d'impôt pour solidarité</span> et <span class="prestations">Crédit pour TPS.</span>
+        In return, Ella perceives close to <b>$600</b> in solidarity <span class="prestations">tax credit and GST credit</span>.
       </notice>
       <notice
         data-max="20"
@@ -194,7 +194,7 @@
         data-tooltip="20,benefices"
         push-bottom
       >
-        La valeur des <span class="benefices">services publics</span> s'élève à plus de <b>14 000 $</b>. Comme Ella va au cégep, la majorité de cette valeur provient des <b>services d'enseignement supérieur</b>.
+        The value of the <span class="benefices">public services</span> goes up to <b>$14 000</b>. As Ella is going to cégep, the majority of this value comes from the <b>higher education services</b>. 
       </notice>
       <notice
         data-min="21"
@@ -203,11 +203,11 @@
         data-tooltip="26,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Début de carrière | 
-          <span class="text-gray-600 mr-1">21 à 26 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Beginning of career | 
+          <span class="mr-1 text-gray-600">21 to 26 years old</span> 
         </h2>
-        À 21 ans, Ella quitte le domicile de ses parents et commence à travailler à temps plein. Son <span class="revenu">salaire</span> initial est d’un peu plus de <b>35 000 $</b> et augmente progressivement chaque année, atteignant plus de <b>42 000 $</b> à 26 ans.
+        At 21 years old, Ella leaves her parents’ home and starts working full time. Her starting <span class="revenu">salary</span> is a little over <b>$35,000</b> and progressively increases every year until it reaches <b>$42,000</b> when Ella is 26 years old. 
       </notice>
       <notice
         data-min="21"
@@ -216,7 +216,7 @@
         data-tooltip="26,prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements fiscaux</span> augmentent également en fonction du revenu et passent de <b>8 500 $</b> à plus de <b>11 000 $</b>. 
+        The <span class="prelevements">levies</span> increase proportionally to the income and go from <b>$8,500</b> at the start of Ella’s career up to <b>$11,000</b> when she reaches 26 years old. 
       </notice>
       <notice
         data-min="21"
@@ -225,7 +225,7 @@
         data-tooltip="26,prelevements"
         push-bottom
       >
-        <span class="prelevements">L’impôt sur le revenu fédéral et du Québec</span> constituent alors <b>un peu plus de la moitié</b> des prélèvements. 
+        <span class="prelevements">The federal taxes and the Quebec taxes</span> represent <b>about half</b> of those levies. 	
       </notice>
       <notice
         data-min="21"
@@ -234,7 +234,7 @@
         data-tooltip="26,prestations"
         push-bottom
       >
-        Les <span class="prestations">prestations</span> se composent du <span class="prestations">crédit pour TPS</span> et du <span class="prestations">crédit d’impôt pour solidarité</span> qui totalisent plus de <b>1 000 $</b>. Ces montants diminuent lorsque le salaire d’Ella augmente.
+        The <span class="prestations">benefits</span> perceived consist of the <span class="prestations">GST and the solidarity tax credit</span>, which represents more than <b>$1,000</b>. Those amounts diminish when Ella’s income increases. 
       </notice>
       <notice
         data-min="21"
@@ -243,7 +243,7 @@
         data-tooltip="26,benefices"
         push-bottom
       >
-        La valeur moyenne des <span class="benefices">services publics de soins de santé reçus</span> est d’environ <span class="whitespace-no-wrap">2&nbsp;000 $</span> par année. Cette valeur fluctue selon l’âge et s’établit à environ <b class="whitespace-no-wrap">2&nbsp;700 $</b> à 26 ans.
+        The average value of the perceived <span class="benefices">public healthcare services</span> is about <span class="whitespace-no-wrap">$2,000</span> per year. This value fluctuates according to the age and settles at <b class="whitespace-no-wrap">$2,700</b> when one is reaching 26 years old.
       </notice>
       <notice
         data-min="27"
@@ -253,11 +253,11 @@
         data-tooltip="28,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Vie en couple | 
-          <span class="text-gray-600 mr-1">27 à 28 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Life as a couple | 
+          <span class="mr-1 text-gray-600">27 to 28 years old</span> 
         </h2>
-        C'est à <b>27 ans</b>, qu'Ella forme un couple avec Luis. En conséquence les scénarios 2 et 3 prennent en compte le <span class="revenu">revenu du ménage</span> de plus de <b>93 000$</b> à la formation du couple. 
+        At <b>27 years</b> Ella starts a relationship with Luis. Consequently, scenarios 2 and 3 take into account the <span class="revenu">household’s income</span>, which adds up to <b>$93,000</b> when the relationship starts.
       </notice>
       <notice
         data-min="27"
@@ -267,7 +267,7 @@
         data-tooltip="28,prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements</span> assumés par Ella et Luis sont d’environ <b class="whitespace-no-wrap">26&nbsp;500 $</b>.
+        The <span class="prelevements">levies</span> paid by Ella and Luis add up to about <b class="whitespace-no-wrap">$26,500</b>.
       </notice>
       <notice
         data-min="27"
@@ -277,7 +277,7 @@
         data-tooltip="28,benefices"
         push-bottom
       >
-        Le couple ne bénéficie au départ d’aucune <span class="prestations">prestation financière</span>. La valeur des <span class="benefices">services publics</span> reçus, composés exclusivement des <span class="benefices">soins de santé</span>, est de près de <b>4 300 $</b>. 
+        The couple doesn’t perceive any <span class="prestations">benefits</span> at first. The value of the <span class="benefices">public services</span> perceived, which consist exclusively of <span class="benefices">healthcare related services</span>, adds up to <b>$4,300</b>. 
       </notice>
       <notice
         data-min="29"
@@ -287,11 +287,11 @@
         data-tooltip="29,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Naissance du premier enfant | 
-          <span class="text-gray-600 mr-1">29 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Birth of the first child | 
+          <span class="mr-1 text-gray-600">29 years old</span> 
         </h2>
-        À la naissance de son premier enfant, Ella cesse de travailler pendant 1 an dans les scénarios 2 et 3. Le <span class="revenu">revenu de salaire</span> du ménage diminue alors de moitié.
+        After giving birth to her first child, Ella stops working for about a year in the scenarios 2 and 3. The <span class="revenu">household’s income</span> is then cut by half. 
       </notice>
       <notice
         data-min="29"
@@ -301,7 +301,7 @@
         data-tooltip="29,prestations"
         push-bottom
       >
-        Les nouveaux parents touchent des <span class="prestations">prestations</span> du <span class="prestations">Régime québécois d’assurance parentale</span> s’élevant à près de <b>31 000 $</b>. Des <span class="prestations">prestations financières pour la famille</span> d’environ <b>5 000 $</b> s’ajoutent également.
+        The new parents perceive <span class="prestations">benefits</span> from the <span class="prestations">Québec Parental Insurance Plan</span>, which add up to <b>$31,000</b>. A total of <b>$5,000</b> of <span class="prestations">family benefits</span> is also perceived. 
       </notice>
       <notice
         data-min="29"
@@ -311,7 +311,7 @@
         data-tooltip="29,prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements</span> passent à un peu moins de <b>20 500 $</b>.
+        The <span class="prelevements">levies</span> decrease and total <b>$20,500</b>.
       </notice>
       <notice
         data-min="29"
@@ -321,7 +321,7 @@
         data-tooltip="29,benefices"
         push-bottom
       >
-        La valeur des <span class="benefices">soins de santé</span> reçus par la famille l’année de l’arrivée de l’enfant est d’environ <b>14 000$</b>.  
+        The value of the <span class="benefices">healthcare services</span> perceived by the family the year of the first child’s birth totals about <b>$14,000</b>.
       </notice>
       <notice
         data-min="30"
@@ -331,11 +331,11 @@
         data-tooltip="30,benefices"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Retour au travail | 
-          <span class="text-gray-600 mr-1">30 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Back to work | 
+          <span class="mr-1 text-gray-600">30 years old</span> 
         </h2>
-        Lorsque l’enfant a 1 an, Ella retourne sur le <span class="revenu">marché du travail</span> et les <span class="benefices">services de garde subventionnés</span> sont utilisés. La valeur de ce <span class="benefices">service public</span> est d’un peu plus de <b>10 000$</b> par année par enfant.  
+        When the child reaches 1 year old, Ella is back on the <span class="revenu">job market</span> and <span class="benefices">subsidised childcare services</span> are used. The value of this <span class="benefices">public service</span> amounts to about <b>$10,000</b> per year and per child. 
       </notice>
       <notice
         data-min="31"
@@ -345,11 +345,11 @@
         data-tooltip="31,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Deuxième enfant | 
-          <span class="text-gray-600 mr-1">31 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Second child | 
+          <span class="mr-1 text-gray-600">31 years old</span> 
         </h2>
-        À 31 ans, dans le cas du scénario 2, Ella cesse à nouveau de travailler pendant un an suite à l’arrivée du deuxième enfant. Le <span class="revenu">revenu</span> du couple est modifié en conséquence.  
+        At 31 years old, in scenario 2, Elle stops working for another year following the birth of her second child. The couple’s <span class="revenu">income</span> is consequently altered. 
       </notice>
       <notice
         data-min="34"
@@ -359,11 +359,11 @@
         data-tooltip="39,benefices"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2 leading-tight">
-          Entrée à la maternelle et éducation primaire des 2 enfants (scénario 2), 1 seul enfant (scénario 3) | 
-          <span class="text-gray-600 mr-1">34 à 39 ans</span> 
+        <h2 class="mb-2 text-lg font-bold leading-tight">
+          Start of kindergarten and primary education of the 2 children (scenario 2), only 1 child (scenario 3) | 
+          <span class="mr-1 text-gray-600">34 to 39 years old</span> 
         </h2>
-        Lorsque Ella a <b>34 ans</b>, le premier enfant entre à la maternelle, la valeur des <span class="benefices">services publics</span> reçus diminue, car l’utilisation des <span class="benefices">services de garde à contribution réduite</span> est remplacée par les <span class="benefices">services de garde en milieu scolaire</span> et les <span class="benefices">services d’enseignement primaire</span>.
+        When Ella reaches <b>34 years old</b>, the first child starts kindergarten and the value of the perceived <span class="benefices">public services</span> diminishes because the use of the <span class="benefices">reduced contribution childcare services program</span> is replaced by the use the <span class="benefices">school childcare services</span> and the <span class="benefices">primary education services</span>. 
       </notice>
       <notice
         data-min="40"
@@ -373,11 +373,11 @@
         data-tooltip="40,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Rupture | 
-          <span class="text-gray-600 mr-1">40 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Separation | 
+          <span class="mr-1 text-gray-600">40 ans</span> 
         </h2>
-        À <b>40 ans</b>, le scénario 3 montre l’effet de la rupture d’Ella et de son conjoint. Celle-ci conserve la garde exclusive de son enfant unique. Le revenu n’est plus constitué que du salaire d’Ella, soit près de <b>53 000 $</b>.
+        At <b>40 years old</b>, scenario 3 shows the impact of the separation of Ella and her partner Luis. She retains the sole custody of her only child. The income now only consists of Ella’s salary which totals about <b>$53,000</b>.
       </notice>
       <notice
         data-min="40"
@@ -387,7 +387,7 @@
         data-tooltip="46,prelevements"
         push-bottom
       >
-        Dans le scénario 3, suite à la rupture, les <span class="prelevements">prélèvements</span> passent à environ <b>15 000 $</b>. 
+        In scenario 3, following the separation, the <span class="prelevements">levies</span> amount to about <b>$15,000</b>.
       </notice>
       <notice
         data-min="40"
@@ -397,7 +397,7 @@
         data-tooltip="46,prestations"
         push-bottom
       >
-        Toujours en situation monoparentale, les <span class="prestations">prestations financières</span> d’Ella sont majorées. Elles passent à <b>7 500 $</b>. 
+        Still in a single-parent situation, Ella’s <span class="prestations">benefits</span> are raised. She now perceives <b>$7,500</b>. 
       </notice>
       <notice
         data-min="47"
@@ -408,13 +408,13 @@
         data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,service-es"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Le premier enfant devient majeur | 
-          <span class="text-gray-600 mr-1">47 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          The first child reaches the age of legal majority | 
+          <span class="mr-1 text-gray-600">47 years old</span> 
         </h2>
-        Lorsque le premier enfant atteint <b>18 ans</b>, les <span class="prestations">prestations financières</span> diminuent et la valeur des <span class="benefices">services publics</span> attribués à cet enfant n’est plus prise en compte.
+        When the first child reaches <b>18 years old</b>, the <span class="prestations">benefits</span> decrease and the value of the <span class="benefices">public services</span> allocated to this child is not taken into account anymore. 
         <br>
-        Dans le cas du scénario où Ella est monoparentale, les <span class="prestations">prestations financières</span> <b class="whitespace-no-wrap">(7&nbsp;500 $)</b> disparaissent complètement et une diminution de la valeur des <span class="benefices">services publics</span> d'environ <b class="whitespace-no-wrap">13&nbsp;700 $</b> est alors observée.  
+        In the scenario where Ella is a single-parent, the <span class="prestations">benefits</span> <b class="whitespace-no-wrap">($7,500)</b> disappear completely and a decrease of the value of the <span class="benefices">public services</span> of about <b class="whitespace-no-wrap">$13,700</b> is then observed. 
       </notice>
       <notice
         data-min="49"
@@ -425,11 +425,11 @@
         data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,service-es"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Deuxième enfant devient majeur | 
-          <span class="text-gray-600 mr-1">49 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          The second child reaches the age of legal majority | 
+          <span class="mr-1 text-gray-600">49 years old</span> 
         </h2>
-        Dans le cas du scénario 2, une deuxième réduction des <span class="prestations">prestations financières</span> et de la valeur des <span class="benefices">services publics</span> reçus survient lorsqu’Ella a <b>49 ans</b>, soit lorsque le deuxième enfant atteint <b>18 ans</b>.
+        In the case of scenario 2, a second decrease of the <span class="prestations">benefits</span> and of the value of the <span class="benefices">public services</span> perceived is observed when Ella reached <b>49 years old</b>, which is when the second child turns <b>18 years old</b>. 
       </notice>
       <notice
         data-min="60"
@@ -438,11 +438,11 @@
         data-tooltip="60,revenu,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Retraite | 
-          <span class="text-gray-600 mr-1">60 à 74 ans </span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Retirement | 
+          <span class="mr-1 text-gray-600">60 to 74 years old</span> 
         </h2>
-        Dans tous les scénarios Ella prend sa retraite à <b>60 ans</b>. Luis prend sa retraite au même moment qu’Ella (scénario 2). Le <span class="revenu">revenu</span> provient alors de leurs fonds de retraite privé. Il est moins important qu’en période de vie active.
+        In every scenarios, Ella retires at <b>60 years old</b>. Luis retires at the same time (scenario 2). The <span class="revenu">income</span> then comes from their private pension fund. It is less substantial than when they were actively working.
       </notice>
 
       <notice
@@ -453,7 +453,7 @@
         data-tooltip="60,prestations,left"
         push-bottom
       >
-        Ella touche les <span class="prestations">prestations du Régime de rentes du Québec</span> à 61 ans. Dans le scénario 2, Luis touche ces prestations dès la prise de la retraite. Tous deux obtiennent la <span class="prestations">pension de la sécurité de la vieillesse</span> à <b>65 ans</b>.
+        Ella perceives the <span class="prestations">benefits of the Québec Pension Plan</span> at <b>61 years old</b>. In scenario 2, Luis perceives those benefits as soon as he retires. Both of them are granted the <span class="prestations">Old age security Pension</span> at <b>65 years old</b>.    
       </notice>
       
       <notice
@@ -463,7 +463,7 @@
         data-category="prelevements"
         push-bottom
       >
-        Les <span class="prelevements">prélèvements</span> diminuent. Les <b>cotisations sociales</b> prélevées sur le salaire sont remplacées par les <span class="prelevements">cotisations au régime d’assurance-médicament</span> et au <span class="prelevements">Fonds des service de santé</span>. 
+        The <span class="prelevements">levies</span> decrease. The <b>social security contributions</b> collected on the salary are replaced by the <span class="prelevements">contributions to the Quebec prescription drug insurance plan</span> and the contributions to the h<span class="prelevements">ealthcare services fund</span>. 
       </notice>
 
       <notice
@@ -473,11 +473,11 @@
         data-tooltip="75,prestations,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Retraite | 
-          <span class="text-gray-600 mr-1">75 à 81 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Retirement | 
+          <span class="mr-1 text-gray-600">75 to 81 years old</span> 
         </h2>
-        À compter de <b>75 ans</b>, Ella touche le <span class="prestations">crédit d’impôt pour maintien à domicile</span>. 
+        When she reaches <b>75 years old</b>, Ella starts to perceive the <span class="prestations">tax credit for home-support services for seniors</span>. 
       </notice>
 
       <notice
@@ -488,11 +488,11 @@
         data-tooltip="82,prelevements,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Décès du conjoint | 
-          <span class="text-gray-600 mr-1">82 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          Death of the partner | 
+          <span class="mr-1 text-gray-600">82 years old</span> 
         </h2>
-        Luis décède lorsque Ella est âgée de <b>82 ans</b> (scénario 2), modifiant le <span class="revenu">revenu</span>, la valeur des <span class="prelevements">prélèvements</span> et celle des <span class="benefices">bénéfices publics</span> reçus. 
+        Luis dies when Ella is <b>82 years old</b> (scenario 2), thus altering the <span class="revenu">income</span>, the values of the <span class="prelevements">levies</span> and of the perceived <span class="benefices">public benefits</span>. 
       </notice>
 
       <notice
@@ -502,11 +502,11 @@
         data-tooltip="83,benefices,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Fin de vie | 
-          <span class="text-gray-600 mr-1">83 à 87 ans</span> 
+        <h2 class="mb-2 text-lg font-bold">
+          End of life | 
+          <span class="mr-1 text-gray-600">83 to 87 years old</span> 
         </h2>
-        À l’âge adulte, la valeur des <span class="benefices">services de soins de santé</span> reçus augmente avec l’âge. Dans le cas où Ella vit seule à la retraite (scénarios 1 et 3), cette valeur passe d’un peu moins de <b>6 000 $</b> à 65 ans, à plus de <b>28 000 $</b> à 85 ans.
+        In adulthood, the value of the <span class="benefices">healthcare services</span> perceived increases with age. In the case where Ella lives alone during retirement (scenario 1 and 3), this value increases, starting at a little less than <b> $6,000 </b> at 65 years old to reach more than <b>$28,000</b> at 85 years old. 
       </notice>
 
       <notice
@@ -517,10 +517,10 @@
         data-show-selection="false"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
-          Bénéfices publics et prélèvements au cours d’une vie
+        <h2 class="mb-2 text-lg font-bold">
+          Public benefits and levies over the course of a life
         </h2>
-        Au cours d'une vie, les 3 ménages d’Ella bénéficient de <span class="benefices">services publics</span>, touchent des <span class="prestations">prestations</span> et, en contrepartie assument des <span class="prelevements">prélèvements</span>. <b>Nous pouvons observer simultanément ces flux monétaires</b>.
+        Over the course of a lifetime, Ella’s 3 households are assisted by <span class="benefices">public services</span>, perceive <span class="prestations">benefits</span> and, in return, they pay <span class="prelevements">levies</span>. We can now observe simultaneously those cash-flows.
       </notice>
 
       <notice
@@ -531,7 +531,7 @@
         data-show-substraction="true"
         push-bottom
       >
-        En effectuant la <b>différence entre ce qui a été reçu et ce qui a été payé</b>, il est possible de voir si le ménage d’Ella retire un bénéfice net (valeur positive) ou encore si celui-ci est contributeur net (valeur négative) au cours d’une année de vie en particulier.
+        By calculating the <b>difference between what has been perceived and what has been paid</b>, it is possible to observe if Ella’s household has made any net profit (positive value) or if it is a net contributor (negative value) over the course of a year in particular. 
       </notice>
 
       <notice
@@ -542,7 +542,7 @@
         data-show-substraction="true"
         push-bottom
       >
-        Dans le cas des scénarios 2 et 3, on remarque <b>l’effet de l’arrivée des enfants</b> et des <span class="prestations">bénéfices publics</span> reçus lorsqu’ils sont d’âge préscolaire.
+        In scenarios 2 and 3, we notice <b>the impact of the addition of the children</b> to the household and the <span class="prestations">perceived benefits</span> when they reach preschool age.
       </notice>
 
       <notice
@@ -553,7 +553,7 @@
         data-show-substraction="true"
         push-bottom
       >
-        Suite à la <b>rupture du couple</b>, les <span class="prestations">bénéfices publics</span> obtenus par la famille monoparentale (scénario 3) surpassent les <span class="prelevements">prélèvements</span>, jusqu’à ce que l’enfant atteigne 18 ans.
+        Following the <b>couple’s separation</b>, the <span class="prestations">public benefits</span> perceived by the single-parent family (scenario 3) exceed the <span class="prelevements">levies</span> until the child reaches 18 years old. 
       </notice>
 
       <notice
@@ -563,7 +563,7 @@
         data-show-substraction="true"
         push-bottom
       >
-        Dans tous les cas, les ménages d’Ella sont <span class="prestations">bénéficiaires nets</span> à compter du moment où celle-ci touche les prestations du <span class="prestations">Régime de rentes du Québec</span>. 
+        In every scenarios, Ella’s households are net <span class="prestations">beneficiaries</span> from the moment she perceives the <span class="prestations">Québec Pension Plan benefits</span>. 
       </notice>
 
       <notice
@@ -574,7 +574,7 @@
         data-show-selection="false"
         push-bottom
       >
-        Le <b>cumul annuel des bénéfices et prélèvements</b> permet d’évaluer, pour une année particulière, la différence entre, d’une part, l’ensemble des <span class="prestations">prestations</span> et <span class="benefices">services publics</span> obtenus jusque-là au cours de la vie adulte et, d’autre part l’ensemble des <span class="prelevements">prélèvements</span> assumés. 
+        The <b>annual accumulation of the benefits and levies</b> allows us to evaluate, for a specific year, the difference between, on one hand, the amount of the <span class="prestations">benefits</span> and <span class="benefices">public services</span> perceived during adult life and, on the other hand, the amount of the paid <span class="prelevements">levies</span>. 
       </notice>
 
       <notice
@@ -585,16 +585,16 @@
         data-show-selection="false"
         push-bottom
       >
-        La <b>présence d’enfant</b> et les <b>bénéfices publics offerts à deux retraités plutôt qu’un seul</b> ont pour effet de devancer le moment à partir duquel le ménage d’Ella commence à obtenir rétrospectivement davantage que ce qu’il a versé sur un cycle de vie complet. 
+        The <b>presence of children</b> and the <b>public benefits offered to two retired individuals rather than one</b>, as a result, allows to pre-empt the moment where Ella’s household starts to retrospectively obtain more than what they paid over the course of an entire lifetime.
         <br>
         <br>
-        Ce moment arrive lorsque Ella a :
-        <ul class="list-disc ml-5">
-          <li><b>74 ans</b> pour le scénario 2</li>
+        This moment happens when Ella reaches:
+        <ul class="ml-5 list-disc">
+          <li><b>74 years old</b> for scenario 2</li>
           <li>
-            <b>80 ans</b> pour le scénario 3
+            <b>80 years old</b> for scenario 3
           </li>
-          <li><b>85 ans</b> pour le scénario 1</li>
+          <li><b>85 years old</b> for scenario 1</li>
         </ul>
       </notice>
 
@@ -606,20 +606,20 @@
         data-show-selection="false"
         push-bottom
       >
-        De façon générale, les <span class="prelevements">prélèvements</span> dominent pendant la <b>vie active</b> tandis que la valeur des <span class="prestations">bénéfices publics</span> est plus importante à la <b>retraite</b>. 
+        Generally speaking, the <span class="prelevements">levies</span> dominate during <b>working life</b> while the value of the <span class="prestations">public benefits</span> is more important during <b>retirement</b>. 
         <br>
         <br>
-        Ella assume une charge fiscale importante à certains moments de sa vie sans toujours obtenir une contrepartie équivalente sous forme de bénéfices publics, cependant, dans son cas, cette situation est temporaire.
+        Ella bears an important fiscal burden at certain points in her life without always obtaining an equivalent compensation through public benefits, however, in her case, this situation is temporary. 
       </notice>
 
       <notice
         v-show="isDesktop"
         data-step="end"
       >
-        <h2 class="text-lg font-bold mb-2">
-          À vous d'explorer!
+        <h2 class="mb-2 text-lg font-bold">
+          Your turn to explore!
         </h2>
-        Vous pouvez à présent explorer les données comme bon vous semble. Les informations relatives à une année particulière s’affichent lorsque l’on pointe le curseur sur les graphiques.
+        You can now explore the data as you please. The information related to a singular year will appear when you point the cursor on the graphs.
       </notice>
 
       <div data-step="end">
@@ -630,27 +630,27 @@
       v-if="isDesktop"
       ref="vizInteractive"
     />
-    <div class="py-12 px-6 bg-blue-100">
+    <div class="px-6 py-12 bg-blue-100">
       <div class="container max-w-2xl">
-        <h2 class="text-lg font-semibold mb-3">
-          Méthodologie et interprétation
+        <h2 class="mb-3 text-lg font-semibold">
+          Methodology and interpretation
         </h2>
-        <p class="text-base mb-5">
-          Les calculs sont basés sur le régime fiscal de 2018, le ménage vivant l’ensemble de sa vie dans ce système fiscal. La majorité des caractéristiques de nos personnages sont issues des données produites par Statistique Canada. Pour chacun des paramètres, le cas médian (ou moyen) est retenu afin de baser l’analyse sur les situations les plus représentatives possible.  Il est important de noter que seul un échantillon de services publics et, par conséquent, des bénéfices publics est présenté. Dans le même ordre d’idée, certains prélèvements tels les impôts fonciers n’ont pas été pris en compte.
+        <p class="mb-5 text-base">
+          All calculations are based on the 2018 taxation system,  the household living their whole life in this fiscal system. The majority of the characteristics of our protagonists are based on data issued by Statistics Canada. For each of the parameters, the median parameter (or mean) is used in order to base the analysis on a situation as representative and plausible as possible. It is important to note that only one sample of publics services and therefore of public benefits is represented. In the same line, some samples, like the property taxes haven’t been taken into account.
         </p>
-        <p class="text-base mb-5">
-          Cette analyse ne doit donc pas être vue comme un bilan précis des gains et bénéfices de la vie dans la société québécoise pour un cheminement de vie donné, mais plutôt comme une représentation de l’évolution des prélèvements fiscaux et des bénéfices publics au cours d’une vie.
+        <p class="mb-5 text-base">
+          Therefore, this analysis shouldn’t be considered as a precise assessment of the gains and benefits in Quebec society for a defined life path, but more so as a representation of the evolution of the levies and public benefits over a life’s course.
         </p>
         <p class="text-base ">
-          Les hypothèses sur lesquelles se basent l’ensemble des calculs sont disponibles à : <a
-            class="underline text-blue-700"
+          The hypothesises on which the entire calculations are based can be found at the following address: <a
+            class="text-blue-700 underline"
             href="http://cffp.recherche.usherbrooke.ca/impots-et-services-publics-approche-par-recit-de-vie/"
           >http://cffp.recherche.usherbrooke.ca/impots-et-services-publics-approche-par-recit-de-vie/</a>.
         </p>
 
         <a
           href="#"
-          class="items-center inline-flex px-2 py-2 pr-4 bg-gray-200 rounded mt-8"
+          class="inline-flex items-center px-2 py-2 pr-4 mt-8 bg-gray-200 rounded"
         > 
           <svg
             class="inline"
@@ -662,24 +662,24 @@
               d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"
             />
           </svg>
-          <span class="ml-1">Retourner au début</span>
+          <span class="ml-1">Return to top</span>
         </a>
 
         <hr class="my-10">
-        <p class="text-base mb-2">
-          Travail collectif où ont participé <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b> et <b>Luc Godbout</b>.
+        <p class="mb-2 text-base">
+          Collective work where <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b> et <b>Luc Godbout</b> have participated.
         </p>
-        <p class="text-base mb-2">
-          Les auteurs collaborent aux travaux de la <a
+        <p class="mb-2 text-base">
+          The authors are actively collaborating to the researches of the <a
             class="underline"
             href="http://cffp.recherche.usherbrooke.ca/"
-          >Chaire de recherche en fiscalité et en finances publiques</a>, qu’ils remercient pour l’appui financier qui a rendu possible la réalisation de cet outil.
+          >Chaire de recherche en fiscalité et en finances publiques</a>, whom they thank for their financial support which made the realisation of this tool possible..
         </p>
         <p class="text-base">
-          Outil interactif conçu et réalisé par <b>François Lévesque</b> (<a
+          nteractive tool conceived and realized by <b>François Lévesque</b> (<a
             class="underline"
             href="https://witify.io"
-          >Witify</a>) et <b>Thomas Hurtut</b> (<a
+          >Witify</a>) and <b>Thomas Hurtut</b> (<a
             class="underline"
             href="http://www.professeurs.polymtl.ca/thomas.hurtut/"
           >Polytechnique Montréal</a>).
