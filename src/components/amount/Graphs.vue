@@ -12,7 +12,7 @@
       class="h-full graph-amount"
     />
     <div class="absolute bottom-0 w-full text-xs leading-tight text-gray-700">
-      A positive value refers to a perceived amount while a negative value refers to an paid charge.
+      A positive value refers to a perceived amount while a negative value refers to a charge paid.
     </div>
   </div>
 </template>

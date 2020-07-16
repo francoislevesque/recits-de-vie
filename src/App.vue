@@ -225,7 +225,7 @@
         data-tooltip="26,prelevements"
         push-bottom
       >
-        <span class="prelevements">The federal taxes and the Quebec taxes</span> represent <b>about half</b> of those levies. 	
+        <span class="prelevements">The federal and the Quebec income taxes </span> represent <b>about half</b> of those levies. 	
       </notice>
       <notice
         data-min="21"
@@ -375,7 +375,7 @@
       >
         <h2 class="mb-2 text-lg font-bold">
           Separation | 
-          <span class="mr-1 text-gray-600">40 ans</span> 
+          <span class="mr-1 text-gray-600">40 years old</span> 
         </h2>
         At <b>40 years old</b>, scenario 3 shows the impact of the separation of Ella and her partner Luis. She retains the sole custody of her only child. The income now only consists of Ella’s salary which totals about <b>$53,000</b>.
       </notice>
@@ -397,7 +397,7 @@
         data-tooltip="46,prestations"
         push-bottom
       >
-        Still in a single-parent situation, Ella’s <span class="prestations">benefits</span> are raised. She now perceives <b>$7,500</b>. 
+        In a single-parent situation, Ella’s <span class="prestations">benefits</span> are raised. She now perceives <b>$7,500</b>. 
       </notice>
       <notice
         data-min="47"
@@ -574,7 +574,7 @@
         data-show-selection="false"
         push-bottom
       >
-        The <b>annual accumulation of the benefits and levies</b> allows us to evaluate, for a specific year, the difference between, on one hand, the amount of the <span class="prestations">benefits</span> and <span class="benefices">public services</span> perceived during adult life and, on the other hand, the amount of the paid <span class="prelevements">levies</span>. 
+        The <b>annual accumulation of the benefits and levies</b> allows us to evaluate, for a specific year, the cumulative difference between, on one hand, the amount of the <span class="prestations">benefits</span> and <span class="benefices">public services</span> perceived during adult life and, on the other hand, the amount of the <span class="prelevements">levies</span> paid. 
       </notice>
 
       <notice
@@ -636,7 +636,7 @@
           Methodology and interpretation
         </h2>
         <p class="mb-5 text-base">
-          All calculations are based on the 2018 taxation system,  the household living their whole life in this fiscal system. The majority of the characteristics of our protagonists are based on data issued by Statistics Canada. For each of the parameters, the median parameter (or mean) is used in order to base the analysis on a situation as representative and plausible as possible. It is important to note that only one sample of publics services and therefore of public benefits is represented. In the same line, some samples, like the property taxes haven’t been taken into account.
+          All calculations are based on the tax systems in force in Quebec for 2018, the household living their whole life in this fiscal system. The majority of the characteristics of our protagonists are based on data issued by Statistics Canada. For each of the parameters, the median parameter (or mean) is used in order to base the analysis on a situation as representative and plausible as possible. It is important to note that only a sample of publics services and therefore of public benefits is represented. Similarly, certain levies, like property taxes haven’t been taken into account.
         </p>
         <p class="mb-5 text-base">
           Therefore, this analysis shouldn’t be considered as a precise assessment of the gains and benefits in Quebec society for a defined life path, but more so as a representation of the evolution of the levies and public benefits over a life’s course.
@@ -667,7 +667,7 @@
 
         <hr class="my-10">
         <p class="mb-2 text-base">
-          Collective work where <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b> et <b>Luc Godbout</b> have participated.
+          Collective work where <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b> and <b>Luc Godbout</b> have participated.
         </p>
         <p class="mb-2 text-base">
           The authors are actively collaborating to the researches of the <a
@@ -676,7 +676,7 @@
           >Chaire de recherche en fiscalité et en finances publiques</a>, whom they thank for their financial support which made the realisation of this tool possible..
         </p>
         <p class="text-base">
-          nteractive tool conceived and realized by <b>François Lévesque</b> (<a
+          Interactive tool conceived and realized by <b>François Lévesque</b> (<a
             class="underline"
             href="https://witify.io"
           >Witify</a>) and <b>Thomas Hurtut</b> (<a
