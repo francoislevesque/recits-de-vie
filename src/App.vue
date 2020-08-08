@@ -170,7 +170,7 @@
         data-tooltip="20,prelevements"
         push-bottom
       >
-        During those first years, the <span class="prelevements">levies</span> go up to about <b>$1500</b>. 
+        During those first years, <span class="prelevements">levies</span> go up to about <b>$1500</b>. 
       </notice>
       <notice
         data-max="20"
@@ -178,7 +178,7 @@
         data-tooltip="20,prelevements"
         push-bottom
       >
-        The <span class="prelevements">consumption taxes</span> represent <b>76%</b> of those levies. 
+        <span class="prelevements">Consumption taxes</span> represent <b>76%</b> of those levies. 
       </notice>
       <notice
         data-max="20"
@@ -186,7 +186,7 @@
         data-tooltip="20,prestations"
         push-bottom
       >
-        In return, Ella perceives close to <b>$600</b> in solidarity <span class="prestations">tax credit and GST credit</span>.
+        In return, Ella perceives close to <b>$600</b> in solidarity <span class="prestations">and GST tax credits</span>.
       </notice>
       <notice
         data-max="20"
@@ -194,7 +194,7 @@
         data-tooltip="20,benefices"
         push-bottom
       >
-        The value of the <span class="benefices">public services</span> goes up to <b>$14 000</b>. As Ella is going to cégep, the majority of this value comes from the <b>higher education services</b>. 
+        The value of the <span class="benefices">public services</span> goes up to <b>$14 000</b>. As Ella is going to cégep, the majority of this value comes from <b>higher education services</b>. 
       </notice>
       <notice
         data-min="21"
@@ -225,7 +225,7 @@
         data-tooltip="26,prelevements"
         push-bottom
       >
-        <span class="prelevements">The federal and the Quebec income taxes </span> represent <b>about half</b> of those levies. 	
+        <span class="prelevements">Federal and the Quebec income taxes </span> represent <b>about half</b> of those levies. 	
       </notice>
       <notice
         data-min="21"
@@ -267,7 +267,7 @@
         data-tooltip="28,prelevements"
         push-bottom
       >
-        The <span class="prelevements">levies</span> paid by Ella and Luis add up to about <b class="whitespace-no-wrap">$26,500</b>.
+        <span class="prelevements">Levies</span> paid by Ella and Luis add up to about <b class="whitespace-no-wrap">$26,500</b>.
       </notice>
       <notice
         data-min="27"
@@ -277,7 +277,7 @@
         data-tooltip="28,benefices"
         push-bottom
       >
-        The couple doesn’t perceive any <span class="prestations">benefits</span> at first. The value of the <span class="benefices">public services</span> perceived, which consist exclusively of <span class="benefices">healthcare related services</span>, adds up to <b>$4,300</b>. 
+        The couple doesn’t perceive any <span class="prestations">benefits</span> at first. The value of the <span class="benefices">public services</span> perceived, which consist exclusively of <span class="benefices">healthcare services</span>, adds up to <b>$4,300</b>. 
       </notice>
       <notice
         data-min="29"
@@ -574,7 +574,7 @@
         data-show-selection="false"
         push-bottom
       >
-        The <b>annual accumulation of the benefits and levies</b> allows us to evaluate, for a specific year, the cumulative difference between, on one hand, the amount of the <span class="prestations">benefits</span> and <span class="benefices">public services</span> perceived during adult life and, on the other hand, the amount of the <span class="prelevements">levies</span> paid. 
+        The <b>annual accumulation of the benefits and levies</b> allows us to evaluate, for a specific year, the cumulative difference between, on one hand, the amount of the <span class="prestations">benefits</span> and <span class="benefices">public services</span> perceived during adult life and, on the other hand, the amount of <span class="prelevements">levies</span> paid. 
       </notice>
 
       <notice
@@ -639,7 +639,7 @@
           All calculations are based on the tax systems in force in Quebec for 2018, the household living their whole life in this fiscal system. The majority of the characteristics of our protagonists are based on data issued by Statistics Canada. For each of the parameters, the median parameter (or mean) is used in order to base the analysis on a situation as representative and plausible as possible. It is important to note that only a sample of publics services and therefore of public benefits is represented. Similarly, certain levies, like property taxes haven’t been taken into account.
         </p>
         <p class="mb-5 text-base">
-          Therefore, this analysis shouldn’t be considered as a precise assessment of the gains and benefits in Quebec society for a defined life path, but more so as a representation of the evolution of the levies and public benefits over a life’s course.
+          Therefore, this analysis shouldn’t be considered as a precise assessment of the gains and benefits in Quebec society for a defined life path, but more so as a representation of the evolution of levies and public benefits over a life’s course.
         </p>
         <p class="text-base ">
           The hypothesises on which the entire calculations are based can be found at the following address: <a

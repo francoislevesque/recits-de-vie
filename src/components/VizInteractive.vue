@@ -7,7 +7,7 @@
             3 life stories
           </h3>
           <p class="text-base">
-            How do the taxes and the social charges, benefits and public spending do affect a taxpayer over the course of their life?
+            How do taxes and social charges, benefits and public spending do affect a taxpayer over the course of their life?
           </p>
         </div>
         <div class="px-5 py-6 border-b border-blue-300">
