@@ -61,15 +61,7 @@ class Graph {
 	draw () {
 		this.drawBands();
       
-		this.origin = this.svg.append("line")
-			.attr("class", "y")
-			.attr("x1", this.scaleX(0))
-			.attr("x2", this.scaleX(0))
-			.attr("y1", 0)
-			.attr("y2", this.height)
-			.attr("stroke", "#000")
-			.attr("stroke-width", 1)
-			.attr("opacity", this.lineOpacity());
+		
 	}
   
 	redraw (data, filters, width, height, offset) {
@@ -96,21 +88,21 @@ class Graph {
 						.attr("opacity", d => this.bandOpacity(d));
 
 					g.append("rect")
-						.attr("class", d => "fill-current " + this.colorClass("500"))
+						.attr("class", d => "fill-current " + this.colorClass("600"))
 						.attr("x", 0)
 						.attr("height", BAR_HEIGHT)
 						.attr("y", d => (this.scaleY.bandwidth() - BAR_HEIGHT) / 2)
 						.attr("width", d => this.bandWidth(d));
             
 					g.append("circle")
-						.attr("class", d => "highlight fill-current " + this.colorClass("500"))
+						.attr("class", d => "highlight fill-current " + this.colorClass("600"))
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d))
 						.style("transform-origin", d => `${this.bandWidth(d)}px ${this.scaleY.bandwidth() / 2}px`)
 						.attr("r", 6);
 
 					g.append("circle")
-						.attr("class", d => "dot fill-current " + this.colorClass("700"))
+						.attr("class", d => "dot fill-current " + this.colorClass("600"))
 						.attr("cy", this.scaleY.bandwidth() / 2)
 						.attr("cx", d => this.bandWidth(d))
 						.attr("r", 6);
@@ -212,7 +204,7 @@ class Graph {
 	}
   
 	color () {
-		return this.colorClass("800");
+		return this.colorClass("500");
 	}
   
 	fontClasses (d, classes) {

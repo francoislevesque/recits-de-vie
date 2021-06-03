@@ -156,7 +156,7 @@ class Graph {
 	}
   
 	color (category) {
-		return "text-" + colors[category] + "-500";
+		return "text-" + colors[category] + "-600";
 	}
   
 	draw () {
@@ -216,7 +216,7 @@ class Graph {
 			.attr("x2", this.width)
 			.attr("y1", this.scales.y(0))
 			.attr("y2", this.scales.y(0))
-			.attr("stroke", "#666")
+			.attr("stroke", "#111827")
 			.attr("stroke-width", 2);
       
 		this.selectLineTop = this.svg.append("line")
@@ -225,7 +225,7 @@ class Graph {
 			.attr("x2", this.width)
 			.attr("y1", 0)
 			.attr("y2", 0)
-			.attr("stroke", "#000")
+			.attr("stroke", "#3b82f6")
 			.attr("stroke-width", 2);
       
 		this.selectLineBottom = this.svg.append("line")
@@ -234,19 +234,19 @@ class Graph {
 			.attr("x2", this.width)
 			.attr("y1", this.scales.y(0))
 			.attr("y2", this.scales.y(0))
-			.attr("stroke", "#000")
+			.attr("stroke", "#3b82f6")
 			.attr("stroke-width", 2);
             
 		this.bezierLeft = this.svg.append("path")
 			.attr("class", "hidden lg:block")
-			.attr("stroke", "#a1a1a1")
+			.attr("stroke", "#6b7280")
 			.attr("stroke-dasharray", 4)
 			.attr("fill", "transparent")
 			.attr("d", this.bezierLeftCurve());
       
 		this.bezierRight = this.svg.append("path")
 			.attr("class", "hidden lg:block")
-			.attr("stroke", "#a1a1a1")
+			.attr("stroke", "#6b7280")
 			.attr("stroke-dasharray", 4)
 			.attr("fill", "transparent")
 			.attr("d", this.bezierRightCurve());
@@ -260,11 +260,11 @@ class Graph {
       
 		this.tooltip.append("path")
 			.style("filter", "url(#drop-shadow)")
-			.attr("fill", "white")
+			.attr("fill", "#1a202c")
 			.attr("d", this.tooltipPath(50, 20));
     
 		this.tooltip.append("path")
-			.attr("fill", "white")
+			.attr("fill", "#1a202c")
 			.attr("d", this.tooltipPath(50, 20));
       
 		this.tooltip.append("text")

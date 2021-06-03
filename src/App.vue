@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="lg:p-10 bg-blue-900">
-      <div class="container p-5 max-w-2xl">
+    <div class="bg-blue-900 lg:p-10">
+      <div class="container max-w-2xl p-5">
         <a href="http://cffp.recherche.usherbrooke.ca/">
           <img
-            class="mx-auto w-48 mb-10"
+            class="w-48 mx-auto mb-10"
             src="@/assets/logo.png"
             alt="Logo chaire de recherche en fiscalité et finances publiques de l'Université de Sherbrooke"
           >
         </a>
-        <p class="text-3xl font-bold text-blue-100 lg:text-4xl leading-tight mb-1">
+        <p class="mb-1 text-3xl font-bold leading-tight text-blue-100 lg:text-4xl">
           Récits de vie
         </p>
-        <p class="text-blue-300 lg:text-2xl leading-tight mb-8">
+        <p class="mb-8 leading-tight text-blue-300 lg:text-2xl">
           Comment évoluent les prélèvements fiscaux, les prestations et les dépenses publiques pour une contribuable au cours de sa vie?
         </p>
       </div>
@@ -22,9 +22,9 @@
             Nous allons suivre la vie d'Ella, qui présente les caractéristiques représentatives d’une femme québécoise, à compter de <b>18 ans</b> jusqu’à son décès à <b>87 ans</b>, pour 3 scénarios de vie distincts :
           </p>
           <div class="mb-10">
-            <div class="pl-6 border-blue-500 border-l-4 mb-10">
+            <div class="pl-6 mb-10 border-l-4 border-blue-500">
               <div class="flex items-baseline mb-3">
-                <h2 class="text-lg lg:text-xl font-bold mr-4">
+                <h2 class="mr-4 text-lg font-bold lg:text-xl">
                   Scénario 1
                 </h2>
                 <svg
@@ -32,7 +32,7 @@
                   width="65.649"
                   height="86.892"
                   viewBox="0 0 65.649 86.892"
-                  class="h-4 w-auto text-blue-700"
+                  class="w-auto h-4 text-blue-700"
                 ><g transform="translate(-147.54 -111.445)"><g transform="translate(147.54 162.719)"><path
                   d="M198.988,285.357a27.077,27.077,0,0,0-13.02-3.312H174.761a27.215,27.215,0,0,0-27.221,27.221v8.4h65.649v-8.4A27.211,27.211,0,0,0,198.988,285.357Z"
                   fill="currentColor"
@@ -48,9 +48,9 @@
                 Ella vit seule, sans enfant, durant toute sa vie.
               </p>
             </div>
-            <div class="pl-6 border-blue-500 border-l-4 mb-10">
+            <div class="pl-6 mb-10 border-l-4 border-blue-500">
               <div class="flex items-baseline mb-3">
-                <h2 class="text-lg lg:text-xl font-bold mr-4">
+                <h2 class="mr-4 text-lg font-bold lg:text-xl">
                   Scénario 2
                 </h2>
                 <svg
@@ -58,7 +58,7 @@
                   width="253.626"
                   height="86.892"
                   viewBox="0 0 253.626 86.892"
-                  class="h-4 w-auto text-blue-700"
+                  class="w-auto h-4 text-blue-700"
                 ><g transform="translate(-291.321 -142.218)"><g transform="translate(143.781 30.773)"><g transform="translate(147.54 162.719)"><path
                   d="M198.988,285.357a27.077,27.077,0,0,0-13.02-3.312H174.761a27.215,27.215,0,0,0-27.221,27.221v8.4h65.649v-8.4A27.211,27.211,0,0,0,198.988,285.357Z"
                   transform="translate(-147.54 -282.045)"
@@ -97,9 +97,9 @@
                 Ella forme un couple à l’âge de 27 ans, a deux enfants et demeure en couple jusqu’à 82 ans, son âge lors du décès de son conjoint.
               </p>
             </div>
-            <div class="pl-6 border-blue-500 border-l-4 mb-10">
+            <div class="pl-6 mb-10 border-l-4 border-blue-500">
               <div class="flex items-baseline mb-3">
-                <h2 class="text-lg lg:text-xl font-bold mr-4">
+                <h2 class="mr-4 text-lg font-bold lg:text-xl">
                   Scénario 3
                 </h2>
                 <svg
@@ -107,7 +107,7 @@
                   width="121.968"
                   height="86.892"
                   viewBox="0 0 121.968 86.892"
-                  class="h-4 w-auto text-blue-700"
+                  class="w-auto h-4 text-blue-700"
                 ><g transform="translate(-634.321 -142.218)"><g transform="translate(486.781 30.773)"><g transform="translate(147.54 162.719)"><path
                   d="M198.988,285.357a27.077,27.077,0,0,0-13.02-3.312H174.761a27.215,27.215,0,0,0-27.221,27.221v8.4h65.649v-8.4A27.211,27.211,0,0,0,198.988,285.357Z"
                   transform="translate(-147.54 -282.045)"
@@ -148,7 +148,7 @@
         data-tooltip="20,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Aux études collégiales | 
           <span class="text-gray-600">18 à 20 ans</span> 
         </h2>
@@ -203,9 +203,9 @@
         data-tooltip="26,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Début de carrière | 
-          <span class="text-gray-600 mr-1">21 à 26 ans</span> 
+          <span class="mr-1 text-gray-600">21 à 26 ans</span> 
         </h2>
         À 21 ans, Ella quitte le domicile de ses parents et commence à travailler à temps plein. Son <span class="revenu">salaire</span> initial est d’un peu plus de <b>35 000 $</b> et augmente progressivement chaque année, atteignant plus de <b>42 000 $</b> à 26 ans.
       </notice>
@@ -253,9 +253,9 @@
         data-tooltip="28,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Vie en couple | 
-          <span class="text-gray-600 mr-1">27 à 28 ans</span> 
+          <span class="mr-1 text-gray-600">27 à 28 ans</span> 
         </h2>
         C'est à <b>27 ans</b>, qu'Ella forme un couple avec Luis. En conséquence les scénarios 2 et 3 prennent en compte le <span class="revenu">revenu du ménage</span> de plus de <b>93 000$</b> à la formation du couple. 
       </notice>
@@ -287,9 +287,9 @@
         data-tooltip="29,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Naissance du premier enfant | 
-          <span class="text-gray-600 mr-1">29 ans</span> 
+          <span class="mr-1 text-gray-600">29 ans</span> 
         </h2>
         À la naissance de son premier enfant, Ella cesse de travailler pendant 1 an dans les scénarios 2 et 3. Le <span class="revenu">revenu de salaire</span> du ménage diminue alors de moitié.
       </notice>
@@ -331,9 +331,9 @@
         data-tooltip="30,benefices"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Retour au travail | 
-          <span class="text-gray-600 mr-1">30 ans</span> 
+          <span class="mr-1 text-gray-600">30 ans</span> 
         </h2>
         Lorsque l’enfant a 1 an, Ella retourne sur le <span class="revenu">marché du travail</span> et les <span class="benefices">services de garde subventionnés</span> sont utilisés. La valeur de ce <span class="benefices">service public</span> est d’un peu plus de <b>10 000$</b> par année par enfant.  
       </notice>
@@ -345,9 +345,9 @@
         data-tooltip="31,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Deuxième enfant | 
-          <span class="text-gray-600 mr-1">31 ans</span> 
+          <span class="mr-1 text-gray-600">31 ans</span> 
         </h2>
         À 31 ans, dans le cas du scénario 2, Ella cesse à nouveau de travailler pendant un an suite à l’arrivée du deuxième enfant. Le <span class="revenu">revenu</span> du couple est modifié en conséquence.  
       </notice>
@@ -359,9 +359,9 @@
         data-tooltip="39,benefices"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2 leading-tight">
+        <h2 class="mb-2 text-lg font-bold leading-tight">
           Entrée à la maternelle et éducation primaire des 2 enfants (scénario 2), 1 seul enfant (scénario 3) | 
-          <span class="text-gray-600 mr-1">34 à 39 ans</span> 
+          <span class="mr-1 text-gray-600">34 à 39 ans</span> 
         </h2>
         Lorsque Ella a <b>34 ans</b>, le premier enfant entre à la maternelle, la valeur des <span class="benefices">services publics</span> reçus diminue, car l’utilisation des <span class="benefices">services de garde à contribution réduite</span> est remplacée par les <span class="benefices">services de garde en milieu scolaire</span> et les <span class="benefices">services d’enseignement primaire</span>.
       </notice>
@@ -373,9 +373,9 @@
         data-tooltip="40,revenu"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Rupture | 
-          <span class="text-gray-600 mr-1">40 ans</span> 
+          <span class="mr-1 text-gray-600">40 ans</span> 
         </h2>
         À <b>40 ans</b>, le scénario 3 montre l’effet de la rupture d’Ella et de son conjoint. Celle-ci conserve la garde exclusive de son enfant unique. Le revenu n’est plus constitué que du salaire d’Ella, soit près de <b>53 000 $</b>.
       </notice>
@@ -408,9 +408,9 @@
         data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,credit-solidarite,credit-tps,service-es"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Le premier enfant devient majeur | 
-          <span class="text-gray-600 mr-1">47 ans</span> 
+          <span class="mr-1 text-gray-600">47 ans</span> 
         </h2>
         Lorsque le premier enfant atteint <b>18 ans</b>, les <span class="prestations">prestations financières</span> diminuent et la valeur des <span class="benefices">services publics</span> attribués à cet enfant n’est plus prise en compte.
         <br>
@@ -425,9 +425,9 @@
         data-force-highlight="allocation-cad-enfants,paiement-soutien-enfants,service-es"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Deuxième enfant devient majeur | 
-          <span class="text-gray-600 mr-1">49 ans</span> 
+          <span class="mr-1 text-gray-600">49 ans</span> 
         </h2>
         Dans le cas du scénario 2, une deuxième réduction des <span class="prestations">prestations financières</span> et de la valeur des <span class="benefices">services publics</span> reçus survient lorsqu’Ella a <b>49 ans</b>, soit lorsque le deuxième enfant atteint <b>18 ans</b>.
       </notice>
@@ -438,9 +438,9 @@
         data-tooltip="60,revenu,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Retraite | 
-          <span class="text-gray-600 mr-1">60 à 74 ans </span> 
+          <span class="mr-1 text-gray-600">60 à 74 ans </span> 
         </h2>
         Dans tous les scénarios Ella prend sa retraite à <b>60 ans</b>. Luis prend sa retraite au même moment qu’Ella (scénario 2). Le <span class="revenu">revenu</span> provient alors de leurs fonds de retraite privé. Il est moins important qu’en période de vie active.
       </notice>
@@ -473,9 +473,9 @@
         data-tooltip="75,prestations,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Retraite | 
-          <span class="text-gray-600 mr-1">75 à 81 ans</span> 
+          <span class="mr-1 text-gray-600">75 à 81 ans</span> 
         </h2>
         À compter de <b>75 ans</b>, Ella touche le <span class="prestations">crédit d’impôt pour maintien à domicile</span>. 
       </notice>
@@ -488,9 +488,9 @@
         data-tooltip="82,prelevements,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Décès du conjoint | 
-          <span class="text-gray-600 mr-1">82 ans</span> 
+          <span class="mr-1 text-gray-600">82 ans</span> 
         </h2>
         Luis décède lorsque Ella est âgée de <b>82 ans</b> (scénario 2), modifiant le <span class="revenu">revenu</span>, la valeur des <span class="prelevements">prélèvements</span> et celle des <span class="benefices">bénéfices publics</span> reçus. 
       </notice>
@@ -502,9 +502,9 @@
         data-tooltip="83,benefices,left"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Fin de vie | 
-          <span class="text-gray-600 mr-1">83 à 87 ans</span> 
+          <span class="mr-1 text-gray-600">83 à 87 ans</span> 
         </h2>
         À l’âge adulte, la valeur des <span class="benefices">services de soins de santé</span> reçus augmente avec l’âge. Dans le cas où Ella vit seule à la retraite (scénarios 1 et 3), cette valeur passe d’un peu moins de <b>6 000 $</b> à 65 ans, à plus de <b>28 000 $</b> à 85 ans.
       </notice>
@@ -517,7 +517,7 @@
         data-show-selection="false"
         push-bottom
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           Bénéfices publics et prélèvements au cours d’une vie
         </h2>
         Au cours d'une vie, les 3 ménages d’Ella bénéficient de <span class="benefices">services publics</span>, touchent des <span class="prestations">prestations</span> et, en contrepartie assument des <span class="prelevements">prélèvements</span>. <b>Nous pouvons observer simultanément ces flux monétaires</b>.
@@ -589,7 +589,7 @@
         <br>
         <br>
         Ce moment arrive lorsque Ella a :
-        <ul class="list-disc ml-5">
+        <ul class="ml-5 list-disc">
           <li><b>74 ans</b> pour le scénario 2</li>
           <li>
             <b>80 ans</b> pour le scénario 3
@@ -616,7 +616,7 @@
         v-show="isDesktop"
         data-step="end"
       >
-        <h2 class="text-lg font-bold mb-2">
+        <h2 class="mb-2 text-lg font-bold">
           À vous d'explorer!
         </h2>
         Vous pouvez à présent explorer les données comme bon vous semble. Les informations relatives à une année particulière s’affichent lorsque l’on pointe le curseur sur les graphiques.
@@ -630,27 +630,27 @@
       v-if="isDesktop"
       ref="vizInteractive"
     />
-    <div class="py-12 px-6 bg-blue-100">
+    <div class="px-6 py-12 bg-blue-100">
       <div class="container max-w-2xl">
-        <h2 class="text-lg font-semibold mb-3">
+        <h2 class="mb-3 text-lg font-semibold">
           Méthodologie et interprétation
         </h2>
-        <p class="text-base mb-5">
+        <p class="mb-5 text-base">
           Les calculs sont basés sur le régime fiscal de 2018, le ménage vivant l’ensemble de sa vie dans ce système fiscal. La majorité des caractéristiques de nos personnages sont issues des données produites par Statistique Canada. Pour chacun des paramètres, le cas médian (ou moyen) est retenu afin de baser l’analyse sur les situations les plus représentatives possible.  Il est important de noter que seul un échantillon de services publics et, par conséquent, des bénéfices publics est présenté. Dans le même ordre d’idée, certains prélèvements tels les impôts fonciers n’ont pas été pris en compte.
         </p>
-        <p class="text-base mb-5">
+        <p class="mb-5 text-base">
           Cette analyse ne doit donc pas être vue comme un bilan précis des gains et bénéfices de la vie dans la société québécoise pour un cheminement de vie donné, mais plutôt comme une représentation de l’évolution des prélèvements fiscaux et des bénéfices publics au cours d’une vie.
         </p>
         <p class="text-base ">
           Les hypothèses sur lesquelles se basent l’ensemble des calculs sont disponibles à : <a
-            class="underline text-blue-700"
+            class="text-blue-700 underline"
             href="http://cffp.recherche.usherbrooke.ca/impots-et-services-publics-approche-par-recit-de-vie/"
           >http://cffp.recherche.usherbrooke.ca/impots-et-services-publics-approche-par-recit-de-vie/</a>.
         </p>
 
         <a
           href="#"
-          class="items-center inline-flex px-2 py-2 pr-4 bg-gray-200 rounded mt-8"
+          class="inline-flex items-center px-2 py-2 pr-4 mt-8 bg-gray-900 rounded"
         > 
           <svg
             class="inline"
@@ -666,10 +666,10 @@
         </a>
 
         <hr class="my-10">
-        <p class="text-base mb-2">
+        <p class="mb-2 text-base">
           Travail collectif où ont participé <b>Michaël Robert-Angers</b>, <b>Anna Kerkhoff</b>, <b>Antoine Genest-Grégoire</b> et <b>Luc Godbout</b>.
         </p>
-        <p class="text-base mb-2">
+        <p class="mb-2 text-base">
           Les auteurs collaborent aux travaux de la <a
             class="underline"
             href="http://cffp.recherche.usherbrooke.ca/"

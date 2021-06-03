@@ -1,20 +1,20 @@
 <template>
-  <div class="relative w-full h-screen bg-blue-200 overflow-y-hidden border-t border-b border-blue-300">
-    <div class="flex h-full w-full">
-      <div class="w-90 h-full bg-blue-100 border-r border-blue-300">
+  <div class="relative w-full h-screen overflow-y-hidden bg-gray-900">
+    <div class="flex w-full h-full">
+      <div class="h-full bg-blue-100 border-r border-blue-300 w-90">
         <div class="p-8 px-5 border-b border-blue-300">
-          <h3 class="text-xl font-bold mb-3">
+          <h3 class="mb-3 text-xl font-bold">
             3 récits de vie
           </h3>
           <p class="text-base">
             Comment les impôts et les charges sociales, les prestations et les dépenses publiques affectent une contribuable au cours de sa vie ?
           </p>
         </div>
-        <div class="py-6 px-5 border-b border-blue-300">
+        <div class="px-5 py-6 border-b border-blue-300">
           <div class="mb-2">
             Âge d'Ella
           </div>
-          <div class="flex -mx-2 mb-2">
+          <div class="flex mb-2 -mx-2">
             <div class="w-1/2 px-2">
               <div>
                 <input
@@ -22,7 +22,7 @@
                   type="number"
                   min="18"
                   :max="filters.age[1]"
-                  class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   @input="onMinAgeChange"
                 >
                 <div
@@ -40,7 +40,7 @@
                   type="number"
                   :min="filters.age[0]"
                   max="87"
-                  class="w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   @input="onMaxAgeChange"
                 >
                 <div
@@ -94,20 +94,20 @@
             </v-switch>
           </div>
         </div>
-        <div class="pt-6 pb-4 px-5">
+        <div class="px-5 pt-6 pb-4">
           <div class="mb-2">
             Affichage des montants
           </div>
           <div class="flex">
             <button
-              class="flex-1 border border-gray-400 px-3 py-1 text-base bg-white rounded-l hover:bg-gray-100"
+              class="flex-1 px-3 py-1 text-base bg-white border border-gray-400 rounded-l hover:bg-gray-100"
               :class="{'bg-gray-300 hover:bg-gray-300': filters.agglomerationAverage}"
               @click="$set(filters, 'agglomerationAverage', true)"
             >
               Moyenne
             </button>
             <button
-              class="flex-1 border border-l-0 border-gray-400 px-3 py-1 text-base bg-white rounded-r hover:bg-gray-100"
+              class="flex-1 px-3 py-1 text-base bg-white border border-l-0 border-gray-400 rounded-r hover:bg-gray-100"
               :class="{'bg-gray-300 hover:bg-gray-300': !filters.agglomerationAverage}"
               @click="$set(filters, 'agglomerationAverage', false)"
             >

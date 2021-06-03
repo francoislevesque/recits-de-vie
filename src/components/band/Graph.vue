@@ -1,7 +1,7 @@
 <template>
   <div
     ref="graph"
-    class="graph-band h-full"
+    class="h-full text-gray-500 graph-band"
   />
 </template>
 
@@ -65,6 +65,7 @@ export default {
 
 <style lang="scss">
 .graph-band {
+
   .axis {
     &.axis-y {
       & > path {
@@ -72,14 +73,14 @@ export default {
       }
       .tick {
         line {
-          stroke: #d1d1d1;
+          stroke: #374151;
         }
       }
     }
     &.axis-x {
       & > path {
-        color: #e1e1e1;
-        stroke-width: 2;
+        color: #374151;
+        stroke-width: 1;
         @media only screen and (max-width: 1024px) {
           display: none;
         }

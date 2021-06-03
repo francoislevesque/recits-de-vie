@@ -79,7 +79,7 @@ class Graphs {
 	}
   
 	color (category) {
-		return "text-" + colors[category] + "-500";
+		return "text-" + colors[category] + "-400";
 	}
   
 	transition (g) {
